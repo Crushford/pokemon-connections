@@ -1,0 +1,74 @@
+{
+  "groups": [
+    {
+      "id": "type:psychic:64-65-79-121",
+      "name": "Type: psychic",
+      "members": [
+        64,
+        65,
+        79,
+        121
+      ],
+      "tags": [
+        "type"
+      ]
+    },
+    {
+      "id": "type:normal:17-19-84-113",
+      "name": "Type: normal",
+      "members": [
+        17,
+        19,
+        84,
+        113
+      ],
+      "tags": [
+        "type"
+      ]
+    },
+    {
+      "id": "type:grass:3-69-103-114",
+      "name": "Type: grass",
+      "members": [
+        3,
+        69,
+        103,
+        114
+      ],
+      "tags": [
+        "type"
+      ]
+    },
+    {
+      "id": "type:water:54-61-86-138",
+      "name": "Type: water",
+      "members": [
+        54,
+        61,
+        86,
+        138
+      ],
+      "tags": [
+        "type"
+      ]
+    }
+  ],
+  "pool": [
+    64,
+    65,
+    79,
+    121,
+    17,
+    19,
+    84,
+    113,
+    3,
+    69,
+    103,
+    114,
+    54,
+    61,
+    86,
+    138
+  ]
+}
