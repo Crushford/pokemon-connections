@@ -53,3 +53,9 @@ yarn dev        # Start development server
 - `yarn dev` - Start development server
 - `yarn build` - Build for production
 - `yarn preview` - Preview production build
+
+## Git
+
+- **Branch**: `main` (default branch)
+- **Structure**: Monorepo with single git repository
+- **Ignore**: Yarn bundles, node_modules, build artifacts
