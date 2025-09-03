@@ -1,5 +1,80 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+/* Custom Pokemon type colors */
+@layer base {
+  :root {
+    --color-pokemon-fire: #ef4444;
+    --color-pokemon-water: #3b82f6;
+    --color-pokemon-grass: #10b981;
+    --color-pokemon-electric: #fbbf24;
+    --color-pokemon-ice: #06b6d4;
+    --color-pokemon-fighting: #dc2626;
+    --color-pokemon-poison: #8b5cf6;
+    --color-pokemon-ground: #d97706;
+    --color-pokemon-flying: #818cf8;
+    --color-pokemon-psychic: #ec4899;
+    --color-pokemon-bug: #84cc16;
+    --color-pokemon-rock: #92400e;
+    --color-pokemon-ghost: #7c3aed;
+    --color-pokemon-dragon: #4338ca;
+    --color-pokemon-dark: #374151;
+    --color-pokemon-steel: #6b7280;
+    --color-pokemon-fairy: #f9a8d4;
+  }
+}
+
+@layer utilities {
+  .bg-pokemon-fire {
+    background-color: var(--color-pokemon-fire);
+  }
+  .bg-pokemon-water {
+    background-color: var(--color-pokemon-water);
+  }
+  .bg-pokemon-grass {
+    background-color: var(--color-pokemon-grass);
+  }
+  .bg-pokemon-electric {
+    background-color: var(--color-pokemon-electric);
+  }
+  .bg-pokemon-ice {
+    background-color: var(--color-pokemon-ice);
+  }
+  .bg-pokemon-fighting {
+    background-color: var(--color-pokemon-fighting);
+  }
+  .bg-pokemon-poison {
+    background-color: var(--color-pokemon-poison);
+  }
+  .bg-pokemon-ground {
+    background-color: var(--color-pokemon-ground);
+  }
+  .bg-pokemon-flying {
+    background-color: var(--color-pokemon-flying);
+  }
+  .bg-pokemon-psychic {
+    background-color: var(--color-pokemon-psychic);
+  }
+  .bg-pokemon-bug {
+    background-color: var(--color-pokemon-bug);
+  }
+  .bg-pokemon-rock {
+    background-color: var(--color-pokemon-rock);
+  }
+  .bg-pokemon-ghost {
+    background-color: var(--color-pokemon-ghost);
+  }
+  .bg-pokemon-dragon {
+    background-color: var(--color-pokemon-dragon);
+  }
+  .bg-pokemon-dark {
+    background-color: var(--color-pokemon-dark);
+  }
+  .bg-pokemon-steel {
+    background-color: var(--color-pokemon-steel);
+  }
+  .bg-pokemon-fairy {
+    background-color: var(--color-pokemon-fairy);
+  }
+}
 
 /* app-level tweaks if needed later */
