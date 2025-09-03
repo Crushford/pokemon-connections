@@ -1,14 +1,7 @@
-import { useMemo, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import PokemonCard from './components/PokemonCard'
 import Pokedex from './components/Pokedex'
 import type { PokemonLite } from './types'
-
-// Global type declaration for Pokemon pool data
-declare global {
-  interface Window {
-    __POKEMON_POOL__?: PokemonLite[]
-  }
-}
 
 type PuzzleGroup = {
   id: string
@@ -22,28 +15,39 @@ type PuzzleData = {
   pool: number[]
 }
 
+type PokemonData = PokemonLite[]
+
 export default function App() {
-  const pool = useMemo<PokemonLite[]>(() => window.__POKEMON_POOL__ ?? [], [])
   const [puzzleData, setPuzzleData] = useState<PuzzleData | null>(null)
+  const [pokemonData, setPokemonData] = useState<PokemonData>([])
   const [isLoading, setIsLoading] = useState(true)
   const [completedGroups, setCompletedGroups] = useState<PuzzleGroup[]>([])
   const [remainingPokemon, setRemainingPokemon] = useState<PokemonLite[]>([])
 
-  // Fetch puzzle data on component mount
+  // Fetch puzzle and Pokemon data on component mount
   useEffect(() => {
-    fetch('/puzzle.json')
-      .then(response => response.json())
-      .then(data => {
-        setPuzzleData(data)
-        setRemainingPokemon(pool) // Add this line
+    Promise.all([
+      fetch('/puzzle.json').then(response => response.json()),
+      fetch('/pokemon.json').then(response => response.json())
+    ])
+      .then(([puzzleData, pokemonData]) => {
+        setPuzzleData(puzzleData)
+        setPokemonData(pokemonData)
+
+        // Filter Pokemon data to only include Pokemon in this puzzle
+        const puzzlePokemonIds = new Set(puzzleData.pool)
+        const puzzlePokemon = pokemonData.filter((pokemon: PokemonLite) =>
+          puzzlePokemonIds.has(pokemon.id)
+        )
+        setRemainingPokemon(puzzlePokemon)
+
         setIsLoading(false)
       })
       .catch(error => {
-        console.error('Failed to load puzzle data:', error)
+        console.error('Failed to load data:', error)
         setIsLoading(false)
       })
-  }, [pool]) // Change dependency from [] to [pool]
-
+  }, [])
   const [selectedIdx, setSelectedIdx] = useState<number[]>([])
   const [pokedexPokemon, setPokedexPokemon] = useState<PokemonLite | null>(null)
   const [attempts, setAttempts] = useState<number>(0)
@@ -243,7 +247,7 @@ export default function App() {
                       </h4>
                       <div className="flex flex-wrap gap-2 justify-center">
                         {group.members.map(id => {
-                          const mon = pool.find(p => p.id === id)
+                          const mon = pokemonData.find(p => p.id === id)
                           return mon ? (
                             <span
                               key={id}
