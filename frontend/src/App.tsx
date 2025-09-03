@@ -303,7 +303,7 @@ export default function App() {
               [...prev].sort(() => Math.random() - 0.5)
             )
           }}
-          className="px-6 py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors duration-200 shadow-md hover:shadow-lg"
+          className="px-6 py-3 rounded-xl border-2 border-zinc-300 bg-white text-zinc-700 font-semibold hover:bg-zinc-50 hover:border-zinc-400 active:bg-zinc-100 transition-all duration-200 shadow-sm hover:shadow-md"
         >
           🔀 Shuffle
         </button>
