@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import PokemonCard from './components/PokemonCard'
+import Pokedex from './components/Pokedex'
 import type { PokemonLite } from './types'
 
 // TEMP: pass your 16 Pokémon objects in via a constant or fetched puzzle.
@@ -15,6 +16,7 @@ export default function App() {
   const pool = useMemo<PokemonLite[]>(() => window.__POKEMON_POOL__ ?? [], [])
 
   const [selectedIdx, setSelectedIdx] = useState<number[]>([])
+  const [pokedexPokemon, setPokedexPokemon] = useState<PokemonLite | null>(null)
 
   function toggleSelect(i: number) {
     setSelectedIdx(prev => {
@@ -30,17 +32,22 @@ export default function App() {
     setSelectedIdx([])
   }
 
+  function handlePokedexLookup(pokemon: PokemonLite) {
+    setPokedexPokemon(pokemon)
+  }
+
   return (
-    <div className="min-h-dvh mx-auto max-w-5xl px-4 py-8">
+    <div className="min-h-dvh mx-auto max-w-7xl px-4 py-8">
       <header className="mb-6 text-center">
         <h1 className="text-3xl font-bold">Pokémon Connections</h1>
         <p className="text-sm text-zinc-600">
-          Select 4 related Pokémon. Tap the corner chevron or "Details" to flip
-          a card.
+          Select 4 related Pokémon. Click the info icon to view details in the
+          Pokédex.
         </p>
       </header>
 
-      <main className="flex justify-center items-center">
+      <main className="flex gap-8 justify-center items-start">
+        {/* Pokemon grid */}
         <div className="h-[70vh] max-w-[min(90vw,32rem)] w-auto">
           <div className="grid grid-cols-4 gap-0 border border-zinc-300 rounded-lg overflow-hidden w-full h-full">
             {pool.map((mon, i) => (
@@ -49,11 +56,15 @@ export default function App() {
                   mon={mon}
                   selected={selectedIdx.includes(i)}
                   onSelect={() => toggleSelect(i)}
+                  onPokedexLookup={() => handlePokedexLookup(mon)}
                 />
               </div>
             ))}
           </div>
         </div>
+
+        {/* Pokedex */}
+        <Pokedex selectedPokemon={pokedexPokemon} />
       </main>
 
       <div className="mt-6 flex items-center gap-3">
