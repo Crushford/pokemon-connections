@@ -4,12 +4,14 @@ export default function PokemonCard({
   mon,
   selected,
   onSelect,
-  onPokedexLookup
+  onPokedexLookup,
+  shake = false
 }: {
   mon: PokemonLite
   selected: boolean
   onSelect: () => void
   onPokedexLookup: () => void
+  shake?: boolean
 }) {
   return (
     <div
@@ -24,7 +26,8 @@ export default function PokemonCard({
           : 'border-zinc-200 hover:border-zinc-400 hover:shadow-md',
         'focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-1',
         'cursor-pointer transition-all duration-200 ease-in-out',
-        'hover:scale-[1.02] active:scale-[0.98]'
+        'hover:scale-[1.02] active:scale-[0.98]',
+        shake ? 'animate-shake' : ''
       ].join(' ')}
       onClick={onSelect}
     >

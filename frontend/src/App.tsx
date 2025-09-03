@@ -17,6 +17,10 @@ export default function App() {
 
   const [selectedIdx, setSelectedIdx] = useState<number[]>([])
   const [pokedexPokemon, setPokedexPokemon] = useState<PokemonLite | null>(null)
+  const [attempts, setAttempts] = useState<number>(0)
+  const [showToast, setShowToast] = useState<boolean>(false)
+  const [toastMessage, setToastMessage] = useState<string>('')
+  const [shakeCards, setShakeCards] = useState<boolean>(false)
 
   function toggleSelect(i: number) {
     setSelectedIdx(prev => {
@@ -26,14 +30,52 @@ export default function App() {
     })
   }
 
+  function displayToast(message: string) {
+    setToastMessage(message)
+    setShowToast(true)
+    setTimeout(() => setShowToast(false), 3000)
+  }
+
+  function triggerShake() {
+    setShakeCards(true)
+    setTimeout(() => setShakeCards(false), 600)
+  }
+
   function submit() {
     if (selectedIdx.length !== 4) return
-    // integrate with backend later
+
+    // Increment attempts
+    setAttempts(prev => prev + 1)
+
+    // TODO: integrate with backend later to check if selection is correct
+    // For now, simulate incorrect selection
+    const isCorrect = false // This will come from backend validation
+
+    if (!isCorrect) {
+      // Show feedback for incorrect selection
+      displayToast(
+        "Not quite right! These Pokémon aren't connected. Try again!"
+      )
+      triggerShake()
+    } else {
+      // Show success message
+      displayToast('Congratulations! You found the connection!')
+    }
+
     setSelectedIdx([])
   }
 
   function handlePokedexLookup(pokemon: PokemonLite) {
     setPokedexPokemon(pokemon)
+  }
+
+  // Get color for attempts counter based on performance
+  function getAttemptsColor() {
+    if (attempts === 0) return 'text-zinc-600'
+    if (attempts <= 3) return 'text-green-600'
+    if (attempts <= 6) return 'text-yellow-600'
+    if (attempts <= 9) return 'text-orange-600'
+    return 'text-red-600'
   }
 
   return (
@@ -49,12 +91,19 @@ export default function App() {
       <main className="flex gap-8 justify-center items-start mb-8">
         {/* Pokemon grid */}
         <div className="max-w-[min(90vw,40rem)] w-auto min-h-[40rem]">
-          <div className="mb-3 text-center">
-            <span className="text-sm font-medium text-zinc-600">
-              {selectedIdx.length === 0
-                ? 'Click Pokémon to select them'
-                : `${selectedIdx.length}/4 Pokémon selected`}
-            </span>
+          <div className="mb-3 text-center space-y-2">
+            <div>
+              <span className="text-sm font-medium text-zinc-600">
+                {selectedIdx.length === 0
+                  ? 'Click Pokémon to select them'
+                  : `${selectedIdx.length}/4 Pokémon selected`}
+              </span>
+            </div>
+            <div>
+              <span className={`text-sm font-semibold ${getAttemptsColor()}`}>
+                Attempts: {attempts}
+              </span>
+            </div>
           </div>
           <div className="grid grid-cols-4 gap-3 p-4 border border-zinc-300 rounded-lg overflow-hidden bg-zinc-50 h-full">
             {pool.map((mon, i) => (
@@ -67,6 +116,7 @@ export default function App() {
                   selected={selectedIdx.includes(i)}
                   onSelect={() => toggleSelect(i)}
                   onPokedexLookup={() => handlePokedexLookup(mon)}
+                  shake={shakeCards && selectedIdx.includes(i)}
                 />
               </div>
             ))}
@@ -92,6 +142,15 @@ export default function App() {
           Clear Selection
         </button>
       </div>
+
+      {/* Toast Notification */}
+      {showToast && (
+        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
+          <div className="bg-zinc-800 text-white px-6 py-3 rounded-lg shadow-lg border border-zinc-700 animate-bounce">
+            <p className="text-sm font-medium">{toastMessage}</p>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
