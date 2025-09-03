@@ -26,6 +26,8 @@ export default function App() {
   const pool = useMemo<PokemonLite[]>(() => window.__POKEMON_POOL__ ?? [], [])
   const [puzzleData, setPuzzleData] = useState<PuzzleData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [completedGroups, setCompletedGroups] = useState<PuzzleGroup[]>([])
+  const [remainingPokemon, setRemainingPokemon] = useState<PokemonLite[]>([])
 
   // Fetch puzzle data on component mount
   useEffect(() => {
@@ -33,13 +35,14 @@ export default function App() {
       .then(response => response.json())
       .then(data => {
         setPuzzleData(data)
+        setRemainingPokemon(pool) // Add this line
         setIsLoading(false)
       })
       .catch(error => {
         console.error('Failed to load puzzle data:', error)
         setIsLoading(false)
       })
-  }, [])
+  }, [pool]) // Change dependency from [] to [pool]
 
   const [selectedIdx, setSelectedIdx] = useState<number[]>([])
   const [pokedexPokemon, setPokedexPokemon] = useState<PokemonLite | null>(null)
@@ -70,6 +73,7 @@ export default function App() {
   function validateSelection(selectedPokemon: PokemonLite[]): {
     isCorrect: boolean
     groupName?: string
+    group?: PuzzleGroup // Add this return type
   } {
     if (!puzzleData || selectedPokemon.length !== 4) {
       console.log(
@@ -93,7 +97,7 @@ export default function App() {
         selectedIds.every((id, index) => id === groupIds[index])
       ) {
         console.log('Match found!', group.name)
-        return { isCorrect: true, groupName: group.name }
+        return { isCorrect: true, groupName: group.name, group } // Return the group object
       }
     }
 
@@ -107,11 +111,11 @@ export default function App() {
     // Increment attempts
     setAttempts(prev => prev + 1)
 
-    // Get the selected Pokemon objects
-    const selectedPokemon = selectedIdx.map(i => pool[i])
+    // Get the selected Pokemon objects from the remaining pool (not full pool)
+    const selectedPokemon = selectedIdx.map(i => remainingPokemon[i])
 
     // Validate the selection
-    const { isCorrect, groupName } = validateSelection(selectedPokemon)
+    const { isCorrect, groupName, group } = validateSelection(selectedPokemon)
 
     if (!isCorrect) {
       // Show feedback for incorrect selection
@@ -122,6 +126,17 @@ export default function App() {
     } else {
       // Show success message
       displayToast(`Congratulations! You found the connection: ${groupName}!`)
+
+      // Add to completed groups
+      if (group) {
+        setCompletedGroups(prev => [...prev, group])
+
+        // Remove completed Pokemon from remaining pool
+        const completedIds = group.members
+        setRemainingPokemon(prev =>
+          prev.filter(p => !completedIds.includes(p.id))
+        )
+      }
     }
 
     setSelectedIdx([])
@@ -129,6 +144,30 @@ export default function App() {
 
   function handlePokedexLookup(pokemon: PokemonLite) {
     setPokedexPokemon(pokemon)
+  }
+
+  function getTypeColor(type: string): string {
+    const colors: Record<string, string> = {
+      normal: 'bg-gray-400',
+      fire: 'bg-red-500',
+      water: 'bg-blue-500',
+      electric: 'bg-yellow-400',
+      grass: 'bg-green-500',
+      ice: 'bg-blue-200',
+      fighting: 'bg-red-700',
+      poison: 'bg-purple-500',
+      ground: 'bg-yellow-600',
+      flying: 'bg-indigo-400',
+      psychic: 'bg-pink-500',
+      bug: 'bg-green-400',
+      rock: 'bg-yellow-700',
+      ghost: 'bg-purple-700',
+      dragon: 'bg-indigo-700',
+      dark: 'bg-gray-700',
+      steel: 'bg-gray-500',
+      fairy: 'bg-pink-300'
+    }
+    return colors[type] || 'bg-gray-400'
   }
 
   // Get color for attempts counter based on performance
@@ -178,22 +217,70 @@ export default function App() {
                 Attempts: {attempts}
               </span>
             </div>
+            <div>
+              <span className="text-sm font-medium text-zinc-600">
+                {remainingPokemon.length} Pokémon remaining
+              </span>
+            </div>
           </div>
-          <div className="grid grid-cols-4 gap-3 p-4 border border-zinc-300 rounded-lg overflow-hidden bg-zinc-50 h-full">
-            {pool.map((mon, i) => (
-              <div
-                key={mon.id}
-                className="aspect-square w-full h-full min-h-[8rem]"
-              >
-                <PokemonCard
-                  mon={mon}
-                  selected={selectedIdx.includes(i)}
-                  onSelect={() => toggleSelect(i)}
-                  onPokedexLookup={() => handlePokedexLookup(mon)}
-                  shake={shakeCards && selectedIdx.includes(i)}
-                />
+
+          {/* Grid Container with Completed Groups and Remaining Pokemon */}
+          <div className="border border-zinc-300 rounded-lg overflow-hidden bg-zinc-50">
+            {/* Completed Groups Section */}
+            {completedGroups && completedGroups.length > 0 && (
+              <div className="p-4 border-b border-zinc-200 bg-green-50">
+                <h3 className="text-lg font-semibold mb-3 text-center text-green-800">
+                  Completed Groups
+                </h3>
+                <div className="space-y-3">
+                  {completedGroups.map(group => (
+                    <div
+                      key={group.id}
+                      className="bg-white p-3 rounded-lg shadow-sm border-l-4 border-green-500"
+                    >
+                      <h4 className="text-sm font-medium mb-2 text-center text-green-700">
+                        {group.name}
+                      </h4>
+                      <div className="flex flex-wrap gap-2 justify-center">
+                        {group.members.map(id => {
+                          const mon = pool.find(p => p.id === id)
+                          return mon ? (
+                            <span
+                              key={id}
+                              className={`px-2 py-1 rounded-full text-xs font-medium ${getTypeColor(
+                                mon.types[0]
+                              )} text-white shadow-sm`}
+                            >
+                              {mon.name}
+                            </span>
+                          ) : null
+                        })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
+            )}
+
+            {/* Remaining Pokemon Grid */}
+            <div className="p-4">
+              <div className="grid grid-cols-4 gap-3">
+                {remainingPokemon.map((mon, i) => (
+                  <div
+                    key={mon.id}
+                    className="aspect-square w-full h-full min-h-[8rem]"
+                  >
+                    <PokemonCard
+                      mon={mon}
+                      selected={selectedIdx.includes(i)}
+                      onSelect={() => toggleSelect(i)}
+                      onPokedexLookup={() => handlePokedexLookup(mon)}
+                      shake={shakeCards && selectedIdx.includes(i)}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
