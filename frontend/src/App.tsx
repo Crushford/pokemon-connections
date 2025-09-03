@@ -50,7 +50,7 @@ export default function App() {
   }, [])
   const [selectedIdx, setSelectedIdx] = useState<number[]>([])
   const [pokedexPokemon, setPokedexPokemon] = useState<PokemonLite | null>(null)
-  const [attempts, setAttempts] = useState<number>(0)
+  const [incorrectAttempts, setIncorrectAttempts] = useState<number>(0)
   const [showToast, setShowToast] = useState<boolean>(false)
   const [toastMessage, setToastMessage] = useState<string>('')
   const [shakeCards, setShakeCards] = useState<boolean>(false)
@@ -112,9 +112,6 @@ export default function App() {
   function submit() {
     if (selectedIdx.length !== 4) return
 
-    // Increment attempts
-    setAttempts(prev => prev + 1)
-
     // Get the selected Pokemon objects from the remaining pool (not full pool)
     const selectedPokemon = selectedIdx.map(i => remainingPokemon[i])
 
@@ -122,6 +119,9 @@ export default function App() {
     const { isCorrect, groupName, group } = validateSelection(selectedPokemon)
 
     if (!isCorrect) {
+      // Increment incorrect attempts only when wrong
+      setIncorrectAttempts(prev => prev + 1)
+
       // Show feedback for incorrect selection
       displayToast(
         "Not quite right! These Pokémon aren't connected. Try again!"
@@ -174,15 +174,6 @@ export default function App() {
     return colors[type] || 'bg-gray-400'
   }
 
-  // Get color for attempts counter based on performance
-  function getAttemptsColor() {
-    if (attempts === 0) return 'text-zinc-600'
-    if (attempts <= 3) return 'text-green-600'
-    if (attempts <= 6) return 'text-yellow-600'
-    if (attempts <= 9) return 'text-orange-600'
-    return 'text-red-600'
-  }
-
   // Show loading state while puzzle data is being fetched
   if (isLoading) {
     return (
@@ -217,8 +208,8 @@ export default function App() {
               </span>
             </div>
             <div>
-              <span className={`text-sm font-semibold ${getAttemptsColor()}`}>
-                Attempts: {attempts}
+              <span className="text-sm font-semibold text-orange-600">
+                Incorrect attempts: {incorrectAttempts}
               </span>
             </div>
             <div>
@@ -305,6 +296,16 @@ export default function App() {
           className="px-6 py-3 rounded-xl border-2 border-zinc-300 bg-white text-zinc-700 font-semibold hover:bg-zinc-50 hover:border-zinc-400 active:bg-zinc-100 transition-all duration-200 shadow-sm hover:shadow-md"
         >
           Clear Selection
+        </button>
+        <button
+          onClick={() => {
+            setRemainingPokemon(prev =>
+              [...prev].sort(() => Math.random() - 0.5)
+            )
+          }}
+          className="px-6 py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 active:bg-blue-800 transition-colors duration-200 shadow-md hover:shadow-lg"
+        >
+          🔀 Shuffle
         </button>
       </div>
 
