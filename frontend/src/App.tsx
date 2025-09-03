@@ -1,19 +1,45 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import PokemonCard from './components/PokemonCard'
 import Pokedex from './components/Pokedex'
 import type { PokemonLite } from './types'
 
-// TEMP: pass your 16 Pokémon objects in via a constant or fetched puzzle.
-// This example expects a global window.__POKEMON_POOL__ loaded elsewhere.
-// Replace with actual data loading you already have.
+// Global type declaration for Pokemon pool data
 declare global {
   interface Window {
     __POKEMON_POOL__?: PokemonLite[]
   }
 }
 
+type PuzzleGroup = {
+  id: string
+  name: string
+  members: number[]
+  tags: string[]
+}
+
+type PuzzleData = {
+  groups: PuzzleGroup[]
+  pool: number[]
+}
+
 export default function App() {
   const pool = useMemo<PokemonLite[]>(() => window.__POKEMON_POOL__ ?? [], [])
+  const [puzzleData, setPuzzleData] = useState<PuzzleData | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+
+  // Fetch puzzle data on component mount
+  useEffect(() => {
+    fetch('/puzzle.json')
+      .then(response => response.json())
+      .then(data => {
+        setPuzzleData(data)
+        setIsLoading(false)
+      })
+      .catch(error => {
+        console.error('Failed to load puzzle data:', error)
+        setIsLoading(false)
+      })
+  }, [])
 
   const [selectedIdx, setSelectedIdx] = useState<number[]>([])
   const [pokedexPokemon, setPokedexPokemon] = useState<PokemonLite | null>(null)
@@ -41,15 +67,51 @@ export default function App() {
     setTimeout(() => setShakeCards(false), 600)
   }
 
+  function validateSelection(selectedPokemon: PokemonLite[]): {
+    isCorrect: boolean
+    groupName?: string
+  } {
+    if (!puzzleData || selectedPokemon.length !== 4) {
+      console.log(
+        'Validation failed: No puzzle data or wrong number of Pokemon'
+      )
+      return { isCorrect: false }
+    }
+
+    // Get the IDs of selected Pokemon
+    const selectedIds = selectedPokemon.map(p => p.id).sort((a, b) => a - b)
+    console.log('Selected Pokemon IDs:', selectedIds)
+
+    // Check if the selected IDs match any of the valid groups
+    for (const group of puzzleData.groups) {
+      const groupIds = [...group.members].sort((a, b) => a - b)
+      console.log(`Checking group "${group.name}":`, groupIds)
+
+      // Check if the selected IDs exactly match the group IDs
+      if (
+        selectedIds.length === groupIds.length &&
+        selectedIds.every((id, index) => id === groupIds[index])
+      ) {
+        console.log('Match found!', group.name)
+        return { isCorrect: true, groupName: group.name }
+      }
+    }
+
+    console.log('No matching group found')
+    return { isCorrect: false }
+  }
+
   function submit() {
     if (selectedIdx.length !== 4) return
 
     // Increment attempts
     setAttempts(prev => prev + 1)
 
-    // TODO: integrate with backend later to check if selection is correct
-    // For now, simulate incorrect selection
-    const isCorrect = false // This will come from backend validation
+    // Get the selected Pokemon objects
+    const selectedPokemon = selectedIdx.map(i => pool[i])
+
+    // Validate the selection
+    const { isCorrect, groupName } = validateSelection(selectedPokemon)
 
     if (!isCorrect) {
       // Show feedback for incorrect selection
@@ -59,7 +121,7 @@ export default function App() {
       triggerShake()
     } else {
       // Show success message
-      displayToast('Congratulations! You found the connection!')
+      displayToast(`Congratulations! You found the connection: ${groupName}!`)
     }
 
     setSelectedIdx([])
@@ -76,6 +138,18 @@ export default function App() {
     if (attempts <= 6) return 'text-yellow-600'
     if (attempts <= 9) return 'text-orange-600'
     return 'text-red-600'
+  }
+
+  // Show loading state while puzzle data is being fetched
+  if (isLoading) {
+    return (
+      <div className="min-h-dvh flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
+          <p className="text-zinc-600">Loading puzzle...</p>
+        </div>
+      </div>
+    )
   }
 
   return (
