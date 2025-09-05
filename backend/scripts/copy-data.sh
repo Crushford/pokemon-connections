@@ -5,10 +5,13 @@ echo "Copying Pokémon data to frontend..."
 cp data/pokemon.json ../frontend/public/
 
 echo "Copying puzzle data to frontend..."
-# Copy puzzles.json if it exists, otherwise copy the most recent individual puzzle file
-if [ -f "data/puzzles.json" ]; then
+# Priority order: progressive puzzles, then regular puzzles, then individual files
+if [ -f "data/puzzles-progressive-simple.json" ]; then
+    cp data/puzzles-progressive-simple.json ../frontend/public/puzzle.json
+    echo "✅ Progressive puzzles data copied successfully!"
+elif [ -f "data/puzzles.json" ]; then
     cp data/puzzles.json ../frontend/public/puzzle.json
-    echo "✅ Puzzles data copied successfully!"
+    echo "✅ Regular puzzles data copied successfully!"
 else
     # Fallback to individual puzzle files
     LATEST_PUZZLE=$(ls -t data/puzzles/*.json | head -1)
