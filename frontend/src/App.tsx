@@ -257,8 +257,8 @@ export default function App() {
       <header className="flex-shrink-0 mb-4 text-center">
         <h1 className="text-2xl md:text-3xl font-bold">Pokémon Connections</h1>
         <p className="text-xs md:text-sm text-zinc-600">
-          Select 4 related Pokémon. Click the info icon to view details in the
-          Pokédex.
+          Below are 16 Pokémon, you need to sort them into 4 groups of 4. Click
+          the info icon to view details in the Pokédex.
         </p>
         {puzzlesData && (
           <p className="text-xs md:text-sm text-indigo-600 font-medium mt-1">
@@ -281,11 +281,6 @@ export default function App() {
             <div>
               <span className="text-xs md:text-sm font-semibold text-orange-600">
                 Incorrect attempts: {incorrectAttempts}
-              </span>
-            </div>
-            <div>
-              <span className="text-xs md:text-sm font-medium text-zinc-600">
-                {remainingPokemon.length} Pokémon remaining
               </span>
             </div>
           </div>
