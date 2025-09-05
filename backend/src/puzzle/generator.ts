@@ -1,6 +1,7 @@
 import { readFile, writeFile } from 'fs/promises';
 import { join } from 'path';
 import { type Pokemon, type PokemonData, type Group, type Puzzle } from '../data/types.js';
+import { validatePuzzle as validatePuzzleDetailed } from './validatePuzzle.js';
 
 type Category = {
   id: string;
@@ -92,6 +93,30 @@ function removeCategoriesContainingPokemon(categories: Category[], pokemonIds: n
 }
 
 /**
+ * Checks if a category would conflict with already selected Pokemon
+ */
+function categoryHasConflictsWithSelectedPokemon(
+  category: Category,
+  selectedPokemonIds: number[],
+  pokemonData: PokemonData
+): boolean {
+  // Get the Pokemon objects for the selected Pokemon
+  const selectedPokemon = selectedPokemonIds.map(id => 
+    pokemonData.pokemon.find(p => p.id === id)
+  ).filter(Boolean);
+  
+  // Check if any selected Pokemon would also belong to this category
+  for (const pokemon of selectedPokemon) {
+    if (pokemon && category.pokemon.includes(pokemon.id)) {
+      console.log(`  ⚠️  Conflict: Pokemon ${pokemon.id} (${pokemon.name}) is already selected and also belongs to category ${category.name}`);
+      return true;
+    }
+  }
+  
+  return false;
+}
+
+/**
  * Removes other Pokemon from the same category from all other categories
  */
 function removeOtherPokemonInThisCategoryFromAllCategories(
@@ -99,13 +124,26 @@ function removeOtherPokemonInThisCategoryFromAllCategories(
   categories: Category[], 
   excludeCategoryId: string
 ): Category[] {
+  console.log(`🔍 Removing Pokemon ${pokemonIds.join(', ')} from all categories except ${excludeCategoryId}`);
+  
   return categories.map(category => {
     if (category.id === excludeCategoryId) {
+      console.log(`  ✅ Keeping category ${category.id} unchanged`);
       return category;
     }
+    
+    const originalCount = category.pokemon.length;
+    const filteredPokemon = category.pokemon.filter(p => !pokemonIds.includes(p));
+    const removedCount = originalCount - filteredPokemon.length;
+    
+    if (removedCount > 0) {
+      console.log(`  🗑️  Removed ${removedCount} Pokemon from category ${category.id} (${category.name})`);
+      console.log(`     Original: ${originalCount}, Remaining: ${filteredPokemon.length}`);
+    }
+    
     return {
       ...category,
-      pokemon: category.pokemon.filter(p => !pokemonIds.includes(p))
+      pokemon: filteredPokemon
     };
   });
 }
@@ -113,7 +151,8 @@ function removeOtherPokemonInThisCategoryFromAllCategories(
 /**
  * Validates a puzzle to ensure it meets the requirements
  */
-function validatePuzzle(puzzle: Puzzle): void {
+function validatePuzzle(puzzle: Puzzle, pokemonData: PokemonData): void {
+  // Basic structure validation
   if (puzzle.groups.length !== 4) {
     throw new Error('Puzzle must have exactly 4 groups');
   }
@@ -129,6 +168,15 @@ function validatePuzzle(puzzle: Puzzle): void {
   const uniqueMembers = new Set(allMembers);
   if (allMembers.length !== uniqueMembers.size) {
     throw new Error('Puzzle contains duplicate Pokemon across groups');
+  }
+  
+  // Run comprehensive validation with detailed logging
+  console.log('\n🔍 Running comprehensive puzzle validation...');
+  const validationResult = validatePuzzleDetailed(puzzle, pokemonData);
+  
+  if (!validationResult.isValid) {
+    console.log('\n❌ Puzzle validation failed!');
+    throw new Error('Generated puzzle failed validation');
   }
   
   console.log('Puzzle validation passed');
@@ -227,26 +275,43 @@ async function main() {
   // Generate 4 groups from different categories
   const groups: Group[] = [];
   let remainingCategories = [...validCategories];
+  const allSelectedPokemonIds: number[] = [];
   
   for (let i = 0; i < 4; i++) {
-    // Randomly select a category
-    const randomIndex = Math.floor(Math.random() * remainingCategories.length);
-    const selectedCategory = remainingCategories[randomIndex];
+    // Filter out categories that would conflict with already selected Pokemon
+    const nonConflictingCategories = remainingCategories.filter(category => {
+      const hasConflict = categoryHasConflictsWithSelectedPokemon(category, allSelectedPokemonIds, pokemonData);
+      if (hasConflict) {
+        console.log(`  🚫 Skipping category ${category.name} due to conflicts with selected Pokemon`);
+      }
+      return !hasConflict;
+    });
     
-    if (!selectedCategory) {
-      throw new Error(`No category available for group ${i + 1}`);
+    if (nonConflictingCategories.length === 0) {
+      throw new Error(`No non-conflicting categories available for group ${i + 1}`);
     }
     
-    console.log(`Generating group ${i + 1} from category: ${selectedCategory.name}`);
+    // Randomly select a category from non-conflicting ones
+    const randomIndex = Math.floor(Math.random() * nonConflictingCategories.length);
+    const selectedCategory = nonConflictingCategories[randomIndex];
+    
+    console.log(`\n🎯 Generating group ${i + 1} from category: ${selectedCategory.name} (${selectedCategory.id})`);
+    console.log(`   Available Pokemon in this category: ${selectedCategory.pokemon.join(', ')}`);
     
     // Generate group from category
     const group = generateGroupFromCategory(selectedCategory, pokemonData);
+    console.log(`   Selected Pokemon for group: ${group.members.join(', ')}`);
     groups.push(group);
+    
+    // Add selected Pokemon to the list of all selected Pokemon
+    allSelectedPokemonIds.push(...group.members);
     
     // Remove this category from remaining options
     remainingCategories = remainingCategories.filter(cat => cat.id !== selectedCategory.id);
+    console.log(`   Remaining categories after removal: ${remainingCategories.length}`);
     
     // Remove Pokemon from this group from all remaining categories
+    console.log(`   Removing Pokemon ${group.members.join(', ')} from all remaining categories...`);
     remainingCategories = removeOtherPokemonInThisCategoryFromAllCategories(
       group.members, 
       remainingCategories, 
@@ -264,8 +329,9 @@ async function main() {
     pool: allPokemonIds
   };
 
-  // Validate and save the puzzle
-  validatePuzzle(puzzle);
+  // Validate puzzle structure and type correctness
+  validatePuzzle(puzzle, pokemonData);
+  
   await savePuzzle(puzzle);
 
   console.log('Puzzle generated successfully!');
