@@ -5,13 +5,19 @@ echo "Copying Pokémon data to frontend..."
 cp data/pokemon.json ../frontend/public/
 
 echo "Copying puzzle data to frontend..."
-# Copy the most recent puzzle file
-LATEST_PUZZLE=$(ls -t data/puzzles/*.json | head -1)
-if [ -n "$LATEST_PUZZLE" ]; then
-    cp "$LATEST_PUZZLE" ../frontend/public/puzzle.json
-    echo "✅ Puzzle data copied successfully!"
+# Copy puzzles.json if it exists, otherwise copy the most recent individual puzzle file
+if [ -f "data/puzzles.json" ]; then
+    cp data/puzzles.json ../frontend/public/puzzle.json
+    echo "✅ Puzzles data copied successfully!"
 else
-    echo "⚠️  No puzzle files found in data/puzzles/"
+    # Fallback to individual puzzle files
+    LATEST_PUZZLE=$(ls -t data/puzzles/*.json | head -1)
+    if [ -n "$LATEST_PUZZLE" ]; then
+        cp "$LATEST_PUZZLE" ../frontend/public/puzzle.json
+        echo "✅ Individual puzzle data copied successfully!"
+    else
+        echo "⚠️  No puzzle files found in data/puzzles/ or data/puzzles.json"
+    fi
 fi
 
 echo "✅ Data copied successfully!"

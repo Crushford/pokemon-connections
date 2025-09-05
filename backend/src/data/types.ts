@@ -39,3 +39,8 @@ export const PuzzleSchema = z.object({
   pool: z.array(z.number()).length(16) // union of all member ids
 });
 export type Puzzle = z.infer<typeof PuzzleSchema>;
+
+export const PuzzlesSchema = z.object({
+  puzzles: z.array(PuzzleSchema)
+});
+export type Puzzles = z.infer<typeof PuzzlesSchema>;
