@@ -80,6 +80,7 @@ export default function App() {
   }, [puzzlesData, pokemonData, currentPuzzleIndex])
   const [selectedIdx, setSelectedIdx] = useState<number[]>([])
   const [pokedexPokemon, setPokedexPokemon] = useState<PokemonLite | null>(null)
+  const [showPokedexModal, setShowPokedexModal] = useState<boolean>(false)
   const [incorrectAttempts, setIncorrectAttempts] = useState<number>(0)
   const [showToast, setShowToast] = useState<boolean>(false)
   const [toastMessage, setToastMessage] = useState<string>('')
@@ -197,6 +198,11 @@ export default function App() {
 
   function handlePokedexLookup(pokemon: PokemonLite) {
     setPokedexPokemon(pokemon)
+    setShowPokedexModal(true)
+  }
+
+  function handleClosePokedex() {
+    setShowPokedexModal(false)
   }
 
   function handleNextPuzzle() {
@@ -237,7 +243,7 @@ export default function App() {
   // Show loading state while puzzle data is being fetched
   if (isLoading) {
     return (
-      <div className="min-h-dvh flex items-center justify-center">
+      <div className="h-screen-safe flex items-center justify-center p-safe-area">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
           <p className="text-zinc-600">Loading puzzle...</p>
@@ -247,67 +253,62 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-dvh mx-auto max-w-7xl px-4 py-8">
-      <header className="mb-8 text-center">
-        <h1 className="text-3xl font-bold">Pokémon Connections</h1>
-        <p className="text-sm text-zinc-600">
-          Select 4 related Pokémon. Click the info icon to view details in the
-          Pokédex.
+    <div className="h-screen-safe w-screen-safe overflow-hidden flex flex-col p-safe-area">
+      <header className="flex-shrink-0 mb-4 text-center">
+        <h1 className="text-2xl md:text-3xl font-bold">Pokémon Connections</h1>
+        <p className="text-xs md:text-sm text-zinc-600">
+          Below are 16 Pokémon, you need to sort them into 4 groups of 4. Click
+          the info icon to view details in the Pokédex.
         </p>
         {puzzlesData && (
-          <p className="text-sm text-indigo-600 font-medium mt-2">
+          <p className="text-xs md:text-sm text-indigo-600 font-medium mt-1">
             Puzzle {currentPuzzleIndex + 1} of {puzzlesData.puzzles.length}
           </p>
         )}
       </header>
 
-      <main className="flex gap-8 justify-center items-start mb-8">
+      <main className="flex-1 flex flex-col md:flex-row gap-4 md:gap-8 justify-center items-start overflow-hidden">
         {/* Pokemon grid */}
-        <div className="max-w-[min(90vw,40rem)] w-auto min-h-[40rem]">
-          <div className="mb-3 text-center space-y-2">
+        <div className="flex-1 md:max-w-[40rem] w-full min-h-0 flex flex-col">
+          <div className="flex-shrink-0 mb-3 text-center space-y-1">
             <div>
-              <span className="text-sm font-medium text-zinc-600">
+              <span className="text-xs md:text-sm font-medium text-zinc-600">
                 {selectedIdx.length === 0
                   ? 'Click Pokémon to select them'
                   : `${selectedIdx.length}/4 Pokémon selected`}
               </span>
             </div>
             <div>
-              <span className="text-sm font-semibold text-orange-600">
+              <span className="text-xs md:text-sm font-semibold text-orange-600">
                 Incorrect attempts: {incorrectAttempts}
-              </span>
-            </div>
-            <div>
-              <span className="text-sm font-medium text-zinc-600">
-                {remainingPokemon.length} Pokémon remaining
               </span>
             </div>
           </div>
 
           {/* Grid Container with Completed Groups and Remaining Pokemon */}
-          <div className="border border-zinc-300 rounded-lg overflow-hidden bg-zinc-50">
+          <div className=" border border-zinc-300 rounded-lg overflow-hidden bg-zinc-50 flex flex-col">
             {/* Completed Groups Section */}
             {completedGroups && completedGroups.length > 0 && (
-              <div className="p-4 border-b border-zinc-200 bg-green-50">
-                <h3 className="text-lg font-semibold mb-3 text-center text-green-800">
+              <div className="flex-shrink-0 p-2 md:p-4 border-b border-zinc-200 bg-green-50">
+                <h3 className="text-sm md:text-lg font-semibold mb-2 text-center text-green-800">
                   Completed Groups
                 </h3>
-                <div className="space-y-3">
+                <div className="space-y-2">
                   {completedGroups.map(group => (
                     <div
                       key={group.id}
-                      className="bg-white p-3 rounded-lg shadow-sm border-l-4 border-green-500"
+                      className="bg-white p-2 md:p-3 rounded-lg shadow-sm border-l-4 border-green-500"
                     >
-                      <h4 className="text-sm font-medium mb-2 text-center text-green-700">
+                      <h4 className="text-xs md:text-sm font-medium mb-1 text-center text-green-700">
                         {group.name}
                       </h4>
-                      <div className="flex flex-wrap gap-2 justify-center">
+                      <div className="flex flex-wrap gap-1 md:gap-2 justify-center">
                         {group.members.map(id => {
                           const mon = pokemonData.find(p => p.id === id)
                           return mon ? (
                             <span
                               key={id}
-                              className={`px-2 py-1 rounded-full text-xs font-medium ${getTypeColor(
+                              className={`px-1 md:px-2 py-0.5 md:py-1 rounded-full text-xs font-medium ${getTypeColor(
                                 mon.types[0]
                               )} text-white shadow-sm`}
                             >
@@ -323,12 +324,12 @@ export default function App() {
             )}
 
             {/* Remaining Pokemon Grid */}
-            <div className="p-4">
-              <div className="grid grid-cols-4 gap-3">
+            <div className="flex-1 p-2 md:p-4 overflow-auto">
+              <div className="grid grid-cols-4 gap-2 md:gap-3">
                 {remainingPokemon.map((mon, i) => (
                   <div
                     key={mon.id}
-                    className="aspect-square w-full h-full min-h-[8rem]"
+                    className="aspect-square w-full h-full min-h-[6rem] md:min-h-[8rem]"
                   >
                     <PokemonCard
                       mon={mon}
@@ -342,37 +343,40 @@ export default function App() {
               </div>
             </div>
           </div>
+
+          {/* Action buttons - directly below the grid */}
+          <div className="flex-shrink-0 mt-4 flex justify-center items-center gap-2 md:gap-3">
+            <button
+              onClick={submit}
+              className="px-4 md:px-6 py-2 md:py-3 rounded-xl bg-indigo-600 text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-indigo-700 active:bg-indigo-800 transition-colors duration-200 shadow-md hover:shadow-lg text-sm md:text-base"
+              disabled={selectedIdx.length !== 4}
+            >
+              Submit Selection
+            </button>
+            <button
+              onClick={() => setSelectedIdx([])}
+              className="px-4 md:px-6 py-2 md:py-3 rounded-xl border-2 border-zinc-300 bg-white text-zinc-700 font-semibold hover:bg-zinc-50 hover:border-zinc-400 active:bg-zinc-100 transition-all duration-200 shadow-sm hover:shadow-md text-sm md:text-base"
+            >
+              Clear Selection
+            </button>
+            <button
+              onClick={() => {
+                setRemainingPokemon(prev =>
+                  [...prev].sort(() => Math.random() - 0.5)
+                )
+              }}
+              className="px-4 md:px-6 py-2 md:py-3 rounded-xl border-2 border-zinc-300 bg-white text-zinc-700 font-semibold hover:bg-zinc-50 hover:border-zinc-400 active:bg-zinc-100 transition-all duration-200 shadow-sm hover:shadow-md text-sm md:text-base"
+            >
+              🔀 Shuffle
+            </button>
+          </div>
         </div>
 
-        {/* Pokedex */}
-        <Pokedex selectedPokemon={pokedexPokemon} />
+        {/* Pokedex - Desktop only */}
+        <div className="hidden md:block flex-shrink-0">
+          <Pokedex selectedPokemon={pokedexPokemon} />
+        </div>
       </main>
-
-      <div className="mt-6 flex justify-center items-center gap-3">
-        <button
-          onClick={submit}
-          className="px-6 py-3 rounded-xl bg-indigo-600 text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-indigo-700 active:bg-indigo-800 transition-colors duration-200 shadow-md hover:shadow-lg"
-          disabled={selectedIdx.length !== 4}
-        >
-          Submit Selection
-        </button>
-        <button
-          onClick={() => setSelectedIdx([])}
-          className="px-6 py-3 rounded-xl border-2 border-zinc-300 bg-white text-zinc-700 font-semibold hover:bg-zinc-50 hover:border-zinc-400 active:bg-zinc-100 transition-all duration-200 shadow-sm hover:shadow-md"
-        >
-          Clear Selection
-        </button>
-        <button
-          onClick={() => {
-            setRemainingPokemon(prev =>
-              [...prev].sort(() => Math.random() - 0.5)
-            )
-          }}
-          className="px-6 py-3 rounded-xl border-2 border-zinc-300 bg-white text-zinc-700 font-semibold hover:bg-zinc-50 hover:border-zinc-400 active:bg-zinc-100 transition-all duration-200 shadow-sm hover:shadow-md"
-        >
-          🔀 Shuffle
-        </button>
-      </div>
 
       {/* Toast Notification */}
       {showToast && (
@@ -382,6 +386,13 @@ export default function App() {
           </div>
         </div>
       )}
+
+      {/* Mobile Pokedex Modal */}
+      <Pokedex
+        selectedPokemon={pokedexPokemon}
+        isOpen={showPokedexModal}
+        onClose={handleClosePokedex}
+      />
 
       {/* Completion Modal */}
       {puzzlesData && (

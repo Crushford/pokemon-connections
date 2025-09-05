@@ -77,4 +77,81 @@
   }
 }
 
+/* Mobile viewport utilities */
+@layer utilities {
+  .h-screen-safe {
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile */
+  }
+
+  .h-screen-safe-mobile {
+    height: calc(
+      100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+    );
+    height: calc(
+      100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+    );
+  }
+
+  .w-screen-safe {
+    width: 100vw;
+    width: 100dvw; /* Dynamic viewport width for mobile */
+  }
+
+  .w-screen-safe-mobile {
+    width: calc(100vw - env(safe-area-inset-left) - env(safe-area-inset-right));
+    width: calc(
+      100dvw - env(safe-area-inset-left) - env(safe-area-inset-right)
+    );
+  }
+
+  .p-safe-area {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  .pt-safe-area {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .pb-safe-area {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .pl-safe-area {
+    padding-left: env(safe-area-inset-left);
+  }
+
+  .pr-safe-area {
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* Mobile modal animations */
+@layer components {
+  .modal-slide-up {
+    transform: translateY(100%);
+    transition: transform 0.3s ease-out;
+  }
+
+  .modal-slide-up.open {
+    transform: translateY(0);
+  }
+
+  .modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.3s ease-out;
+  }
+
+  .modal-backdrop.open {
+    opacity: 1;
+  }
+
+  .modal-backdrop.closed {
+    opacity: 0;
+  }
+}
+
 /* app-level tweaks if needed later */
