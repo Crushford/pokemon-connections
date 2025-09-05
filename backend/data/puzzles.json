@@ -3,39 +3,13 @@
     {
       "groups": [
         {
-          "id": "type-psychic",
-          "name": "Psychic Type",
+          "id": "type-electric",
+          "name": "Electric Type",
           "members": [
-            102,
-            79,
-            151,
-            63
-          ],
-          "tags": [
-            "type"
-          ]
-        },
-        {
-          "id": "type-poison",
-          "name": "Poison Type",
-          "members": [
-            109,
-            48,
-            23,
-            92
-          ],
-          "tags": [
-            "type"
-          ]
-        },
-        {
-          "id": "type-water",
-          "name": "Water Type",
-          "members": [
-            72,
-            138,
-            116,
-            131
+            145,
+            135,
+            100,
+            81
           ],
           "tags": [
             "type"
@@ -45,10 +19,36 @@
           "id": "type-bug",
           "name": "Bug Type",
           "members": [
-            10,
-            123,
             127,
+            123,
+            48,
             46
+          ],
+          "tags": [
+            "type"
+          ]
+        },
+        {
+          "id": "type-normal",
+          "name": "Normal Type",
+          "members": [
+            128,
+            132,
+            52,
+            108
+          ],
+          "tags": [
+            "type"
+          ]
+        },
+        {
+          "id": "type-psychic",
+          "name": "Psychic Type",
+          "members": [
+            79,
+            150,
+            63,
+            96
           ],
           "tags": [
             "type"
@@ -56,22 +56,22 @@
         }
       ],
       "pool": [
-        102,
-        79,
-        151,
-        63,
-        109,
-        48,
-        23,
-        92,
-        72,
-        138,
-        116,
-        131,
-        10,
-        123,
+        145,
+        135,
+        100,
+        81,
         127,
-        46
+        123,
+        48,
+        46,
+        128,
+        132,
+        52,
+        108,
+        79,
+        150,
+        63,
+        96
       ]
     }
   ]

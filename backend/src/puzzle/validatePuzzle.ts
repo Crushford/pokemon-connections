@@ -116,9 +116,10 @@ export function validatePuzzle(puzzle: Puzzle, pokemonData: PokemonData): Valida
           conflictingCategories: conflictingGroups
         });
         
-        const warning = `Pokemon ${pokemon.name} (${pokemon.types.join(', ')}) in ${group.name} could also belong to: ${conflictingGroups.join(', ')}`;
-        console.log(`   ⚠️  ${warning}`);
-        result.warnings.push(warning);
+        const error = `Pokemon ${pokemon.name} (${pokemon.types.join(', ')}) in ${group.name} could also belong to: ${conflictingGroups.join(', ')}`;
+        console.log(`   ❌ ${error}`);
+        result.errors.push(error);
+        result.isValid = false;
       }
     }
   }
@@ -127,13 +128,13 @@ export function validatePuzzle(puzzle: Puzzle, pokemonData: PokemonData): Valida
   // Summary
   console.log('\n' + '=' .repeat(60));
   console.log('📊 VALIDATION SUMMARY:');
-  console.log(`   ✅ Errors: ${result.errors.length}`);
+  console.log(`   ❌ Errors: ${result.errors.length}`);
   console.log(`   ⚠️  Warnings: ${result.warnings.length}`);
   console.log(`   🔍 Type Conflicts: ${result.pokemonTypeConflicts.length}`);
   console.log(`   🎯 Overall Valid: ${result.isValid ? 'YES' : 'NO'}`);
   
   if (result.errors.length > 0) {
-    console.log('\n❌ ERRORS:');
+    console.log('\n❌ ERRORS (Puzzle will NOT be saved):');
     result.errors.forEach((error, index) => {
       console.log(`   ${index + 1}. ${error}`);
     });
@@ -143,13 +144,6 @@ export function validatePuzzle(puzzle: Puzzle, pokemonData: PokemonData): Valida
     console.log('\n⚠️  WARNINGS:');
     result.warnings.forEach((warning, index) => {
       console.log(`   ${index + 1}. ${warning}`);
-    });
-  }
-  
-  if (result.pokemonTypeConflicts.length > 0) {
-    console.log('\n🔍 TYPE CONFLICTS:');
-    result.pokemonTypeConflicts.forEach((conflict, index) => {
-      console.log(`   ${index + 1}. ${conflict.pokemonName} (${conflict.pokemonTypes.join(', ')}) in ${conflict.currentCategory} could also be in: ${conflict.conflictingCategories.join(', ')}`);
     });
   }
   

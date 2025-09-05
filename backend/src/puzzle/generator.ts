@@ -151,15 +151,17 @@ function removeOtherPokemonInThisCategoryFromAllCategories(
 /**
  * Validates a puzzle to ensure it meets the requirements
  */
-function validatePuzzle(puzzle: Puzzle, pokemonData: PokemonData): void {
+function validatePuzzle(puzzle: Puzzle, pokemonData: PokemonData): boolean {
   // Basic structure validation
   if (puzzle.groups.length !== 4) {
-    throw new Error('Puzzle must have exactly 4 groups');
+    console.log('❌ Puzzle must have exactly 4 groups');
+    return false;
   }
   
   for (const group of puzzle.groups) {
     if (group.members.length !== 4) {
-      throw new Error(`Group ${group.id} must have exactly 4 members`);
+      console.log(`❌ Group ${group.id} must have exactly 4 members`);
+      return false;
     }
   }
   
@@ -167,7 +169,8 @@ function validatePuzzle(puzzle: Puzzle, pokemonData: PokemonData): void {
   const allMembers = puzzle.groups.flatMap((g: Group) => g.members);
   const uniqueMembers = new Set(allMembers);
   if (allMembers.length !== uniqueMembers.size) {
-    throw new Error('Puzzle contains duplicate Pokemon across groups');
+    console.log('❌ Puzzle contains duplicate Pokemon across groups');
+    return false;
   }
   
   // Run comprehensive validation with detailed logging
@@ -175,11 +178,14 @@ function validatePuzzle(puzzle: Puzzle, pokemonData: PokemonData): void {
   const validationResult = validatePuzzleDetailed(puzzle, pokemonData);
   
   if (!validationResult.isValid) {
-    console.log('\n❌ Puzzle validation failed!');
-    throw new Error('Generated puzzle failed validation');
+    console.log('\n💥 PUZZLE GENERATION FAILED!');
+    console.log('❌ The generated puzzle has type conflicts and will NOT be saved.');
+    console.log('🔄 Please run the generator again to create a new puzzle.');
+    return false;
   }
   
   console.log('Puzzle validation passed');
+  return true;
 }
 
 /**
@@ -330,9 +336,9 @@ async function main() {
   };
 
   // Validate puzzle structure and type correctness
-  validatePuzzle(puzzle, pokemonData);
-  
-  await savePuzzle(puzzle);
+  if (validatePuzzle(puzzle, pokemonData)) {
+    await savePuzzle(puzzle);
+  }
 
   console.log('Puzzle generated successfully!');
   console.log('Groups:');
