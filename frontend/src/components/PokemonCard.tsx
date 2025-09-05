@@ -70,7 +70,7 @@ export default function PokemonCard({
       )}
 
       {/* Pokemon image - centered and maximized */}
-      <div className="absolute inset-0 flex items-center justify-center p-4">
+      <div className="absolute inset-0 flex items-center justify-center">
         {mon.spriteUrl ? (
           <img
             src={mon.spriteUrl}
