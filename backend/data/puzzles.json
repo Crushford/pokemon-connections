@@ -3,38 +3,25 @@
     {
       "groups": [
         {
-          "id": "type:ground:31-34-74-105",
-          "name": "Type: ground",
+          "id": "type-psychic",
+          "name": "Psychic Type",
           "members": [
-            31,
-            34,
-            74,
-            105
+            102,
+            79,
+            151,
+            63
           ],
           "tags": [
             "type"
           ]
         },
         {
-          "id": "type:normal:16-84-108-132",
-          "name": "Type: normal",
+          "id": "type-poison",
+          "name": "Poison Type",
           "members": [
-            16,
-            84,
-            108,
-            132
-          ],
-          "tags": [
-            "type"
-          ]
-        },
-        {
-          "id": "type:poison:69-72-88-92",
-          "name": "Type: poison",
-          "members": [
-            69,
-            72,
-            88,
+            109,
+            48,
+            23,
             92
           ],
           "tags": [
@@ -42,13 +29,26 @@
           ]
         },
         {
-          "id": "type:water:54-62-79-129",
-          "name": "Type: water",
+          "id": "type-water",
+          "name": "Water Type",
           "members": [
-            54,
-            62,
-            79,
-            129
+            72,
+            138,
+            116,
+            131
+          ],
+          "tags": [
+            "type"
+          ]
+        },
+        {
+          "id": "type-bug",
+          "name": "Bug Type",
+          "members": [
+            10,
+            123,
+            127,
+            46
           ],
           "tags": [
             "type"
@@ -56,318 +56,22 @@
         }
       ],
       "pool": [
-        31,
-        34,
-        74,
-        105,
-        16,
-        84,
-        108,
-        132,
-        69,
-        72,
-        88,
-        92,
-        54,
-        62,
+        102,
         79,
-        129
-      ]
-    },
-    {
-      "groups": [
-        {
-          "id": "type:water:9-90-117-141",
-          "name": "Type: water",
-          "members": [
-            9,
-            90,
-            117,
-            141
-          ],
-          "tags": [
-            "type"
-          ]
-        },
-        {
-          "id": "type:ground:34-50-76-104",
-          "name": "Type: ground",
-          "members": [
-            34,
-            50,
-            76,
-            104
-          ],
-          "tags": [
-            "type"
-          ]
-        },
-        {
-          "id": "type:normal:16-84-85-113",
-          "name": "Type: normal",
-          "members": [
-            16,
-            84,
-            85,
-            113
-          ],
-          "tags": [
-            "type"
-          ]
-        },
-        {
-          "id": "type:poison:3-29-33-45",
-          "name": "Type: poison",
-          "members": [
-            3,
-            29,
-            33,
-            45
-          ],
-          "tags": [
-            "type"
-          ]
-        }
-      ],
-      "pool": [
-        9,
-        90,
-        117,
-        141,
-        34,
-        50,
-        76,
-        104,
-        16,
-        84,
-        85,
-        113,
-        3,
-        29,
-        33,
-        45
-      ]
-    },
-    {
-      "groups": [
-        {
-          "id": "type:electric:25-26-82-101",
-          "name": "Type: electric",
-          "members": [
-            25,
-            26,
-            82,
-            101
-          ],
-          "tags": [
-            "type"
-          ]
-        },
-        {
-          "id": "type:water:8-60-79-118",
-          "name": "Type: water",
-          "members": [
-            8,
-            60,
-            79,
-            118
-          ],
-          "tags": [
-            "type"
-          ]
-        },
-        {
-          "id": "type:psychic:65-97-103-122",
-          "name": "Type: psychic",
-          "members": [
-            65,
-            97,
-            103,
-            122
-          ],
-          "tags": [
-            "type"
-          ]
-        },
-        {
-          "id": "type:poison:33-70-93-94",
-          "name": "Type: poison",
-          "members": [
-            33,
-            70,
-            93,
-            94
-          ],
-          "tags": [
-            "type"
-          ]
-        }
-      ],
-      "pool": [
-        25,
-        26,
-        82,
-        101,
-        8,
-        60,
-        79,
-        118,
-        65,
-        97,
-        103,
-        122,
-        33,
-        70,
-        93,
-        94
-      ]
-    },
-    {
-      "groups": [
-        {
-          "id": "type:poison:48-70-89-94",
-          "name": "Type: poison",
-          "members": [
-            48,
-            70,
-            89,
-            94
-          ],
-          "tags": [
-            "type"
-          ]
-        },
-        {
-          "id": "type:ground:34-74-95-112",
-          "name": "Type: ground",
-          "members": [
-            34,
-            74,
-            95,
-            112
-          ],
-          "tags": [
-            "type"
-          ]
-        },
-        {
-          "id": "type:normal:40-52-83-85",
-          "name": "Type: normal",
-          "members": [
-            40,
-            52,
-            83,
-            85
-          ],
-          "tags": [
-            "type"
-          ]
-        },
-        {
-          "id": "type:water:62-118-139-140",
-          "name": "Type: water",
-          "members": [
-            62,
-            118,
-            139,
-            140
-          ],
-          "tags": [
-            "type"
-          ]
-        }
-      ],
-      "pool": [
+        151,
+        63,
+        109,
         48,
-        70,
-        89,
-        94,
-        34,
-        74,
-        95,
-        112,
-        40,
-        52,
-        83,
-        85,
-        62,
-        118,
-        139,
-        140
-      ]
-    },
-    {
-      "groups": [
-        {
-          "id": "type:bug:11-12-46-123",
-          "name": "Type: bug",
-          "members": [
-            11,
-            12,
-            46,
-            123
-          ],
-          "tags": [
-            "type"
-          ]
-        },
-        {
-          "id": "type:water:86-90-117-118",
-          "name": "Type: water",
-          "members": [
-            86,
-            90,
-            117,
-            118
-          ],
-          "tags": [
-            "type"
-          ]
-        },
-        {
-          "id": "type:normal:22-39-52-113",
-          "name": "Type: normal",
-          "members": [
-            22,
-            39,
-            52,
-            113
-          ],
-          "tags": [
-            "type"
-          ]
-        },
-        {
-          "id": "type:poison:3-42-44-72",
-          "name": "Type: poison",
-          "members": [
-            3,
-            42,
-            44,
-            72
-          ],
-          "tags": [
-            "type"
-          ]
-        }
-      ],
-      "pool": [
-        11,
-        12,
-        46,
+        23,
+        92,
+        72,
+        138,
+        116,
+        131,
+        10,
         123,
-        86,
-        90,
-        117,
-        118,
-        22,
-        39,
-        52,
-        113,
-        3,
-        42,
-        44,
-        72
+        127,
+        46
       ]
     }
   ]

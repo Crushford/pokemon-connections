@@ -38,12 +38,25 @@ export default function App() {
       fetch('/pokemon.json').then(response => response.json())
     ])
       .then(([puzzlesData, pokemonData]) => {
+        // Check if pokemonData is wrapped in an object
+        let actualPokemonData = pokemonData
+        if (
+          pokemonData &&
+          typeof pokemonData === 'object' &&
+          !Array.isArray(pokemonData)
+        ) {
+          // Try to find the actual array
+          if (pokemonData.pokemon && Array.isArray(pokemonData.pokemon)) {
+            actualPokemonData = pokemonData.pokemon
+          }
+        }
+
         setPuzzlesData(puzzlesData)
-        setPokemonData(pokemonData)
+        setPokemonData(actualPokemonData)
         setIsLoading(false)
       })
       .catch(error => {
-        console.error('Failed to load data:', error)
+        console.error('❌ Failed to load data:', error)
         setIsLoading(false)
       })
   }, [])
@@ -166,7 +179,11 @@ export default function App() {
 
         // Check if puzzle is complete (all groups found)
         const newCompletedGroups = [...completedGroups, group]
-        if (puzzlesData && newCompletedGroups.length === puzzlesData.puzzles[currentPuzzleIndex].groups.length) {
+        if (
+          puzzlesData &&
+          newCompletedGroups.length ===
+            puzzlesData.puzzles[currentPuzzleIndex].groups.length
+        ) {
           // Puzzle is complete! Show completion modal
           setTimeout(() => {
             setShowCompletionModal(true)
@@ -374,7 +391,8 @@ export default function App() {
           onNextPuzzle={handleNextPuzzle}
           stats={{
             incorrectAttempts,
-            totalGroups: puzzlesData.puzzles[currentPuzzleIndex]?.groups.length || 0,
+            totalGroups:
+              puzzlesData.puzzles[currentPuzzleIndex]?.groups.length || 0,
             completedGroups: completedGroups.length
           }}
           currentPuzzleIndex={currentPuzzleIndex}
