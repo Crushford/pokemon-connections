@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import PokemonCard from './components/PokemonCard'
 import Pokedex from './components/Pokedex'
+import CompletionModal from './components/CompletionModal'
 import type { PokemonLite } from './types'
 
 type PuzzleGroup = {
@@ -15,14 +16,20 @@ type PuzzleData = {
   pool: number[]
 }
 
+type PuzzlesData = {
+  puzzles: PuzzleData[]
+}
+
 type PokemonData = PokemonLite[]
 
 export default function App() {
-  const [puzzleData, setPuzzleData] = useState<PuzzleData | null>(null)
+  const [puzzlesData, setPuzzlesData] = useState<PuzzlesData | null>(null)
+  const [currentPuzzleIndex, setCurrentPuzzleIndex] = useState(0)
   const [pokemonData, setPokemonData] = useState<PokemonData>([])
   const [isLoading, setIsLoading] = useState(true)
   const [completedGroups, setCompletedGroups] = useState<PuzzleGroup[]>([])
   const [remainingPokemon, setRemainingPokemon] = useState<PokemonLite[]>([])
+  const [showCompletionModal, setShowCompletionModal] = useState(false)
 
   // Fetch puzzle and Pokemon data on component mount
   useEffect(() => {
@@ -30,17 +37,9 @@ export default function App() {
       fetch('/puzzle.json').then(response => response.json()),
       fetch('/pokemon.json').then(response => response.json())
     ])
-      .then(([puzzleData, pokemonData]) => {
-        setPuzzleData(puzzleData)
+      .then(([puzzlesData, pokemonData]) => {
+        setPuzzlesData(puzzlesData)
         setPokemonData(pokemonData)
-
-        // Filter Pokemon data to only include Pokemon in this puzzle
-        const puzzlePokemonIds = new Set(puzzleData.pool)
-        const puzzlePokemon = pokemonData.filter((pokemon: PokemonLite) =>
-          puzzlePokemonIds.has(pokemon.id)
-        )
-        setRemainingPokemon(puzzlePokemon)
-
         setIsLoading(false)
       })
       .catch(error => {
@@ -48,6 +47,24 @@ export default function App() {
         setIsLoading(false)
       })
   }, [])
+
+  // Load current puzzle when puzzles data or current index changes
+  useEffect(() => {
+    if (puzzlesData && pokemonData.length > 0) {
+      const currentPuzzle = puzzlesData.puzzles[currentPuzzleIndex]
+      if (currentPuzzle) {
+        // Filter Pokemon data to only include Pokemon in this puzzle
+        const puzzlePokemonIds = new Set(currentPuzzle.pool)
+        const puzzlePokemon = pokemonData.filter((pokemon: PokemonLite) =>
+          puzzlePokemonIds.has(pokemon.id)
+        )
+        setRemainingPokemon(puzzlePokemon)
+        setCompletedGroups([]) // Reset completed groups for new puzzle
+        setIncorrectAttempts(0) // Reset attempts for new puzzle
+        setSelectedIdx([]) // Clear selection
+      }
+    }
+  }, [puzzlesData, pokemonData, currentPuzzleIndex])
   const [selectedIdx, setSelectedIdx] = useState<number[]>([])
   const [pokedexPokemon, setPokedexPokemon] = useState<PokemonLite | null>(null)
   const [incorrectAttempts, setIncorrectAttempts] = useState<number>(0)
@@ -79,10 +96,16 @@ export default function App() {
     groupName?: string
     group?: PuzzleGroup // Add this return type
   } {
-    if (!puzzleData || selectedPokemon.length !== 4) {
+    if (!puzzlesData || selectedPokemon.length !== 4) {
       console.log(
         'Validation failed: No puzzle data or wrong number of Pokemon'
       )
+      return { isCorrect: false }
+    }
+
+    const currentPuzzle = puzzlesData.puzzles[currentPuzzleIndex]
+    if (!currentPuzzle) {
+      console.log('Validation failed: No current puzzle')
       return { isCorrect: false }
     }
 
@@ -91,7 +114,7 @@ export default function App() {
     console.log('Selected Pokemon IDs:', selectedIds)
 
     // Check if the selected IDs match any of the valid groups
-    for (const group of puzzleData.groups) {
+    for (const group of currentPuzzle.groups) {
       const groupIds = [...group.members].sort((a, b) => a - b)
       console.log(`Checking group "${group.name}":`, groupIds)
 
@@ -140,6 +163,15 @@ export default function App() {
         setRemainingPokemon(prev =>
           prev.filter(p => !completedIds.includes(p.id))
         )
+
+        // Check if puzzle is complete (all groups found)
+        const newCompletedGroups = [...completedGroups, group]
+        if (puzzlesData && newCompletedGroups.length === puzzlesData.puzzles[currentPuzzleIndex].groups.length) {
+          // Puzzle is complete! Show completion modal
+          setTimeout(() => {
+            setShowCompletionModal(true)
+          }, 1000) // Small delay to let the success message show
+        }
       }
     }
 
@@ -148,6 +180,17 @@ export default function App() {
 
   function handlePokedexLookup(pokemon: PokemonLite) {
     setPokedexPokemon(pokemon)
+  }
+
+  function handleNextPuzzle() {
+    if (puzzlesData && currentPuzzleIndex < puzzlesData.puzzles.length - 1) {
+      setCurrentPuzzleIndex(prev => prev + 1)
+      setShowCompletionModal(false)
+    } else {
+      // No more puzzles, show end message
+      setShowCompletionModal(false)
+      displayToast("🎉 Congratulations! You've completed all puzzles!")
+    }
   }
 
   function getTypeColor(type: string): string {
@@ -194,6 +237,11 @@ export default function App() {
           Select 4 related Pokémon. Click the info icon to view details in the
           Pokédex.
         </p>
+        {puzzlesData && (
+          <p className="text-sm text-indigo-600 font-medium mt-2">
+            Puzzle {currentPuzzleIndex + 1} of {puzzlesData.puzzles.length}
+          </p>
+        )}
       </header>
 
       <main className="flex gap-8 justify-center items-start mb-8">
@@ -316,6 +364,22 @@ export default function App() {
             <p className="text-sm font-medium">{toastMessage}</p>
           </div>
         </div>
+      )}
+
+      {/* Completion Modal */}
+      {puzzlesData && (
+        <CompletionModal
+          isOpen={showCompletionModal}
+          onClose={() => setShowCompletionModal(false)}
+          onNextPuzzle={handleNextPuzzle}
+          stats={{
+            incorrectAttempts,
+            totalGroups: puzzlesData.puzzles[currentPuzzleIndex]?.groups.length || 0,
+            completedGroups: completedGroups.length
+          }}
+          currentPuzzleIndex={currentPuzzleIndex}
+          totalPuzzles={puzzlesData.puzzles.length}
+        />
       )}
     </div>
   )
