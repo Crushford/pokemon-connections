@@ -30,6 +30,409 @@
       "pool": [
         145, 135, 100, 81, 127, 123, 48, 46, 128, 132, 52, 108, 79, 150, 63, 96
       ]
+    },
+    {
+      "groups": [
+        {
+          "id": "type-ground",
+          "name": "Ground Type",
+          "members": [74, 95, 111, 104],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-normal",
+          "name": "Normal Type",
+          "members": [83, 52, 115, 137],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-electric",
+          "name": "Electric Type",
+          "members": [81, 100, 145, 135],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-fire",
+          "name": "Fire Type",
+          "members": [77, 146, 37, 4],
+          "tags": ["type"]
+        }
+      ],
+      "pool": [
+        74, 95, 111, 104, 83, 52, 115, 137, 81, 100, 145, 135, 77, 146, 37, 4
+      ]
+    },
+    {
+      "groups": [
+        {
+          "id": "type-electric",
+          "name": "Electric Type",
+          "members": [135, 145, 100, 81],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-normal",
+          "name": "Normal Type",
+          "members": [83, 52, 21, 16],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-fire",
+          "name": "Fire Type",
+          "members": [77, 58, 146, 4],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-psychic",
+          "name": "Psychic Type",
+          "members": [79, 96, 102, 151],
+          "tags": ["type"]
+        }
+      ],
+      "pool": [
+        135, 145, 100, 81, 83, 52, 21, 16, 77, 58, 146, 4, 79, 96, 102, 151
+      ]
+    },
+    {
+      "groups": [
+        {
+          "id": "type-bug",
+          "name": "Bug Type",
+          "members": [127, 48, 46, 123],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-psychic",
+          "name": "Psychic Type",
+          "members": [102, 79, 63, 150],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-normal",
+          "name": "Normal Type",
+          "members": [83, 128, 52, 115],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-electric",
+          "name": "Electric Type",
+          "members": [81, 145, 100, 135],
+          "tags": ["type"]
+        }
+      ],
+      "pool": [
+        127, 48, 46, 123, 102, 79, 63, 150, 83, 128, 52, 115, 81, 145, 100, 135
+      ]
+    },
+    {
+      "groups": [
+        {
+          "id": "type-electric",
+          "name": "Electric Type",
+          "members": [145, 135, 100, 81],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-fire",
+          "name": "Fire Type",
+          "members": [37, 77, 4, 58],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-rock",
+          "name": "Rock Type",
+          "members": [140, 138, 74, 95],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-grass",
+          "name": "Grass Type",
+          "members": [46, 43, 69, 102],
+          "tags": ["type"]
+        }
+      ],
+      "pool": [
+        145, 135, 100, 81, 37, 77, 4, 58, 140, 138, 74, 95, 46, 43, 69, 102
+      ]
+    },
+    {
+      "groups": [
+        {
+          "id": "type-fire",
+          "name": "Fire Type",
+          "members": [4, 77, 136, 37],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-rock",
+          "name": "Rock Type",
+          "members": [138, 111, 95, 74],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-grass",
+          "name": "Grass Type",
+          "members": [102, 114, 69, 1],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-electric",
+          "name": "Electric Type",
+          "members": [81, 135, 145, 100],
+          "tags": ["type"]
+        }
+      ],
+      "pool": [
+        4, 77, 136, 37, 138, 111, 95, 74, 102, 114, 69, 1, 81, 135, 145, 100
+      ]
+    },
+    {
+      "groups": [
+        {
+          "id": "type-ground",
+          "name": "Ground Type",
+          "members": [111, 95, 74, 50],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-fire",
+          "name": "Fire Type",
+          "members": [58, 77, 136, 37],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-bug",
+          "name": "Bug Type",
+          "members": [123, 127, 10, 13],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-water",
+          "name": "Water Type",
+          "members": [98, 90, 72, 86],
+          "tags": ["type"]
+        }
+      ],
+      "pool": [
+        111, 95, 74, 50, 58, 77, 136, 37, 123, 127, 10, 13, 98, 90, 72, 86
+      ]
+    },
+    {
+      "groups": [
+        {
+          "id": "type-bug",
+          "name": "Bug Type",
+          "members": [46, 123, 13, 48],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-psychic",
+          "name": "Psychic Type",
+          "members": [102, 96, 150, 79],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-rock",
+          "name": "Rock Type",
+          "members": [138, 111, 142, 95],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-electric",
+          "name": "Electric Type",
+          "members": [81, 145, 100, 135],
+          "tags": ["type"]
+        }
+      ],
+      "pool": [
+        46, 123, 13, 48, 102, 96, 150, 79, 138, 111, 142, 95, 81, 145, 100, 135
+      ]
+    },
+    {
+      "groups": [
+        {
+          "id": "type-ground",
+          "name": "Ground Type",
+          "members": [95, 27, 111, 50],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-psychic",
+          "name": "Psychic Type",
+          "members": [102, 150, 151, 63],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-poison",
+          "name": "Poison Type",
+          "members": [48, 88, 43, 72],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-electric",
+          "name": "Electric Type",
+          "members": [81, 145, 100, 135],
+          "tags": ["type"]
+        }
+      ],
+      "pool": [
+        95, 27, 111, 50, 102, 150, 151, 63, 48, 88, 43, 72, 81, 145, 100, 135
+      ]
+    },
+    {
+      "groups": [
+        {
+          "id": "type-rock",
+          "name": "Rock Type",
+          "members": [142, 74, 95, 140],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-electric",
+          "name": "Electric Type",
+          "members": [135, 100, 145, 81],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-grass",
+          "name": "Grass Type",
+          "members": [1, 43, 46, 69],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-normal",
+          "name": "Normal Type",
+          "members": [132, 108, 128, 84],
+          "tags": ["type"]
+        }
+      ],
+      "pool": [
+        142, 74, 95, 140, 135, 100, 145, 81, 1, 43, 46, 69, 132, 108, 128, 84
+      ]
+    },
+    {
+      "groups": [
+        {
+          "id": "type-normal",
+          "name": "Normal Type",
+          "members": [108, 19, 133, 16],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-water",
+          "name": "Water Type",
+          "members": [7, 138, 131, 54],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-electric",
+          "name": "Electric Type",
+          "members": [145, 100, 81, 135],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-ground",
+          "name": "Ground Type",
+          "members": [74, 50, 95, 104],
+          "tags": ["type"]
+        }
+      ],
+      "pool": [
+        108, 19, 133, 16, 7, 138, 131, 54, 145, 100, 81, 135, 74, 50, 95, 104
+      ]
+    },
+    {
+      "groups": [
+        {
+          "id": "type-grass",
+          "name": "Grass Type",
+          "members": [114, 1, 43, 69],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-water",
+          "name": "Water Type",
+          "members": [138, 129, 60, 120],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-normal",
+          "name": "Normal Type",
+          "members": [21, 137, 52, 115],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-ground",
+          "name": "Ground Type",
+          "members": [27, 95, 74, 104],
+          "tags": ["type"]
+        }
+      ],
+      "pool": [
+        114, 1, 43, 69, 138, 129, 60, 120, 21, 137, 52, 115, 27, 95, 74, 104
+      ]
+    },
+    {
+      "groups": [
+        {
+          "id": "type-water",
+          "name": "Water Type",
+          "members": [140, 72, 54, 118],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-ground",
+          "name": "Ground Type",
+          "members": [50, 27, 74, 111],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-grass",
+          "name": "Grass Type",
+          "members": [1, 43, 69, 46],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-normal",
+          "name": "Normal Type",
+          "members": [128, 83, 132, 16],
+          "tags": ["type"]
+        }
+      ],
+      "pool": [
+        140, 72, 54, 118, 50, 27, 74, 111, 1, 43, 69, 46, 128, 83, 132, 16
+      ]
+    },
+    {
+      "groups": [
+        {
+          "id": "type-ground",
+          "name": "Ground Type",
+          "members": [104, 74, 111, 27],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-bug",
+          "name": "Bug Type",
+          "members": [123, 48, 13, 10],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-electric",
+          "name": "Electric Type",
+          "members": [135, 100, 81, 145],
+          "tags": ["type"]
+        },
+        {
+          "id": "type-normal",
+          "name": "Normal Type",
+          "members": [52, 21, 132, 84],
+          "tags": ["type"]
+        }
+      ],
+      "pool": [
+        104, 74, 111, 27, 123, 48, 13, 10, 135, 100, 81, 145, 52, 21, 132, 84
+      ]
     }
   ]
 }

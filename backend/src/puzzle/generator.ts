@@ -248,16 +248,13 @@ function generateGroupFromCategory(category: Category, pokemonData: PokemonData)
   };
 }
 
-async function main() {
-  console.log('Loading Pokemon and categories data...');
-  
-  const pokemonData = await loadPokemon();
-  const categoriesData = await loadCategories();
-  
+/**
+ * Generates a single puzzle
+ */
+async function generateSinglePuzzle(pokemonData: PokemonData, categoriesData: CategoriesData): Promise<Puzzle | null> {
   // Get evolution stage 1 Pokemon IDs to keep in categories
   const evoStage1Pokemon = filterEvolutionStage1Pokemon(pokemonData.pokemon);
   const evoStage1PokemonIds = evoStage1Pokemon.map(p => p.id);
-  console.log(`Found ${evoStage1Pokemon.length} evolution stage 1 Pokemon to keep in categories`);
 
   // Remove everything that is NOT evolution stage 1 from all categories
   const categoriesWithOnlyEvoStage1 = categoriesData.categories.map(category => ({
@@ -272,10 +269,10 @@ async function main() {
   
   // Filter categories to only include those with at least 4 Pokemon
   const validCategories = filterCategoriesWithMinPokemon(categoriesWithFilteredPokemon);
-  console.log(`Found ${validCategories.length} valid categories with at least 4 Pokemon`);
 
   if (validCategories.length < 4) {
-    throw new Error(`Not enough valid categories (${validCategories.length}/4) to generate a puzzle`);
+    console.log(`❌ Not enough valid categories (${validCategories.length}/4) to generate a puzzle`);
+    return null;
   }
 
   // Generate 4 groups from different categories
@@ -287,26 +284,22 @@ async function main() {
     // Filter out categories that would conflict with already selected Pokemon
     const nonConflictingCategories = remainingCategories.filter(category => {
       const hasConflict = categoryHasConflictsWithSelectedPokemon(category, allSelectedPokemonIds, pokemonData);
-      if (hasConflict) {
-        console.log(`  🚫 Skipping category ${category.name} due to conflicts with selected Pokemon`);
-      }
       return !hasConflict;
     });
     
     if (nonConflictingCategories.length === 0) {
-      throw new Error(`No non-conflicting categories available for group ${i + 1}`);
+      console.log(`❌ No non-conflicting categories available for group ${i + 1}`);
+      return null;
     }
     
     // Randomly select a category from non-conflicting ones
     const randomIndex = Math.floor(Math.random() * nonConflictingCategories.length);
     const selectedCategory = nonConflictingCategories[randomIndex];
     
-    console.log(`\n🎯 Generating group ${i + 1} from category: ${selectedCategory.name} (${selectedCategory.id})`);
-    console.log(`   Available Pokemon in this category: ${selectedCategory.pokemon.join(', ')}`);
+    console.log(`🎯 Generating group ${i + 1} from category: ${selectedCategory.name}`);
     
     // Generate group from category
     const group = generateGroupFromCategory(selectedCategory, pokemonData);
-    console.log(`   Selected Pokemon for group: ${group.members.join(', ')}`);
     groups.push(group);
     
     // Add selected Pokemon to the list of all selected Pokemon
@@ -314,10 +307,8 @@ async function main() {
     
     // Remove this category from remaining options
     remainingCategories = remainingCategories.filter(cat => cat.id !== selectedCategory.id);
-    console.log(`   Remaining categories after removal: ${remainingCategories.length}`);
     
     // Remove Pokemon from this group from all remaining categories
-    console.log(`   Removing Pokemon ${group.members.join(', ')} from all remaining categories...`);
     remainingCategories = removeOtherPokemonInThisCategoryFromAllCategories(
       group.members, 
       remainingCategories, 
@@ -335,16 +326,63 @@ async function main() {
     pool: allPokemonIds
   };
 
-  // Validate puzzle structure and type correctness
-  if (validatePuzzle(puzzle, pokemonData)) {
-    await savePuzzle(puzzle);
-  }
+  return puzzle;
+}
 
-  console.log('Puzzle generated successfully!');
-  console.log('Groups:');
-  groups.forEach((group, index) => {
-    console.log(`  ${index + 1}. ${group.name} (${group.members.join(', ')})`);
-  });
+async function main() {
+  const targetPuzzleCount = parseInt(process.argv[2]) || 1;
+  console.log(`🎯 Target: Generate ${targetPuzzleCount} valid puzzle(s)`);
+  
+  console.log('Loading Pokemon and categories data...');
+  const pokemonData = await loadPokemon();
+  const categoriesData = await loadCategories();
+  
+  console.log(`Found ${pokemonData.pokemon.length} Pokemon and ${categoriesData.categories.length} categories`);
+  
+  let validPuzzlesGenerated = 0;
+  let totalAttempts = 0;
+  const maxAttempts = targetPuzzleCount * 10; // Prevent infinite loops
+  
+  console.log(`\n🚀 Starting puzzle generation (max ${maxAttempts} attempts)...`);
+  
+  while (validPuzzlesGenerated < targetPuzzleCount && totalAttempts < maxAttempts) {
+    totalAttempts++;
+    console.log(`\n--- Attempt ${totalAttempts} ---`);
+    
+    const puzzle = await generateSinglePuzzle(pokemonData, categoriesData);
+    
+    if (!puzzle) {
+      console.log('❌ Failed to generate puzzle structure');
+      continue;
+    }
+    
+    // Validate puzzle
+    if (validatePuzzle(puzzle, pokemonData)) {
+      await savePuzzle(puzzle);
+      validPuzzlesGenerated++;
+      console.log(`✅ Puzzle ${validPuzzlesGenerated}/${targetPuzzleCount} generated successfully!`);
+      console.log('Groups:');
+      puzzle.groups.forEach((group, index) => {
+        console.log(`  ${index + 1}. ${group.name} (${group.members.join(', ')})`);
+      });
+    } else {
+      console.log('❌ Puzzle validation failed, retrying...');
+    }
+  }
+  
+  console.log(`\n📊 FINAL RESULTS:`);
+  console.log(`   ✅ Valid puzzles generated: ${validPuzzlesGenerated}/${targetPuzzleCount}`);
+  console.log(`   🔄 Total attempts: ${totalAttempts}`);
+  console.log(`   📈 Success rate: ${((validPuzzlesGenerated / totalAttempts) * 100).toFixed(1)}%`);
+  
+  if (validPuzzlesGenerated < targetPuzzleCount) {
+    console.log(`\n⚠️  Warning: Only generated ${validPuzzlesGenerated} out of ${targetPuzzleCount} requested puzzles`);
+    if (totalAttempts >= maxAttempts) {
+      console.log('   Reason: Reached maximum attempt limit');
+    }
+  } else {
+    console.log(`\n🎉 Successfully generated all ${targetPuzzleCount} requested puzzles!`);
+  }
 }
 
 main().catch(e => {
