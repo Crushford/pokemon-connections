@@ -49,3 +49,17 @@ export const PuzzlesSchema = z.object({
   puzzles: z.array(PuzzleSchema)
 });
 export type Puzzles = z.infer<typeof PuzzlesSchema>;
+
+export const GenerationMetadataSchema = z.object({
+  id: z.number().int().min(1),
+  name: z.string(),
+  availableTypes: z.array(z.string()),
+  pokemonCount: z.number().int().min(1)
+});
+export type GenerationMetadata = z.infer<typeof GenerationMetadataSchema>;
+
+export const PokemonDataSchema = z.object({
+  generation: GenerationMetadataSchema,
+  pokemon: z.array(PokemonSchema)
+});
+export type PokemonData = z.infer<typeof PokemonDataSchema>;

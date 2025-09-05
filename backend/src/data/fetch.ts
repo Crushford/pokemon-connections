@@ -40,6 +40,13 @@ type EvolutionChain = {
   };
 };
 
+type Generation = {
+  id: number;
+  name: string;
+  types: Array<{ name: string; url: string }>;
+  pokemon_species: Array<{ name: string; url: string }>;
+};
+
 function stat(stats: Stat[], key: string) {
   return stats.find(s => s.stat.name === key)?.base_stat ?? 0;
 }
@@ -125,14 +132,36 @@ async function fetchOne(id: number): Promise<Pokemon> {
   return normalized;
 }
 
+async function fetchGenerationI(): Promise<Generation> {
+  console.log('Fetching Generation I data...');
+  const gen = await get<Generation>('/generation/1');
+  console.log(`Found ${gen.types.length} types in Generation I:`, gen.types.map(t => t.name));
+  return gen;
+}
+
 async function main() {
+  // Fetch Generation I data to get available types
+  const genI = await fetchGenerationI();
+  
   const out: Pokemon[] = [];
   for (let id = 1; id <= 151; id++) {
     const mon = await fetchOne(id);
     out.push(mon);
     if (id % 25 === 0) console.log('Fetched', id);
   }
-  await writeJson('data/pokemon.json', out);
+  
+  // Add generation metadata
+  const pokemonData = {
+    generation: {
+      id: genI.id,
+      name: genI.name,
+      availableTypes: genI.types.map(t => t.name),
+      pokemonCount: genI.pokemon_species.length
+    },
+    pokemon: out
+  };
+  
+  await writeJson('data/pokemon.json', pokemonData);
   
   // Copy to frontend for serving
   const { execSync } = await import('child_process');
