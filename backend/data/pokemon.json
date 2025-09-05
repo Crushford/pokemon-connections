@@ -20,6 +20,8 @@
       "monster",
       "plant"
     ],
+    "evoStage": 1,
+    "evoLineId": "1",
     "color": "green",
     "habitat": "grassland",
     "generation": 1,
@@ -46,6 +48,8 @@
       "monster",
       "plant"
     ],
+    "evoStage": 2,
+    "evoLineId": "1",
     "color": "green",
     "habitat": "grassland",
     "generation": 1,
@@ -72,6 +76,8 @@
       "monster",
       "plant"
     ],
+    "evoStage": 3,
+    "evoLineId": "1",
     "color": "green",
     "habitat": "grassland",
     "generation": 1,
@@ -97,6 +103,8 @@
       "monster",
       "dragon"
     ],
+    "evoStage": 1,
+    "evoLineId": "2",
     "color": "red",
     "habitat": "mountain",
     "generation": 1,
@@ -122,6 +130,8 @@
       "monster",
       "dragon"
     ],
+    "evoStage": 2,
+    "evoLineId": "2",
     "color": "red",
     "habitat": "mountain",
     "generation": 1,
@@ -148,6 +158,8 @@
       "monster",
       "dragon"
     ],
+    "evoStage": 3,
+    "evoLineId": "2",
     "color": "red",
     "habitat": "mountain",
     "generation": 1,
@@ -173,6 +185,8 @@
       "monster",
       "water1"
     ],
+    "evoStage": 1,
+    "evoLineId": "3",
     "color": "blue",
     "habitat": "waters-edge",
     "generation": 1,
@@ -198,6 +212,8 @@
       "monster",
       "water1"
     ],
+    "evoStage": 2,
+    "evoLineId": "3",
     "color": "blue",
     "habitat": "waters-edge",
     "generation": 1,
@@ -223,6 +239,8 @@
       "monster",
       "water1"
     ],
+    "evoStage": 3,
+    "evoLineId": "3",
     "color": "blue",
     "habitat": "waters-edge",
     "generation": 1,
@@ -247,6 +265,8 @@
     "eggGroups": [
       "bug"
     ],
+    "evoStage": 1,
+    "evoLineId": "4",
     "color": "green",
     "habitat": "forest",
     "generation": 1,
@@ -271,6 +291,8 @@
     "eggGroups": [
       "bug"
     ],
+    "evoStage": 2,
+    "evoLineId": "4",
     "color": "green",
     "habitat": "forest",
     "generation": 1,
@@ -296,6 +318,8 @@
     "eggGroups": [
       "bug"
     ],
+    "evoStage": 3,
+    "evoLineId": "4",
     "color": "white",
     "habitat": "forest",
     "generation": 1,
@@ -321,6 +345,8 @@
     "eggGroups": [
       "bug"
     ],
+    "evoStage": 1,
+    "evoLineId": "5",
     "color": "brown",
     "habitat": "forest",
     "generation": 1,
@@ -346,6 +372,8 @@
     "eggGroups": [
       "bug"
     ],
+    "evoStage": 2,
+    "evoLineId": "5",
     "color": "yellow",
     "habitat": "forest",
     "generation": 1,
@@ -371,6 +399,8 @@
     "eggGroups": [
       "bug"
     ],
+    "evoStage": 3,
+    "evoLineId": "5",
     "color": "yellow",
     "habitat": "forest",
     "generation": 1,
@@ -396,6 +426,8 @@
     "eggGroups": [
       "flying"
     ],
+    "evoStage": 1,
+    "evoLineId": "6",
     "color": "brown",
     "habitat": "forest",
     "generation": 1,
@@ -421,6 +453,8 @@
     "eggGroups": [
       "flying"
     ],
+    "evoStage": 2,
+    "evoLineId": "6",
     "color": "brown",
     "habitat": "forest",
     "generation": 1,
@@ -446,6 +480,8 @@
     "eggGroups": [
       "flying"
     ],
+    "evoStage": 3,
+    "evoLineId": "6",
     "color": "brown",
     "habitat": "forest",
     "generation": 1,
@@ -470,6 +506,8 @@
     "eggGroups": [
       "ground"
     ],
+    "evoStage": 1,
+    "evoLineId": "7",
     "color": "purple",
     "habitat": "grassland",
     "generation": 1,
@@ -494,6 +532,8 @@
     "eggGroups": [
       "ground"
     ],
+    "evoStage": 2,
+    "evoLineId": "7",
     "color": "brown",
     "habitat": "grassland",
     "generation": 1,
@@ -519,6 +559,8 @@
     "eggGroups": [
       "flying"
     ],
+    "evoStage": 1,
+    "evoLineId": "8",
     "color": "brown",
     "habitat": "rough-terrain",
     "generation": 1,
@@ -544,6 +586,8 @@
     "eggGroups": [
       "flying"
     ],
+    "evoStage": 2,
+    "evoLineId": "8",
     "color": "brown",
     "habitat": "rough-terrain",
     "generation": 1,
@@ -569,6 +613,8 @@
       "ground",
       "dragon"
     ],
+    "evoStage": 1,
+    "evoLineId": "9",
     "color": "purple",
     "habitat": "grassland",
     "generation": 1,
@@ -594,6 +640,8 @@
       "ground",
       "dragon"
     ],
+    "evoStage": 2,
+    "evoLineId": "9",
     "color": "purple",
     "habitat": "grassland",
     "generation": 1,
@@ -619,6 +667,8 @@
       "ground",
       "fairy"
     ],
+    "evoStage": 2,
+    "evoLineId": "10",
     "color": "yellow",
     "habitat": "forest",
     "generation": 1,
@@ -644,6 +694,8 @@
       "ground",
       "fairy"
     ],
+    "evoStage": 3,
+    "evoLineId": "10",
     "color": "yellow",
     "habitat": "forest",
     "generation": 1,
@@ -668,6 +720,8 @@
     "eggGroups": [
       "ground"
     ],
+    "evoStage": 1,
+    "evoLineId": "11",
     "color": "yellow",
     "habitat": "rough-terrain",
     "generation": 1,
@@ -692,6 +746,8 @@
     "eggGroups": [
       "ground"
     ],
+    "evoStage": 2,
+    "evoLineId": "11",
     "color": "yellow",
     "habitat": "rough-terrain",
     "generation": 1,
@@ -717,6 +773,8 @@
       "monster",
       "ground"
     ],
+    "evoStage": 1,
+    "evoLineId": "12",
     "color": "blue",
     "habitat": "grassland",
     "generation": 1,
@@ -741,6 +799,8 @@
     "eggGroups": [
       "no-eggs"
     ],
+    "evoStage": 2,
+    "evoLineId": "12",
     "color": "blue",
     "habitat": "grassland",
     "generation": 1,
@@ -766,6 +826,8 @@
     "eggGroups": [
       "no-eggs"
     ],
+    "evoStage": 3,
+    "evoLineId": "12",
     "color": "blue",
     "habitat": "grassland",
     "generation": 1,
@@ -791,6 +853,8 @@
       "monster",
       "ground"
     ],
+    "evoStage": 1,
+    "evoLineId": "13",
     "color": "purple",
     "habitat": "grassland",
     "generation": 1,
@@ -816,6 +880,8 @@
       "monster",
       "ground"
     ],
+    "evoStage": 2,
+    "evoLineId": "13",
     "color": "purple",
     "habitat": "grassland",
     "generation": 1,
@@ -842,6 +908,8 @@
       "monster",
       "ground"
     ],
+    "evoStage": 3,
+    "evoLineId": "13",
     "color": "purple",
     "habitat": "grassland",
     "generation": 1,
@@ -866,6 +934,8 @@
     "eggGroups": [
       "fairy"
     ],
+    "evoStage": 2,
+    "evoLineId": "14",
     "color": "pink",
     "habitat": "mountain",
     "generation": 1,
@@ -890,6 +960,8 @@
     "eggGroups": [
       "fairy"
     ],
+    "evoStage": 3,
+    "evoLineId": "14",
     "color": "pink",
     "habitat": "mountain",
     "generation": 1,
@@ -914,6 +986,8 @@
     "eggGroups": [
       "ground"
     ],
+    "evoStage": 1,
+    "evoLineId": "15",
     "color": "brown",
     "habitat": "grassland",
     "generation": 1,
@@ -938,6 +1012,8 @@
     "eggGroups": [
       "ground"
     ],
+    "evoStage": 2,
+    "evoLineId": "15",
     "color": "yellow",
     "habitat": "grassland",
     "generation": 1,
@@ -963,6 +1039,8 @@
     "eggGroups": [
       "fairy"
     ],
+    "evoStage": 2,
+    "evoLineId": "16",
     "color": "pink",
     "habitat": "grassland",
     "generation": 1,
@@ -988,6 +1066,8 @@
     "eggGroups": [
       "fairy"
     ],
+    "evoStage": 3,
+    "evoLineId": "16",
     "color": "pink",
     "habitat": "grassland",
     "generation": 1,
@@ -1013,6 +1093,8 @@
     "eggGroups": [
       "flying"
     ],
+    "evoStage": 1,
+    "evoLineId": "17",
     "color": "purple",
     "habitat": "cave",
     "generation": 1,
@@ -1038,6 +1120,8 @@
     "eggGroups": [
       "flying"
     ],
+    "evoStage": 2,
+    "evoLineId": "17",
     "color": "purple",
     "habitat": "cave",
     "generation": 1,
@@ -1063,6 +1147,8 @@
     "eggGroups": [
       "plant"
     ],
+    "evoStage": 1,
+    "evoLineId": "18",
     "color": "blue",
     "habitat": "grassland",
     "generation": 1,
@@ -1088,6 +1174,8 @@
     "eggGroups": [
       "plant"
     ],
+    "evoStage": 2,
+    "evoLineId": "18",
     "color": "blue",
     "habitat": "grassland",
     "generation": 1,
@@ -1113,6 +1201,8 @@
     "eggGroups": [
       "plant"
     ],
+    "evoStage": 3,
+    "evoLineId": "18",
     "color": "red",
     "habitat": "grassland",
     "generation": 1,
@@ -1139,6 +1229,8 @@
       "bug",
       "plant"
     ],
+    "evoStage": 1,
+    "evoLineId": "19",
     "color": "red",
     "habitat": "forest",
     "generation": 1,
@@ -1165,6 +1257,8 @@
       "bug",
       "plant"
     ],
+    "evoStage": 2,
+    "evoLineId": "19",
     "color": "red",
     "habitat": "forest",
     "generation": 1,
@@ -1190,6 +1284,8 @@
     "eggGroups": [
       "bug"
     ],
+    "evoStage": 1,
+    "evoLineId": "20",
     "color": "purple",
     "habitat": "forest",
     "generation": 1,
@@ -1215,6 +1311,8 @@
     "eggGroups": [
       "bug"
     ],
+    "evoStage": 2,
+    "evoLineId": "20",
     "color": "purple",
     "habitat": "forest",
     "generation": 1,
@@ -1239,6 +1337,8 @@
     "eggGroups": [
       "ground"
     ],
+    "evoStage": 1,
+    "evoLineId": "21",
     "color": "brown",
     "habitat": "cave",
     "generation": 1,
@@ -1263,6 +1363,8 @@
     "eggGroups": [
       "ground"
     ],
+    "evoStage": 2,
+    "evoLineId": "21",
     "color": "brown",
     "habitat": "cave",
     "generation": 1,
@@ -1287,6 +1389,8 @@
     "eggGroups": [
       "ground"
     ],
+    "evoStage": 1,
+    "evoLineId": "22",
     "color": "yellow",
     "habitat": "urban",
     "generation": 1,
@@ -1311,6 +1415,8 @@
     "eggGroups": [
       "ground"
     ],
+    "evoStage": 2,
+    "evoLineId": "22",
     "color": "yellow",
     "habitat": "urban",
     "generation": 1,
@@ -1336,6 +1442,8 @@
       "water1",
       "ground"
     ],
+    "evoStage": 1,
+    "evoLineId": "23",
     "color": "yellow",
     "habitat": "waters-edge",
     "generation": 1,
@@ -1361,6 +1469,8 @@
       "water1",
       "ground"
     ],
+    "evoStage": 2,
+    "evoLineId": "23",
     "color": "blue",
     "habitat": "waters-edge",
     "generation": 1,
@@ -1385,6 +1495,8 @@
     "eggGroups": [
       "ground"
     ],
+    "evoStage": 1,
+    "evoLineId": "24",
     "color": "brown",
     "habitat": "mountain",
     "generation": 1,
@@ -1409,6 +1521,8 @@
     "eggGroups": [
       "ground"
     ],
+    "evoStage": 2,
+    "evoLineId": "24",
     "color": "brown",
     "habitat": "mountain",
     "generation": 1,
@@ -1433,6 +1547,8 @@
     "eggGroups": [
       "ground"
     ],
+    "evoStage": 1,
+    "evoLineId": "25",
     "color": "brown",
     "habitat": "grassland",
     "generation": 1,
@@ -1457,6 +1573,8 @@
     "eggGroups": [
       "ground"
     ],
+    "evoStage": 2,
+    "evoLineId": "25",
     "color": "brown",
     "habitat": "grassland",
     "generation": 1,
@@ -1481,6 +1599,8 @@
     "eggGroups": [
       "water1"
     ],
+    "evoStage": 1,
+    "evoLineId": "26",
     "color": "blue",
     "habitat": "waters-edge",
     "generation": 1,
@@ -1505,6 +1625,8 @@
     "eggGroups": [
       "water1"
     ],
+    "evoStage": 2,
+    "evoLineId": "26",
     "color": "blue",
     "habitat": "waters-edge",
     "generation": 1,
@@ -1530,6 +1652,8 @@
     "eggGroups": [
       "water1"
     ],
+    "evoStage": 3,
+    "evoLineId": "26",
     "color": "blue",
     "habitat": "waters-edge",
     "generation": 1,
@@ -1554,6 +1678,8 @@
     "eggGroups": [
       "humanshape"
     ],
+    "evoStage": 1,
+    "evoLineId": "27",
     "color": "brown",
     "habitat": "urban",
     "generation": 1,
@@ -1578,6 +1704,8 @@
     "eggGroups": [
       "humanshape"
     ],
+    "evoStage": 2,
+    "evoLineId": "27",
     "color": "brown",
     "habitat": "urban",
     "generation": 1,
@@ -1602,6 +1730,8 @@
     "eggGroups": [
       "humanshape"
     ],
+    "evoStage": 3,
+    "evoLineId": "27",
     "color": "brown",
     "habitat": "urban",
     "generation": 1,
@@ -1626,6 +1756,8 @@
     "eggGroups": [
       "humanshape"
     ],
+    "evoStage": 1,
+    "evoLineId": "28",
     "color": "gray",
     "habitat": "mountain",
     "generation": 1,
@@ -1650,6 +1782,8 @@
     "eggGroups": [
       "humanshape"
     ],
+    "evoStage": 2,
+    "evoLineId": "28",
     "color": "gray",
     "habitat": "mountain",
     "generation": 1,
@@ -1674,6 +1808,8 @@
     "eggGroups": [
       "humanshape"
     ],
+    "evoStage": 3,
+    "evoLineId": "28",
     "color": "gray",
     "habitat": "mountain",
     "generation": 1,
@@ -1699,6 +1835,8 @@
     "eggGroups": [
       "plant"
     ],
+    "evoStage": 1,
+    "evoLineId": "29",
     "color": "green",
     "habitat": "forest",
     "generation": 1,
@@ -1724,6 +1862,8 @@
     "eggGroups": [
       "plant"
     ],
+    "evoStage": 2,
+    "evoLineId": "29",
     "color": "green",
     "habitat": "forest",
     "generation": 1,
@@ -1749,6 +1889,8 @@
     "eggGroups": [
       "plant"
     ],
+    "evoStage": 3,
+    "evoLineId": "29",
     "color": "green",
     "habitat": "forest",
     "generation": 1,
@@ -1774,6 +1916,8 @@
     "eggGroups": [
       "water3"
     ],
+    "evoStage": 1,
+    "evoLineId": "30",
     "color": "blue",
     "habitat": "sea",
     "generation": 1,
@@ -1799,6 +1943,8 @@
     "eggGroups": [
       "water3"
     ],
+    "evoStage": 2,
+    "evoLineId": "30",
     "color": "blue",
     "habitat": "sea",
     "generation": 1,
@@ -1824,6 +1970,8 @@
     "eggGroups": [
       "mineral"
     ],
+    "evoStage": 1,
+    "evoLineId": "31",
     "color": "brown",
     "habitat": "mountain",
     "generation": 1,
@@ -1849,6 +1997,8 @@
     "eggGroups": [
       "mineral"
     ],
+    "evoStage": 2,
+    "evoLineId": "31",
     "color": "brown",
     "habitat": "mountain",
     "generation": 1,
@@ -1874,6 +2024,8 @@
     "eggGroups": [
       "mineral"
     ],
+    "evoStage": 3,
+    "evoLineId": "31",
     "color": "brown",
     "habitat": "mountain",
     "generation": 1,
@@ -1898,6 +2050,8 @@
     "eggGroups": [
       "ground"
     ],
+    "evoStage": 1,
+    "evoLineId": "32",
     "color": "yellow",
     "habitat": "grassland",
     "generation": 1,
@@ -1922,6 +2076,8 @@
     "eggGroups": [
       "ground"
     ],
+    "evoStage": 2,
+    "evoLineId": "32",
     "color": "yellow",
     "habitat": "grassland",
     "generation": 1,
@@ -1948,6 +2104,8 @@
       "monster",
       "water1"
     ],
+    "evoStage": 1,
+    "evoLineId": "33",
     "color": "pink",
     "habitat": "waters-edge",
     "generation": 1,
@@ -1974,6 +2132,8 @@
       "monster",
       "water1"
     ],
+    "evoStage": 2,
+    "evoLineId": "33",
     "color": "pink",
     "habitat": "waters-edge",
     "generation": 1,
@@ -1999,6 +2159,8 @@
     "eggGroups": [
       "mineral"
     ],
+    "evoStage": 1,
+    "evoLineId": "34",
     "color": "gray",
     "habitat": "rough-terrain",
     "generation": 1,
@@ -2024,6 +2186,8 @@
     "eggGroups": [
       "mineral"
     ],
+    "evoStage": 2,
+    "evoLineId": "34",
     "color": "gray",
     "habitat": "rough-terrain",
     "generation": 1,
@@ -2050,6 +2214,8 @@
       "flying",
       "ground"
     ],
+    "evoStage": 1,
+    "evoLineId": "35",
     "color": "brown",
     "habitat": "grassland",
     "generation": 1,
@@ -2075,6 +2241,8 @@
     "eggGroups": [
       "flying"
     ],
+    "evoStage": 1,
+    "evoLineId": "36",
     "color": "brown",
     "habitat": "grassland",
     "generation": 1,
@@ -2100,6 +2268,8 @@
     "eggGroups": [
       "flying"
     ],
+    "evoStage": 2,
+    "evoLineId": "36",
     "color": "brown",
     "habitat": "grassland",
     "generation": 1,
@@ -2125,6 +2295,8 @@
       "water1",
       "ground"
     ],
+    "evoStage": 1,
+    "evoLineId": "37",
     "color": "white",
     "habitat": "sea",
     "generation": 1,
@@ -2151,6 +2323,8 @@
       "water1",
       "ground"
     ],
+    "evoStage": 2,
+    "evoLineId": "37",
     "color": "white",
     "habitat": "sea",
     "generation": 1,
@@ -2175,6 +2349,8 @@
     "eggGroups": [
       "indeterminate"
     ],
+    "evoStage": 1,
+    "evoLineId": "38",
     "color": "purple",
     "habitat": "urban",
     "generation": 1,
@@ -2199,6 +2375,8 @@
     "eggGroups": [
       "indeterminate"
     ],
+    "evoStage": 2,
+    "evoLineId": "38",
     "color": "purple",
     "habitat": "urban",
     "generation": 1,
@@ -2223,6 +2401,8 @@
     "eggGroups": [
       "water3"
     ],
+    "evoStage": 1,
+    "evoLineId": "39",
     "color": "purple",
     "habitat": "sea",
     "generation": 1,
@@ -2248,6 +2428,8 @@
     "eggGroups": [
       "water3"
     ],
+    "evoStage": 2,
+    "evoLineId": "39",
     "color": "purple",
     "habitat": "sea",
     "generation": 1,
@@ -2273,6 +2455,8 @@
     "eggGroups": [
       "indeterminate"
     ],
+    "evoStage": 1,
+    "evoLineId": "40",
     "color": "purple",
     "habitat": "cave",
     "generation": 1,
@@ -2298,6 +2482,8 @@
     "eggGroups": [
       "indeterminate"
     ],
+    "evoStage": 2,
+    "evoLineId": "40",
     "color": "purple",
     "habitat": "cave",
     "generation": 1,
@@ -2323,6 +2509,8 @@
     "eggGroups": [
       "indeterminate"
     ],
+    "evoStage": 3,
+    "evoLineId": "40",
     "color": "purple",
     "habitat": "cave",
     "generation": 1,
@@ -2348,6 +2536,8 @@
     "eggGroups": [
       "mineral"
     ],
+    "evoStage": 1,
+    "evoLineId": "41",
     "color": "gray",
     "habitat": "cave",
     "generation": 1,
@@ -2372,6 +2562,8 @@
     "eggGroups": [
       "humanshape"
     ],
+    "evoStage": 1,
+    "evoLineId": "42",
     "color": "yellow",
     "habitat": "grassland",
     "generation": 1,
@@ -2396,6 +2588,8 @@
     "eggGroups": [
       "humanshape"
     ],
+    "evoStage": 2,
+    "evoLineId": "42",
     "color": "yellow",
     "habitat": "grassland",
     "generation": 1,
@@ -2420,6 +2614,8 @@
     "eggGroups": [
       "water3"
     ],
+    "evoStage": 1,
+    "evoLineId": "43",
     "color": "red",
     "habitat": "waters-edge",
     "generation": 1,
@@ -2444,6 +2640,8 @@
     "eggGroups": [
       "water3"
     ],
+    "evoStage": 2,
+    "evoLineId": "43",
     "color": "red",
     "habitat": "waters-edge",
     "generation": 1,
@@ -2468,6 +2666,8 @@
     "eggGroups": [
       "mineral"
     ],
+    "evoStage": 1,
+    "evoLineId": "44",
     "color": "red",
     "habitat": "urban",
     "generation": 1,
@@ -2492,6 +2692,8 @@
     "eggGroups": [
       "mineral"
     ],
+    "evoStage": 2,
+    "evoLineId": "44",
     "color": "red",
     "habitat": "urban",
     "generation": 1,
@@ -2517,6 +2719,8 @@
     "eggGroups": [
       "plant"
     ],
+    "evoStage": 1,
+    "evoLineId": "45",
     "color": "pink",
     "habitat": "forest",
     "generation": 1,
@@ -2542,6 +2746,8 @@
     "eggGroups": [
       "plant"
     ],
+    "evoStage": 2,
+    "evoLineId": "45",
     "color": "yellow",
     "habitat": "forest",
     "generation": 1,
@@ -2566,6 +2772,8 @@
     "eggGroups": [
       "monster"
     ],
+    "evoStage": 1,
+    "evoLineId": "46",
     "color": "brown",
     "habitat": "mountain",
     "generation": 1,
@@ -2590,6 +2798,8 @@
     "eggGroups": [
       "monster"
     ],
+    "evoStage": 2,
+    "evoLineId": "46",
     "color": "brown",
     "habitat": "mountain",
     "generation": 1,
@@ -2614,6 +2824,8 @@
     "eggGroups": [
       "humanshape"
     ],
+    "evoStage": 2,
+    "evoLineId": "47",
     "color": "brown",
     "habitat": "urban",
     "generation": 1,
@@ -2638,6 +2850,8 @@
     "eggGroups": [
       "humanshape"
     ],
+    "evoStage": 1,
+    "evoLineId": "47",
     "color": "brown",
     "habitat": "urban",
     "generation": 1,
@@ -2662,6 +2876,8 @@
     "eggGroups": [
       "monster"
     ],
+    "evoStage": 1,
+    "evoLineId": "48",
     "color": "pink",
     "habitat": "grassland",
     "generation": 1,
@@ -2686,6 +2902,8 @@
     "eggGroups": [
       "indeterminate"
     ],
+    "evoStage": 1,
+    "evoLineId": "49",
     "color": "purple",
     "habitat": "urban",
     "generation": 1,
@@ -2710,6 +2928,8 @@
     "eggGroups": [
       "indeterminate"
     ],
+    "evoStage": 2,
+    "evoLineId": "49",
     "color": "purple",
     "habitat": "urban",
     "generation": 1,
@@ -2736,6 +2956,8 @@
       "monster",
       "ground"
     ],
+    "evoStage": 1,
+    "evoLineId": "50",
     "color": "gray",
     "habitat": "rough-terrain",
     "generation": 1,
@@ -2762,6 +2984,8 @@
       "monster",
       "ground"
     ],
+    "evoStage": 2,
+    "evoLineId": "50",
     "color": "gray",
     "habitat": "rough-terrain",
     "generation": 1,
@@ -2786,6 +3010,8 @@
     "eggGroups": [
       "fairy"
     ],
+    "evoStage": 2,
+    "evoLineId": "51",
     "color": "pink",
     "habitat": "urban",
     "generation": 1,
@@ -2810,6 +3036,8 @@
     "eggGroups": [
       "plant"
     ],
+    "evoStage": 1,
+    "evoLineId": "52",
     "color": "blue",
     "habitat": "grassland",
     "generation": 1,
@@ -2834,6 +3062,8 @@
     "eggGroups": [
       "monster"
     ],
+    "evoStage": 1,
+    "evoLineId": "53",
     "color": "brown",
     "habitat": "grassland",
     "generation": 1,
@@ -2859,6 +3089,8 @@
       "water1",
       "dragon"
     ],
+    "evoStage": 1,
+    "evoLineId": "54",
     "color": "blue",
     "habitat": "sea",
     "generation": 1,
@@ -2884,6 +3116,8 @@
       "water1",
       "dragon"
     ],
+    "evoStage": 2,
+    "evoLineId": "54",
     "color": "blue",
     "habitat": "sea",
     "generation": 1,
@@ -2908,6 +3142,8 @@
     "eggGroups": [
       "water2"
     ],
+    "evoStage": 1,
+    "evoLineId": "55",
     "color": "red",
     "habitat": "waters-edge",
     "generation": 1,
@@ -2932,6 +3168,8 @@
     "eggGroups": [
       "water2"
     ],
+    "evoStage": 2,
+    "evoLineId": "55",
     "color": "red",
     "habitat": "waters-edge",
     "generation": 1,
@@ -2956,6 +3194,8 @@
     "eggGroups": [
       "water3"
     ],
+    "evoStage": 1,
+    "evoLineId": "56",
     "color": "brown",
     "habitat": "sea",
     "generation": 1,
@@ -2981,6 +3221,8 @@
     "eggGroups": [
       "water3"
     ],
+    "evoStage": 2,
+    "evoLineId": "56",
     "color": "purple",
     "habitat": "sea",
     "generation": 1,
@@ -3006,6 +3248,8 @@
     "eggGroups": [
       "humanshape"
     ],
+    "evoStage": 2,
+    "evoLineId": "57",
     "color": "pink",
     "habitat": "urban",
     "generation": 1,
@@ -3031,6 +3275,8 @@
     "eggGroups": [
       "bug"
     ],
+    "evoStage": 1,
+    "evoLineId": "58",
     "color": "green",
     "habitat": "grassland",
     "generation": 1,
@@ -3056,6 +3302,8 @@
     "eggGroups": [
       "humanshape"
     ],
+    "evoStage": 2,
+    "evoLineId": "59",
     "color": "red",
     "habitat": "urban",
     "generation": 1,
@@ -3080,6 +3328,8 @@
     "eggGroups": [
       "humanshape"
     ],
+    "evoStage": 2,
+    "evoLineId": "60",
     "color": "yellow",
     "habitat": "grassland",
     "generation": 1,
@@ -3104,6 +3354,8 @@
     "eggGroups": [
       "humanshape"
     ],
+    "evoStage": 2,
+    "evoLineId": "61",
     "color": "red",
     "habitat": "mountain",
     "generation": 1,
@@ -3128,6 +3380,8 @@
     "eggGroups": [
       "bug"
     ],
+    "evoStage": 1,
+    "evoLineId": "62",
     "color": "brown",
     "habitat": "forest",
     "generation": 1,
@@ -3152,6 +3406,8 @@
     "eggGroups": [
       "ground"
     ],
+    "evoStage": 1,
+    "evoLineId": "63",
     "color": "brown",
     "habitat": "grassland",
     "generation": 1,
@@ -3177,6 +3433,8 @@
       "water2",
       "dragon"
     ],
+    "evoStage": 1,
+    "evoLineId": "64",
     "color": "red",
     "habitat": "waters-edge",
     "generation": 1,
@@ -3203,6 +3461,8 @@
       "water2",
       "dragon"
     ],
+    "evoStage": 2,
+    "evoLineId": "64",
     "color": "blue",
     "habitat": "waters-edge",
     "generation": 1,
@@ -3229,6 +3489,8 @@
       "monster",
       "water1"
     ],
+    "evoStage": 1,
+    "evoLineId": "65",
     "color": "blue",
     "habitat": "sea",
     "generation": 1,
@@ -3253,6 +3515,8 @@
     "eggGroups": [
       "ditto"
     ],
+    "evoStage": 1,
+    "evoLineId": "66",
     "color": "purple",
     "habitat": "urban",
     "generation": 1,
@@ -3277,6 +3541,8 @@
     "eggGroups": [
       "ground"
     ],
+    "evoStage": 1,
+    "evoLineId": "67",
     "color": "brown",
     "habitat": "urban",
     "generation": 1,
@@ -3301,6 +3567,8 @@
     "eggGroups": [
       "ground"
     ],
+    "evoStage": 2,
+    "evoLineId": "67",
     "color": "blue",
     "habitat": "urban",
     "generation": 1,
@@ -3325,6 +3593,8 @@
     "eggGroups": [
       "ground"
     ],
+    "evoStage": 1,
+    "evoLineId": "67",
     "color": "yellow",
     "habitat": "urban",
     "generation": 1,
@@ -3349,6 +3619,8 @@
     "eggGroups": [
       "ground"
     ],
+    "evoStage": 1,
+    "evoLineId": "67",
     "color": "red",
     "habitat": "urban",
     "generation": 1,
@@ -3373,6 +3645,8 @@
     "eggGroups": [
       "mineral"
     ],
+    "evoStage": 1,
+    "evoLineId": "68",
     "color": "pink",
     "habitat": "urban",
     "generation": 1,
@@ -3399,6 +3673,8 @@
       "water1",
       "water3"
     ],
+    "evoStage": 1,
+    "evoLineId": "69",
     "color": "blue",
     "habitat": "sea",
     "generation": 1,
@@ -3425,6 +3701,8 @@
       "water1",
       "water3"
     ],
+    "evoStage": 2,
+    "evoLineId": "69",
     "color": "blue",
     "habitat": "sea",
     "generation": 1,
@@ -3451,6 +3729,8 @@
       "water1",
       "water3"
     ],
+    "evoStage": 1,
+    "evoLineId": "70",
     "color": "brown",
     "habitat": "sea",
     "generation": 1,
@@ -3477,6 +3757,8 @@
       "water1",
       "water3"
     ],
+    "evoStage": 2,
+    "evoLineId": "70",
     "color": "brown",
     "habitat": "sea",
     "generation": 1,
@@ -3502,6 +3784,8 @@
     "eggGroups": [
       "flying"
     ],
+    "evoStage": 1,
+    "evoLineId": "71",
     "color": "purple",
     "habitat": "mountain",
     "generation": 1,
@@ -3526,6 +3810,8 @@
     "eggGroups": [
       "monster"
     ],
+    "evoStage": 2,
+    "evoLineId": "72",
     "color": "black",
     "habitat": "mountain",
     "generation": 1,
@@ -3551,6 +3837,8 @@
     "eggGroups": [
       "no-eggs"
     ],
+    "evoStage": 1,
+    "evoLineId": "73",
     "color": "blue",
     "habitat": "rare",
     "generation": 1,
@@ -3576,6 +3864,8 @@
     "eggGroups": [
       "no-eggs"
     ],
+    "evoStage": 1,
+    "evoLineId": "74",
     "color": "yellow",
     "habitat": "rare",
     "generation": 1,
@@ -3601,6 +3891,8 @@
     "eggGroups": [
       "no-eggs"
     ],
+    "evoStage": 1,
+    "evoLineId": "75",
     "color": "yellow",
     "habitat": "rare",
     "generation": 1,
@@ -3626,6 +3918,8 @@
       "water1",
       "dragon"
     ],
+    "evoStage": 1,
+    "evoLineId": "76",
     "color": "blue",
     "habitat": "waters-edge",
     "generation": 1,
@@ -3651,6 +3945,8 @@
       "water1",
       "dragon"
     ],
+    "evoStage": 2,
+    "evoLineId": "76",
     "color": "blue",
     "habitat": "waters-edge",
     "generation": 1,
@@ -3677,6 +3973,8 @@
       "water1",
       "dragon"
     ],
+    "evoStage": 3,
+    "evoLineId": "76",
     "color": "brown",
     "habitat": "waters-edge",
     "generation": 1,
@@ -3701,6 +3999,8 @@
     "eggGroups": [
       "no-eggs"
     ],
+    "evoStage": 1,
+    "evoLineId": "77",
     "color": "purple",
     "habitat": "rare",
     "generation": 1,
@@ -3725,6 +4025,8 @@
     "eggGroups": [
       "no-eggs"
     ],
+    "evoStage": 1,
+    "evoLineId": "78",
     "color": "pink",
     "habitat": "rare",
     "generation": 1,

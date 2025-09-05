@@ -23,7 +23,12 @@ export async function groupsByType(): Promise<Group[]> {
           id: `type:${type}:${combo.slice().sort((a,b)=>a-b).join('-')}`,
           name: `Type: ${type}`,
           members: combo,
-          tags: ['type']
+          tags: ['type'],
+          dimension: 'type',
+          rule: {
+            kind: 'typeEquals',
+            value: type
+          }
         })
       );
     }

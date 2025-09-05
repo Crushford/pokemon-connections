@@ -15,6 +15,7 @@ type Species = {
   habitat?: { name: string };
   egg_groups: { name: string }[];
   generation: { name: string };
+  evolution_chain: { url: string };
 };
 type PokemonForm = {
   is_default: boolean;
@@ -25,6 +26,20 @@ type PokemonForm = {
   };
 };
 
+type EvolutionChain = {
+  id: number;
+  chain: {
+    species: { name: string };
+    evolves_to: Array<{
+      species: { name: string };
+      evolves_to: Array<{
+        species: { name: string };
+        evolves_to: any[];
+      }>;
+    }>;
+  };
+};
+
 function stat(stats: Stat[], key: string) {
   return stats.find(s => s.stat.name === key)?.base_stat ?? 0;
 }
@@ -32,6 +47,24 @@ function genNumber(genName: string): number {
   const roman = (genName.match(/generation-(\w+)/)?.[1] ?? 'i').toLowerCase();
   const list = ['i','ii','iii','iv','v','vi','vii','viii','ix'];
   return list.indexOf(roman) + 1;
+}
+
+function extractEvolutionChainId(url: string): string {
+  const match = url.match(/evolution-chain\/(\d+)\//);
+  return match ? match[1] : 'unknown';
+}
+
+function findEvolutionStage(chain: EvolutionChain, pokemonName: string): number {
+  const base = chain.chain.species.name;
+  const firstEvo = chain.chain.evolves_to[0]?.species.name;
+  const secondEvo = chain.chain.evolves_to[0]?.evolves_to[0]?.species.name;
+  
+  if (pokemonName === base) return 1;
+  if (pokemonName === firstEvo) return 2;
+  if (pokemonName === secondEvo) return 3;
+  
+  // Fallback: if not found in chain, assume base stage
+  return 1;
 }
 
 async function fetchSpriteFromDefaultForm(formUrls: string[]): Promise<string | undefined> {
@@ -55,6 +88,11 @@ async function fetchOne(id: number): Promise<Pokemon> {
   const p = await get<Poke>(`/pokemon/${id}`);
   const s = await get<Species>(`/pokemon-species/${id}`);
 
+  // Fetch evolution chain data
+  const evolutionChain = await get<EvolutionChain>(s.evolution_chain.url);
+  const evoLineId = extractEvolutionChainId(s.evolution_chain.url);
+  const evoStage = findEvolutionStage(evolutionChain, p.name);
+
   let spriteUrl: string | undefined;
   if (Array.isArray(p.forms) && p.forms.length > 0) {
     const formUrls = p.forms.map(f => f.url);
@@ -76,6 +114,8 @@ async function fetchOne(id: number): Promise<Pokemon> {
     height: p.height / 10,
     weight: p.weight / 10,
     eggGroups: s.egg_groups?.map(e => e.name),
+    evoStage,
+    evoLineId,
     color: s.color?.name,
     habitat: s.habitat?.name,
     generation: genNumber(s.generation.name),

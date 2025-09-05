@@ -15,8 +15,8 @@ export const PokemonSchema = z.object({
   height: z.number(), // meters
   weight: z.number(), // kg
   eggGroups: z.array(z.string()).optional(),
-  evoStage: z.number().int().min(1).max(3).optional(),
-  evoLineId: z.string().optional(),
+  evoStage: z.number().int().min(1).max(3),
+  evoLineId: z.string(),
   color: z.string().optional(),
   habitat: z.string().optional(),
   generation: z.number().int(),
@@ -30,7 +30,12 @@ export const GroupSchema = z.object({
   id: z.string(),
   name: z.string(),
   members: z.array(z.number()).length(4), // store Pokémon by numeric id (1..151)
-  tags: z.array(z.string()).default([])
+  tags: z.array(z.string()).default([]),
+  dimension: z.enum(['type','stat','evo','habitat','color','egg','mechanic']).default('type'),
+  rule: z.object({
+    kind: z.enum(['typeEquals']), // extend later as needed
+    value: z.string()
+  })
 });
 export type Group = z.infer<typeof GroupSchema>;
 
