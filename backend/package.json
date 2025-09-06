@@ -8,8 +8,6 @@
     "etl": "tsx src/data/fetch.ts",
     "groups": "tsx src/groups/buildGroupBank.ts",
     "generate": "tsx src/puzzle/generator.ts",
-    "generate:progressive": "tsx src/puzzle/generateProgressive.ts",
-    "generate:progressive:simple": "tsx src/puzzle/generateProgressiveSimple.ts",
     "debug:groups": "tsx src/puzzle/debugGroups.ts",
     "validate": "tsx src/puzzle/validate.ts",
     "lint": "eslint . --ext .ts",
