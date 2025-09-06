@@ -24,8 +24,8 @@ export default function CompletionModal({
   const isLastPuzzle = currentPuzzleIndex >= totalPuzzles - 1
 
   return (
-    <div className="max-h-[90vh] fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4  overflow-hidden flex flex-col">
+    <div className="h-screen fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 h-full overflow-hidden flex flex-col">
         {/* Header */}
         <div className="bg-gradient-to-r from-green-500 to-emerald-600 px-4 py-4 md:py-6 text-center flex-shrink-0">
           <div className="text-3xl md:text-5xl mb-1 md:mb-2">🎉</div>
