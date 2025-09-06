@@ -182,7 +182,7 @@ export default function Pokedex({
                 Select a Pokémon
               </p>
               <p className="text-sm text-gray-500">
-                Click the info icon on any Pokémon card
+                Click the Pokédex icon on any Pokémon card
               </p>
             </div>
           </div>
@@ -339,7 +339,7 @@ export default function Pokedex({
                     Select a Pokémon
                   </p>
                   <p className="text-sm text-gray-500">
-                    Click the info icon on any Pokémon card
+                    Click the Pokédex icon on any Pokémon card
                   </p>
                 </div>
               </div>

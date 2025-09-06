@@ -70,13 +70,24 @@ export default function PuzzlePage() {
       if (currentPuzzle) {
         // Filter Pokemon data to only include Pokemon in this puzzle
         const puzzlePokemonIds = new Set(currentPuzzle.pool)
-        const puzzlePokemon = pokemonData.filter((pokemon: PokemonLite) =>
-          puzzlePokemonIds.has(pokemon.id)
-        )
+        const puzzlePokemon = pokemonData
+          .filter((pokemon: any) => puzzlePokemonIds.has(pokemon.id))
+          .map(
+            (pokemon: any): PokemonLite => ({
+              id: pokemon.id,
+              name: pokemon.name,
+              types: pokemon.types,
+              baseStats: pokemon.baseStats,
+              height: pokemon.height,
+              weight: pokemon.weight,
+              spriteUrl: pokemon.spriteUrl
+            })
+          )
         setRemainingPokemon(puzzlePokemon)
         setCompletedGroups([]) // Reset completed groups for new puzzle
         setIncorrectAttempts(0) // Reset attempts for new puzzle
         setSelectedIdx([]) // Clear selection
+        setIsGameFinished(false) // Reset game finished state
       }
     }
   }, [puzzlesData, pokemonData, currentPuzzleIndex])
@@ -88,8 +99,12 @@ export default function PuzzlePage() {
   const [showToast, setShowToast] = useState<boolean>(false)
   const [toastMessage, setToastMessage] = useState<string>('')
   const [shakeCards, setShakeCards] = useState<boolean>(false)
+  const [isGameFinished, setIsGameFinished] = useState<boolean>(false)
+  const [showMenu, setShowMenu] = useState<boolean>(false)
 
   function toggleSelect(i: number) {
+    if (isGameFinished) return // Don't allow selection when game is finished
+
     setSelectedIdx(prev => {
       if (prev.includes(i)) return prev.filter(n => n !== i)
       if (prev.length === 4) return prev // limit 4
@@ -106,6 +121,25 @@ export default function PuzzlePage() {
   function triggerShake() {
     setShakeCards(true)
     setTimeout(() => setShakeCards(false), 600)
+  }
+
+  function revealAllGroups() {
+    if (!puzzlesData) return
+
+    const currentPuzzle = puzzlesData.puzzles[currentPuzzleIndex]
+    if (!currentPuzzle) return
+
+    // Get all groups that haven't been completed yet
+    const completedGroupIds = new Set(completedGroups.map(g => g.id))
+    const remainingGroups = currentPuzzle.groups.filter(
+      g => !completedGroupIds.has(g.id)
+    )
+
+    // Add all remaining groups to completed groups
+    setCompletedGroups(prev => [...prev, ...remainingGroups])
+
+    // Remove all remaining Pokemon from the pool
+    setRemainingPokemon([])
   }
 
   function validateSelection(selectedPokemon: PokemonLite[]): {
@@ -150,7 +184,7 @@ export default function PuzzlePage() {
   }
 
   function submit() {
-    if (selectedIdx.length !== 4) return
+    if (selectedIdx.length !== 4 || isGameFinished) return
 
     // Get the selected Pokemon objects from the remaining pool (not full pool)
     const selectedPokemon = selectedIdx.map(i => remainingPokemon[i])
@@ -160,13 +194,23 @@ export default function PuzzlePage() {
 
     if (!isCorrect) {
       // Increment incorrect attempts only when wrong
-      setIncorrectAttempts(prev => prev + 1)
+      const newAttempts = incorrectAttempts + 1
+      setIncorrectAttempts(newAttempts)
 
-      // Show feedback for incorrect selection
-      displayToast(
-        "Not quite right! These Pokémon aren't connected. Try again!"
-      )
-      triggerShake()
+      // Check if we've reached the 4-attempt limit
+      if (newAttempts >= 4) {
+        // Game finished - reveal all remaining groups
+        setIsGameFinished(true)
+        revealAllGroups()
+        displayToast('Game Over! All groups have been revealed.')
+      } else {
+        // Show feedback for incorrect selection
+        const remainingAttempts = 4 - newAttempts
+        displayToast(
+          `Not quite right! These Pokémon aren't connected. Try again! (${remainingAttempts} attempts remaining)`
+        )
+        triggerShake()
+      }
     } else {
       // Show success message
       displayToast(`Congratulations! You found the connection: ${groupName}!`)
@@ -190,7 +234,7 @@ export default function PuzzlePage() {
         ) {
           // Puzzle is complete! Navigate to completion page
           setTimeout(() => {
-            navigate(`/${currentPuzzleIndex}/complete`)
+            navigate(`/levels/${currentPuzzleIndex}/complete`)
           }, 1000) // Small delay to let the success message show
         }
       }
@@ -210,11 +254,24 @@ export default function PuzzlePage() {
 
   function handleNextPuzzle() {
     if (puzzlesData && currentPuzzleIndex < puzzlesData.puzzles.length - 1) {
-      navigate(`/${currentPuzzleIndex + 1}`)
+      navigate(`/levels/${currentPuzzleIndex + 1}`)
     } else {
       // No more puzzles, show end message
       displayToast("🎉 Congratulations! You've completed all puzzles!")
     }
+  }
+
+  function handleMenuToggle() {
+    setShowMenu(!showMenu)
+  }
+
+  function handleGoToLevelSelection() {
+    navigate('/levels')
+  }
+
+  function handleNextLevel() {
+    handleNextPuzzle()
+    setShowMenu(false)
   }
 
   function getTypeColor(type: string): string {
@@ -255,33 +312,96 @@ export default function PuzzlePage() {
 
   return (
     <div className="h-dvh w-screen overflow-hidden flex flex-col p-4">
-      <header className="flex-shrink-0 mb-4 text-center">
-        <h1 className="text-2xl md:text-3xl font-bold">Pokémon Connections</h1>
-        <p className="text-xs md:text-sm text-zinc-600">
-          Below are 16 Pokémon, you need to sort them into 4 groups of 4. Click
-          the info icon to view details in the Pokédex.
-        </p>
-        {puzzlesData && (
-          <p className="text-xs md:text-sm text-indigo-600 font-medium mt-1">
-            Puzzle {currentPuzzleIndex + 1} of {puzzlesData.puzzles.length}
-          </p>
+      <header className="flex-shrink-0 relative">
+        {/* Menu button - top right */}
+        <button
+          onClick={handleMenuToggle}
+          className="absolute top-0 right-0 p-2 rounded-lg bg-white border border-zinc-200 hover:border-zinc-300 hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
+          aria-label="Open menu"
+        >
+          <svg
+            className="h-5 w-5 text-zinc-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+
+        {/* Menu dropdown */}
+        {showMenu && (
+          <div className="absolute top-12 right-0 z-50 w-64 bg-white border border-zinc-200 rounded-lg shadow-lg">
+            <div className="p-4">
+              <div className="mb-4">
+                <h3 className="font-semibold text-zinc-800 mb-2">Level Info</h3>
+                <p className="text-sm text-zinc-600">
+                  Level: {currentPuzzleIndex + 1} of{' '}
+                  {puzzlesData?.puzzles.length || 0}
+                </p>
+                <p className="text-sm text-zinc-600">
+                  Puzzle Index: {currentPuzzleIndex}
+                </p>
+              </div>
+
+              <div className="space-y-2">
+                <button
+                  onClick={handleGoToLevelSelection}
+                  className="w-full px-3 py-2 text-left text-sm bg-indigo-50 text-indigo-700 rounded-lg hover:bg-indigo-100 transition-colors duration-200"
+                >
+                  To Level Selection
+                </button>
+
+                {puzzlesData &&
+                  currentPuzzleIndex < puzzlesData.puzzles.length - 1 && (
+                    <button
+                      onClick={handleNextLevel}
+                      className="w-full px-3 py-2 text-left text-sm bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-colors duration-200"
+                    >
+                      Next Level
+                    </button>
+                  )}
+              </div>
+            </div>
+          </div>
         )}
+
+        {/* Main header content */}
+        <div className="text-center pr-16">
+          <h1 className="text-2xl md:text-3xl font-bold">
+            Pokémon Connections
+          </h1>
+          <p className="text-xs md:text-sm text-zinc-600">
+            Below are 16 Pokémon, you need to sort them into 4 groups of 4. If
+            you're feeling stuck, you can click on the Pokedex to learn more
+            about each Pokémon.
+          </p>
+          {puzzlesData && (
+            <p className="text-xs md:text-sm text-indigo-600 font-medium mt-1">
+              Puzzle {currentPuzzleIndex + 1} of {puzzlesData.puzzles.length}
+            </p>
+          )}
+        </div>
       </header>
 
       <main className="flex-1 flex flex-col md:flex-row gap-4 md:gap-8 justify-center items-start overflow-hidden">
         {/* Pokemon grid */}
-        <div className="flex-1 md:max-w-[40rem] w-full min-h-0 flex flex-col">
-          <div className="flex-shrink-0 mb-3 text-center space-y-1">
-            <div>
+        <div className="flex-1 md:max-w-[40rem] w-full  flex flex-col">
+          <div className="flex-shrink-0 flex justify-between items-center mb-3">
+            <div className="w-1/2 text-left">
               <span className="text-xs md:text-sm font-medium text-zinc-600">
-                {selectedIdx.length === 0
-                  ? 'Click Pokémon to select them'
-                  : `${selectedIdx.length}/4 Pokémon selected`}
+                {selectedIdx.length > 0 &&
+                  `${selectedIdx.length}/4 Pokémon selected`}
               </span>
             </div>
-            <div>
+            <div className="w-1/2 text-right">
               <span className="text-xs md:text-sm font-semibold text-orange-600">
-                Incorrect attempts: {incorrectAttempts}
+                Attempts remaining: {Math.max(0, 4 - incorrectAttempts)}
               </span>
             </div>
           </div>
@@ -326,7 +446,7 @@ export default function PuzzlePage() {
 
             {/* Remaining Pokemon Grid */}
             <div className="flex-1 p-2 md:p-4 overflow-auto">
-              <div className="grid grid-cols-4 gap-2 md:gap-3">
+              <div className="grid grid-cols-4 gap-1 md:gap-2">
                 {remainingPokemon.map((mon, i) => (
                   <div
                     key={mon.id}
@@ -338,6 +458,7 @@ export default function PuzzlePage() {
                       onSelect={() => toggleSelect(i)}
                       onPokedexLookup={() => handlePokedexLookup(mon)}
                       shake={shakeCards && selectedIdx.includes(i)}
+                      disabled={isGameFinished}
                     />
                   </div>
                 ))}
@@ -346,17 +467,18 @@ export default function PuzzlePage() {
           </div>
 
           {/* Action buttons - directly below the grid */}
-          <div className="flex-shrink-0 mt-4 flex justify-center items-center gap-2 md:gap-3">
+          <div className="flex-shrink-0 mt-4 flex flex-wrap justify-center items-center gap-1 md:gap-2 max-w-full overflow-hidden">
             <button
               onClick={submit}
-              className="px-4 md:px-6 py-2 md:py-3 rounded-xl bg-indigo-600 text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-indigo-700 active:bg-indigo-800 transition-colors duration-200 shadow-md hover:shadow-lg text-sm md:text-base"
-              disabled={selectedIdx.length !== 4}
+              className="px-2 md:px-4 py-2 md:py-3 rounded-xl bg-indigo-600 text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-indigo-700 active:bg-indigo-800 transition-colors duration-200 shadow-md hover:shadow-lg text-xs md:text-sm"
+              disabled={selectedIdx.length !== 4 || isGameFinished}
             >
               Submit Selection
             </button>
             <button
               onClick={() => setSelectedIdx([])}
-              className="px-4 md:px-6 py-2 md:py-3 rounded-xl border-2 border-zinc-300 bg-white text-zinc-700 font-semibold hover:bg-zinc-50 hover:border-zinc-400 active:bg-zinc-100 transition-all duration-200 shadow-sm hover:shadow-md text-sm md:text-base"
+              className="px-2 md:px-4 py-2 md:py-3 rounded-xl border-2 border-zinc-300 bg-white text-zinc-700 font-semibold hover:bg-zinc-50 hover:border-zinc-400 active:bg-zinc-100 transition-all duration-200 shadow-sm hover:shadow-md text-xs md:text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={isGameFinished}
             >
               Clear Selection
             </button>
@@ -366,19 +488,11 @@ export default function PuzzlePage() {
                   [...prev].sort(() => Math.random() - 0.5)
                 )
               }}
-              className="px-4 md:px-6 py-2 md:py-3 rounded-xl border-2 border-zinc-300 bg-white text-zinc-700 font-semibold hover:bg-zinc-50 hover:border-zinc-400 active:bg-zinc-100 transition-all duration-200 shadow-sm hover:shadow-md text-sm md:text-base"
+              className="px-2 md:px-4 py-2 md:py-3 rounded-xl border-2 border-zinc-300 bg-white text-zinc-700 font-semibold hover:bg-zinc-50 hover:border-zinc-400 active:bg-zinc-100 transition-all duration-200 shadow-sm hover:shadow-md text-xs md:text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={isGameFinished}
             >
               🔀 Shuffle
             </button>
-            {puzzlesData &&
-              currentPuzzleIndex < puzzlesData.puzzles.length - 1 && (
-                <button
-                  onClick={handleNextPuzzle}
-                  className="px-2 py-1 rounded border border-red-700 bg-red-800 text-red-100 font-medium hover:bg-red-900 hover:border-red-800 active:bg-red-950 transition-all duration-200 text-xs"
-                >
-                  Next Puzzle
-                </button>
-              )}
           </div>
         </div>
 

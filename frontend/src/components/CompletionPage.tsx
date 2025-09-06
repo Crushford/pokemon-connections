@@ -59,16 +59,16 @@ export default function CompletionPage() {
 
   function handleNextPuzzle() {
     if (puzzlesData && currentPuzzleIndex < puzzlesData.puzzles.length - 1) {
-      navigate(`/${currentPuzzleIndex + 1}`)
+      navigate(`/levels/${currentPuzzleIndex + 1}`)
     } else {
-      // No more puzzles, go back to home (which redirects to first puzzle)
-      navigate('/')
+      // No more puzzles, go back to levels page
+      navigate('/levels')
     }
   }
 
   function handleClose() {
     // Go back to the current puzzle
-    navigate(`/${currentPuzzleIndex}`)
+    navigate(`/levels/${currentPuzzleIndex}`)
   }
 
   if (isLoading) {
