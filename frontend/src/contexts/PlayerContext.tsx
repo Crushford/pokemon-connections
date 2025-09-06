@@ -12,6 +12,7 @@ interface PlayerStats {
   totalGroups: number
   completedGroups: number
   timeSpent?: number
+  pokedexUsage?: number
 }
 
 interface LevelProgress {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import CompletionModal from './CompletionModal'
+import { usePlayer } from '../contexts/PlayerContext'
 
 type PuzzleGroup = {
   id: string
@@ -22,30 +23,46 @@ export default function CompletionPage() {
   const { puzzleId } = useParams<{ puzzleId: string }>()
   const navigate = useNavigate()
   const currentPuzzleIndex = parseInt(puzzleId || '0', 10)
+  const { getLevelProgress } = usePlayer()
 
   const [puzzlesData, setPuzzlesData] = useState<PuzzlesData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [stats, setStats] = useState({
     incorrectAttempts: 0,
     totalGroups: 0,
-    completedGroups: 0
+    completedGroups: 0,
+    timeSpent: 0,
+    pokedexUsage: 0
   })
 
-  // Fetch puzzle data to get stats
+  // Fetch puzzle data and get actual player stats
   useEffect(() => {
     fetch('/puzzle.json')
       .then(response => response.json())
       .then((puzzlesData: PuzzlesData) => {
         setPuzzlesData(puzzlesData)
 
-        // For now, we'll use placeholder stats since we don't have access to the actual game state
-        // In a real implementation, you might want to pass these through URL params or localStorage
         const currentPuzzle = puzzlesData.puzzles[currentPuzzleIndex]
-        if (currentPuzzle) {
+        const levelId = currentPuzzleIndex + 1
+        const levelProgress = getLevelProgress(levelId)
+
+        if (currentPuzzle && levelProgress?.bestScore) {
+          // Use actual player stats from the completed level
           setStats({
-            incorrectAttempts: 0, // This would come from game state
+            incorrectAttempts: levelProgress.bestScore.incorrectAttempts,
+            totalGroups: levelProgress.bestScore.totalGroups,
+            completedGroups: levelProgress.bestScore.completedGroups,
+            timeSpent: levelProgress.bestScore.timeSpent || 0,
+            pokedexUsage: levelProgress.bestScore.pokedexUsage || 0
+          })
+        } else if (currentPuzzle) {
+          // Fallback to puzzle data if no player stats available
+          setStats({
+            incorrectAttempts: 0,
             totalGroups: currentPuzzle.groups.length,
-            completedGroups: currentPuzzle.groups.length // Assuming all groups were completed
+            completedGroups: currentPuzzle.groups.length,
+            timeSpent: 0,
+            pokedexUsage: 0
           })
         }
 
@@ -55,7 +72,7 @@ export default function CompletionPage() {
         console.error('❌ Failed to load puzzle data:', error)
         setIsLoading(false)
       })
-  }, [currentPuzzleIndex])
+  }, [currentPuzzleIndex, getLevelProgress])
 
   function handleNextPuzzle() {
     if (puzzlesData && currentPuzzleIndex < puzzlesData.puzzles.length - 1) {
@@ -69,6 +86,11 @@ export default function CompletionPage() {
   function handleClose() {
     // Go back to the current puzzle
     navigate(`/levels/${currentPuzzleIndex}`)
+  }
+
+  function handleGoToLevels() {
+    // Navigate to the levels page
+    navigate('/levels')
   }
 
   if (isLoading) {
@@ -88,6 +110,7 @@ export default function CompletionPage() {
         isOpen={true}
         onClose={handleClose}
         onNextPuzzle={handleNextPuzzle}
+        onGoToLevels={handleGoToLevels}
         stats={stats}
         currentPuzzleIndex={currentPuzzleIndex}
         totalPuzzles={puzzlesData?.puzzles.length || 0}

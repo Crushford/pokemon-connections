@@ -27,7 +27,13 @@ export default function PuzzlePage() {
   const { puzzleId } = useParams<{ puzzleId: string }>()
   const navigate = useNavigate()
   const currentPuzzleIndex = parseInt(puzzleId || '0', 10)
-  const { completeLevel, failLevel, updateAttempts } = usePlayer()
+  const {
+    completeLevel,
+    failLevel,
+    updateAttempts,
+    isLevelCompleted,
+    getLevelProgress
+  } = usePlayer()
 
   const [puzzlesData, setPuzzlesData] = useState<PuzzlesData | null>(null)
   const [pokemonData, setPokemonData] = useState<PokemonData>([])
@@ -70,6 +76,34 @@ export default function PuzzlePage() {
     if (puzzlesData && pokemonData.length > 0) {
       const currentPuzzle = puzzlesData.puzzles[currentPuzzleIndex]
       if (currentPuzzle) {
+        const levelId = currentPuzzleIndex + 1
+
+        // Check if this level is already completed
+        if (isLevelCompleted(levelId)) {
+          const levelProgress = getLevelProgress(levelId)
+          setIsCompleted(true)
+          setIsGameFinished(true)
+
+          // Set up completed state - show all groups as completed
+          setCompletedGroups(currentPuzzle.groups)
+          setRemainingPokemon([])
+
+          // Set incorrect attempts and pokedex usage from saved progress
+          if (levelProgress?.bestScore?.incorrectAttempts) {
+            setIncorrectAttempts(levelProgress.bestScore.incorrectAttempts)
+          }
+          if (levelProgress?.bestScore?.pokedexUsage) {
+            setPokedexUsage(levelProgress.bestScore.pokedexUsage)
+          }
+
+          return // Don't proceed with normal puzzle setup
+        }
+
+        // Start timer for new puzzle
+        setPuzzleStartTime(Date.now())
+        setIsCompleted(false)
+        setIsGameFinished(false)
+
         // Filter Pokemon data to only include Pokemon in this puzzle
         const puzzlePokemonIds = new Set(currentPuzzle.pool)
         const puzzlePokemon = pokemonData
@@ -100,11 +134,15 @@ export default function PuzzlePage() {
   const [incorrectAttempts, setIncorrectAttempts] = useState<number>(0)
   const [showToast, setShowToast] = useState<boolean>(false)
   const [toastMessage, setToastMessage] = useState<string>('')
+  const [toastShouldBounce, setToastShouldBounce] = useState<boolean>(false)
   const [shakeCards, setShakeCards] = useState<boolean>(false)
   const [isGameFinished, setIsGameFinished] = useState<boolean>(false)
+  const [puzzleStartTime, setPuzzleStartTime] = useState<number | null>(null)
+  const [isCompleted, setIsCompleted] = useState<boolean>(false)
+  const [pokedexUsage, setPokedexUsage] = useState<number>(0)
 
   function toggleSelect(i: number) {
-    if (isGameFinished) return // Don't allow selection when game is finished
+    if (isGameFinished || isCompleted) return // Don't allow selection when game is finished or completed
 
     setSelectedIdx(prev => {
       if (prev.includes(i)) return prev.filter(n => n !== i)
@@ -113,8 +151,9 @@ export default function PuzzlePage() {
     })
   }
 
-  function displayToast(message: string) {
+  function displayToast(message: string, shouldBounce: boolean = false) {
     setToastMessage(message)
+    setToastShouldBounce(shouldBounce)
     setShowToast(true)
     setTimeout(() => setShowToast(false), 3000)
   }
@@ -146,52 +185,70 @@ export default function PuzzlePage() {
   function validateSelection(selectedPokemon: PokemonLite[]): {
     isCorrect: boolean
     groupName?: string
-    group?: PuzzleGroup // Add this return type
+    group?: PuzzleGroup
+    isClose?: boolean
+    closeGroupName?: string
+    matchedCount?: number
   } {
     if (!puzzlesData || selectedPokemon.length !== 4) {
-      console.log(
-        'Validation failed: No puzzle data or wrong number of Pokemon'
-      )
       return { isCorrect: false }
     }
 
     const currentPuzzle = puzzlesData.puzzles[currentPuzzleIndex]
     if (!currentPuzzle) {
-      console.log('Validation failed: No current puzzle')
       return { isCorrect: false }
     }
 
     // Get the IDs of selected Pokemon
     const selectedIds = selectedPokemon.map(p => p.id).sort((a, b) => a - b)
-    console.log('Selected Pokemon IDs:', selectedIds)
+
+    let bestMatch = {
+      count: 0,
+      groupName: '',
+      group: null as PuzzleGroup | null
+    }
 
     // Check if the selected IDs match any of the valid groups
     for (const group of currentPuzzle.groups) {
       const groupIds = [...group.members].sort((a, b) => a - b)
-      console.log(`Checking group "${group.name}":`, groupIds)
 
       // Check if the selected IDs exactly match the group IDs
       if (
         selectedIds.length === groupIds.length &&
         selectedIds.every((id, index) => id === groupIds[index])
       ) {
-        console.log('Match found!', group.name)
         return { isCorrect: true, groupName: group.name, group } // Return the group object
+      }
+
+      // Check for partial matches (count how many IDs match)
+      const matchedIds = selectedIds.filter(id => groupIds.includes(id))
+      if (matchedIds.length > bestMatch.count) {
+        bestMatch = { count: matchedIds.length, groupName: group.name, group }
       }
     }
 
-    console.log('No matching group found')
+    // If we found 3 out of 4 matches, return close match info
+    if (bestMatch.count === 3) {
+      return {
+        isCorrect: false,
+        isClose: true,
+        closeGroupName: bestMatch.groupName,
+        matchedCount: 3
+      }
+    }
+
     return { isCorrect: false }
   }
 
   function submit() {
-    if (selectedIdx.length !== 4 || isGameFinished) return
+    if (selectedIdx.length !== 4 || isGameFinished || isCompleted) return
 
     // Get the selected Pokemon objects from the remaining pool (not full pool)
     const selectedPokemon = selectedIdx.map(i => remainingPokemon[i])
 
     // Validate the selection
-    const { isCorrect, groupName, group } = validateSelection(selectedPokemon)
+    const { isCorrect, group, isClose, closeGroupName, matchedCount } =
+      validateSelection(selectedPokemon)
 
     if (!isCorrect) {
       // Increment incorrect attempts only when wrong
@@ -212,18 +269,27 @@ export default function PuzzlePage() {
         const levelId = currentPuzzleIndex + 1
         failLevel(levelId, newAttempts)
 
-        displayToast('Game Over! All groups have been revealed.')
+        displayToast('Game Over! All groups have been revealed.', false)
       } else {
-        // Show feedback for incorrect selection
-        const remainingAttempts = 4 - newAttempts
-        displayToast(
-          `Not quite right! These Pokémon aren't connected. Try again! (${remainingAttempts} attempts remaining)`
-        )
+        // Check if this is a close match (3 out of 4)
+        if (isClose && matchedCount === 3) {
+          const remainingAttempts = 4 - newAttempts
+          displayToast(
+            `Close! You found 3 out of 4 Pokémon from the "${closeGroupName}" group. Try again! (${remainingAttempts} attempts remaining)`,
+            true
+          )
+        } else {
+          // Show feedback for incorrect selection
+          const remainingAttempts = 4 - newAttempts
+          displayToast(
+            `Not quite right! These Pokémon aren't connected. Try again! (${remainingAttempts} attempts remaining)`,
+            true
+          )
+        }
         triggerShake()
       }
     } else {
-      // Show success message
-      displayToast(`Congratulations! You found the connection: ${groupName}!`)
+      // Correct match - no notification needed
 
       // Add to completed groups
       if (group) {
@@ -244,16 +310,20 @@ export default function PuzzlePage() {
         ) {
           // Track player progress
           const levelId = currentPuzzleIndex + 1
+          const completionTime = puzzleStartTime
+            ? Date.now() - puzzleStartTime
+            : 0
           completeLevel(levelId, {
             incorrectAttempts,
             totalGroups: puzzlesData.puzzles[currentPuzzleIndex].groups.length,
-            completedGroups: newCompletedGroups.length
+            completedGroups: newCompletedGroups.length,
+            timeSpent: completionTime,
+            pokedexUsage
           })
 
-          // Puzzle is complete! Navigate to completion page
-          setTimeout(() => {
-            navigate(`/levels/${currentPuzzleIndex}/complete`)
-          }, 1000) // Small delay to let the success message show
+          // Puzzle is complete! Show success message and set completed state
+          setIsCompleted(true)
+          setIsGameFinished(true)
         }
       }
     }
@@ -264,6 +334,7 @@ export default function PuzzlePage() {
   function handlePokedexLookup(pokemon: PokemonLite) {
     setPokedexPokemon(pokemon)
     setShowPokedexModal(true)
+    setPokedexUsage(prev => prev + 1) // Track pokedex usage
   }
 
   function handleClosePokedex() {
@@ -406,31 +477,57 @@ export default function PuzzlePage() {
 
           {/* Action buttons - directly below the grid */}
           <div className="flex-shrink-0 mt-4 flex flex-wrap justify-center items-center gap-1 md:gap-2 max-w-full overflow-hidden">
-            <button
-              onClick={submit}
-              className="px-2 md:px-4 py-2 md:py-3 rounded-xl bg-indigo-600 text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-indigo-700 active:bg-indigo-800 transition-colors duration-200 shadow-md hover:shadow-lg text-xs md:text-sm"
-              disabled={selectedIdx.length !== 4 || isGameFinished}
-            >
-              Submit Selection
-            </button>
-            <button
-              onClick={() => setSelectedIdx([])}
-              className="px-2 md:px-4 py-2 md:py-3 rounded-xl border-2 border-border bg-background-card text-text font-semibold hover:bg-background-secondary hover:border-border-secondary active:bg-background-tertiary transition-all duration-200 shadow-sm hover:shadow-md text-xs md:text-sm disabled:opacity-50 disabled:cursor-not-allowed"
-              disabled={isGameFinished}
-            >
-              Clear Selection
-            </button>
-            <button
-              onClick={() => {
-                setRemainingPokemon(prev =>
-                  [...prev].sort(() => Math.random() - 0.5)
-                )
-              }}
-              className="px-2 md:px-4 py-2 md:py-3 rounded-xl border-2 border-border bg-background-card text-text font-semibold hover:bg-background-secondary hover:border-border-secondary active:bg-background-tertiary transition-all duration-200 shadow-sm hover:shadow-md text-xs md:text-sm disabled:opacity-50 disabled:cursor-not-allowed"
-              disabled={isGameFinished}
-            >
-              🔀 Shuffle
-            </button>
+            {isCompleted ? (
+              /* Completed state buttons */
+              <>
+                <button
+                  onClick={() => navigate('/levels')}
+                  className="px-2 md:px-4 py-2 md:py-3 rounded-xl border-2 border-border bg-background-card text-text font-semibold hover:bg-background-secondary hover:border-border-secondary active:bg-background-tertiary transition-all duration-200 shadow-sm hover:shadow-md text-xs md:text-sm"
+                >
+                  Back to Levels
+                </button>
+                {puzzlesData &&
+                  currentPuzzleIndex < puzzlesData.puzzles.length - 1 && (
+                    <button
+                      onClick={() =>
+                        navigate(`/levels/${currentPuzzleIndex + 1}`)
+                      }
+                      className="px-2 md:px-4 py-2 md:py-3 rounded-xl bg-success text-white font-semibold hover:bg-success-dark active:bg-success-dark transition-colors duration-200 shadow-md hover:shadow-lg text-xs md:text-sm"
+                    >
+                      Next Level
+                    </button>
+                  )}
+              </>
+            ) : (
+              /* Active puzzle buttons */
+              <>
+                <button
+                  onClick={submit}
+                  className="px-2 md:px-4 py-2 md:py-3 rounded-xl bg-primary text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-primary-600 active:bg-primary-700 transition-colors duration-200 shadow-md hover:shadow-lg text-xs md:text-sm"
+                  disabled={selectedIdx.length !== 4 || isGameFinished}
+                >
+                  Submit Selection
+                </button>
+                <button
+                  onClick={() => setSelectedIdx([])}
+                  className="px-2 md:px-4 py-2 md:py-3 rounded-xl border-2 border-border bg-background-card text-text font-semibold hover:bg-background-secondary hover:border-border-secondary active:bg-background-tertiary transition-all duration-200 shadow-sm hover:shadow-md text-xs md:text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={isGameFinished}
+                >
+                  Clear Selection
+                </button>
+                <button
+                  onClick={() => {
+                    setRemainingPokemon(prev =>
+                      [...prev].sort(() => Math.random() - 0.5)
+                    )
+                  }}
+                  className="px-2 md:px-4 py-2 md:py-3 rounded-xl border-2 border-border bg-background-card text-text font-semibold hover:bg-background-secondary hover:border-border-secondary active:bg-background-tertiary transition-all duration-200 shadow-sm hover:shadow-md text-xs md:text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={isGameFinished}
+                >
+                  🔀 Shuffle
+                </button>
+              </>
+            )}
           </div>
         </div>
 
@@ -442,8 +539,12 @@ export default function PuzzlePage() {
 
       {/* Toast Notification */}
       {showToast && (
-        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
-          <div className="bg-background-modal text-inverse px-6 py-3 rounded-lg shadow-lg border border-border animate-bounce">
+        <div className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50">
+          <div
+            className={`bg-background-modal text-text px-6 py-3 rounded-lg shadow-lg border border-border ${
+              toastShouldBounce ? 'animate-bounce-in' : ''
+            }`}
+          >
             <p className="text-sm font-medium">{toastMessage}</p>
           </div>
         </div>
