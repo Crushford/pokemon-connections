@@ -3,7 +3,7 @@ import type { PokemonLite } from '../types'
 function TypeBadge({ t }: { t: string }) {
   // Pokemon type colors - using custom colors from Tailwind config
   const typeColors: Record<string, string> = {
-    normal: 'bg-gray-400 border-gray-500 text-white',
+    normal: 'bg-secondary-400 border-secondary-500 text-white',
     fire: 'bg-pokemon-fire border-red-600 text-white',
     water: 'bg-pokemon-water border-blue-600 text-white',
     electric: 'bg-pokemon-electric border-yellow-500 text-gray-900',
@@ -24,7 +24,8 @@ function TypeBadge({ t }: { t: string }) {
   }
 
   const colors =
-    typeColors[t.toLowerCase()] || 'bg-gray-400 border-gray-500 text-white'
+    typeColors[t.toLowerCase()] ||
+    'bg-secondary-400 border-secondary-500 text-white'
 
   return (
     <span

@@ -79,10 +79,10 @@ export default function LevelsPage() {
 
   if (loading) {
     return (
-      <div className="h-dvh w-screen flex items-center justify-center p-4">
+      <div className="h-dvh w-screen flex items-center justify-center p-4 bg-background">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
-          <p className="text-zinc-600">Loading levels...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className=" text-muted">Loading levels...</p>
         </div>
       </div>
     )
@@ -90,12 +90,12 @@ export default function LevelsPage() {
 
   if (!puzzlesData) {
     return (
-      <div className="h-dvh w-screen flex items-center justify-center p-4">
+      <div className="h-dvh w-screen flex items-center justify-center p-4 bg-background">
         <div className="text-center">
-          <p className="text-red-600 mb-4">Failed to load levels</p>
+          <p className="text-error mb-4">Failed to load levels</p>
           <button
             onClick={() => window.location.reload()}
-            className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+            className="px-4 py-2 bg-primary  text-inverse rounded-lg hover:bg-primary-600"
           >
             Retry
           </button>
@@ -105,10 +105,12 @@ export default function LevelsPage() {
   }
 
   return (
-    <div className="h-dvh w-screen overflow-hidden flex flex-col p-4">
+    <div className="h-dvh w-screen overflow-hidden flex flex-col p-4 bg-background">
       <header className="flex-shrink-0 text-center mb-6">
-        <h1 className="text-2xl md:text-3xl font-bold">Pokémon Connections</h1>
-        <p className="text-xs md:text-sm text-zinc-600 mt-2">
+        <h1 className="text-2xl md:text-3xl font-bold text-text">
+          Pokémon Connections
+        </h1>
+        <p className="text-xs md:text-sm text-secondary mt-2">
           Select a level to play
         </p>
       </header>
@@ -127,12 +129,12 @@ export default function LevelsPage() {
                 <button
                   key={index}
                   onClick={() => handleLevelSelect(index)}
-                  className={`group relative rounded-xl p-3 hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 ${
+                  className={`group relative rounded-xl p-3 hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
                     isCompleted
-                      ? 'bg-green-50 border-2 border-green-200 hover:border-green-300'
+                      ? 'bg-success-light border-2 border-success hover:border-success-dark'
                       : isFailed
-                      ? 'bg-red-50 border-2 border-red-200 hover:border-red-300'
-                      : 'bg-white border-2 border-zinc-200 hover:border-indigo-400'
+                      ? 'bg-error-light border-2 border-error hover:border-error-dark'
+                      : 'bg-background-card border-2 border-border hover:border-primary'
                   }`}
                 >
                   {/* Pokemon sprite */}
@@ -144,8 +146,8 @@ export default function LevelsPage() {
                         className="object-contain"
                       />
                     ) : (
-                      <div className="h-12 w-12 md:h-16 md:w-16 bg-gray-200 rounded-full flex items-center justify-center">
-                        <span className="text-zinc-500 text-xs font-medium">
+                      <div className="h-12 w-12 md:h-16 md:w-16 bg-background-tertiary rounded-full flex items-center justify-center">
+                        <span className=" text-muted text-xs font-medium">
                           ?
                         </span>
                       </div>
@@ -153,7 +155,7 @@ export default function LevelsPage() {
                   </div>
                   {/* Status indicators */}
                   {isCompleted && (
-                    <div className="absolute top-2 left-2 h-6 w-6 rounded-full bg-green-500 border-2 border-green-400 flex items-center justify-center shadow-md">
+                    <div className="absolute top-2 left-2 h-6 w-6 rounded-full bg-success border-2 border-success-light flex items-center justify-center shadow-md">
                       <svg
                         className="h-3 w-3 text-white"
                         fill="currentColor"
@@ -169,7 +171,7 @@ export default function LevelsPage() {
                   )}
 
                   {isFailed && (
-                    <div className="absolute top-2 left-2 h-6 w-6 rounded-full bg-red-500 border-2 border-red-400 flex items-center justify-center shadow-md">
+                    <div className="absolute top-2 left-2 h-6 w-6 rounded-full bg-error border-2 border-error-light flex items-center justify-center shadow-md">
                       <svg
                         className="h-3 w-3 text-white"
                         fill="currentColor"
@@ -193,14 +195,14 @@ export default function LevelsPage() {
                       height="12"
                       className="opacity-60"
                     />
-                    <span className="text-xs font-medium text-zinc-600">
+                    <span className="text-xs font-medium text-secondary">
                       {index + 1}
                     </span>
                   </div>
 
                   {/* Hover effect overlay */}
-                  <div className="absolute inset-0 bg-indigo-50 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
-                    <span className="text-indigo-600 font-semibold text-sm">
+                  <div className="absolute inset-0 bg-primary-50 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                    <span className="text-primary font-semibold text-sm">
                       {isCompleted
                         ? 'View Solution'
                         : isFailed

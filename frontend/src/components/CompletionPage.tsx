@@ -73,10 +73,10 @@ export default function CompletionPage() {
 
   if (isLoading) {
     return (
-      <div className="h-dvh flex items-center justify-center p-4">
+      <div className="h-dvh flex items-center justify-center p-4 bg-background">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
-          <p className="text-zinc-600">Loading completion...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted">Loading completion...</p>
         </div>
       </div>
     )

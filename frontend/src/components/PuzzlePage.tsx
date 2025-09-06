@@ -272,55 +272,55 @@ export default function PuzzlePage() {
 
   function getTypeColor(type: string): string {
     const colors: Record<string, string> = {
-      normal: 'bg-gray-400',
-      fire: 'bg-red-500',
-      water: 'bg-blue-500',
-      electric: 'bg-yellow-400',
-      grass: 'bg-green-500',
-      ice: 'bg-blue-200',
-      fighting: 'bg-red-700',
-      poison: 'bg-purple-500',
-      ground: 'bg-yellow-600',
-      flying: 'bg-indigo-400',
-      psychic: 'bg-pink-500',
-      bug: 'bg-green-400',
-      rock: 'bg-yellow-700',
-      ghost: 'bg-purple-700',
-      dragon: 'bg-indigo-700',
-      dark: 'bg-gray-700',
-      steel: 'bg-gray-500',
-      fairy: 'bg-pink-300'
+      normal: 'bg-secondary-400',
+      fire: 'bg-pokemon-fire',
+      water: 'bg-pokemon-water',
+      electric: 'bg-pokemon-electric',
+      grass: 'bg-pokemon-grass',
+      ice: 'bg-pokemon-ice',
+      fighting: 'bg-pokemon-fighting',
+      poison: 'bg-pokemon-poison',
+      ground: 'bg-pokemon-ground',
+      flying: 'bg-pokemon-flying',
+      psychic: 'bg-pokemon-psychic',
+      bug: 'bg-pokemon-bug',
+      rock: 'bg-pokemon-rock',
+      ghost: 'bg-pokemon-ghost',
+      dragon: 'bg-pokemon-dragon',
+      dark: 'bg-pokemon-dark',
+      steel: 'bg-pokemon-steel',
+      fairy: 'bg-pokemon-fairy'
     }
-    return colors[type] || 'bg-gray-400'
+    return colors[type] || 'bg-secondary-400'
   }
 
   // Show loading state while puzzle data is being fetched
   if (isLoading) {
     return (
-      <div className="h-dvh flex items-center justify-center p-4">
+      <div className="h-dvh flex items-center justify-center p-4 bg-background">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
-          <p className="text-zinc-600">Loading puzzle...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted">Loading puzzle...</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="h-dvh w-screen overflow-hidden flex flex-col p-4">
+    <div className="h-dvh w-screen overflow-hidden flex flex-col p-4 bg-background">
       <header className="flex-shrink-0">
         {/* Main header content */}
         <div className="text-center">
-          <h1 className="text-2xl md:text-3xl font-bold">
+          <h1 className="text-2xl md:text-3xl font-bold text-text">
             Pokémon Connections
           </h1>
-          <p className="text-xs md:text-sm text-zinc-600">
+          <p className="text-xs md:text-sm text-secondary">
             Below are 16 Pokémon, you need to sort them into 4 groups of 4. If
             you're feeling stuck, you can click on the Pokedex to learn more
             about each Pokémon.
           </p>
           {puzzlesData && (
-            <p className="text-xs md:text-sm text-indigo-600 font-medium mt-1">
+            <p className="text-xs md:text-sm text-primary font-medium mt-1">
               Puzzle {currentPuzzleIndex + 1} of {puzzlesData.puzzles.length}
             </p>
           )}
@@ -332,33 +332,33 @@ export default function PuzzlePage() {
         <div className="flex-1 md:max-w-[40rem] w-full  flex flex-col">
           <div className="flex-shrink-0 flex justify-between items-center mb-3">
             <div className="w-1/2 text-left">
-              <span className="text-xs md:text-sm font-medium text-zinc-600">
+              <span className="text-xs md:text-sm font-medium text-secondary">
                 {selectedIdx.length > 0 &&
                   `${selectedIdx.length}/4 Pokémon selected`}
               </span>
             </div>
             <div className="w-1/2 text-right">
-              <span className="text-xs md:text-sm font-semibold text-orange-600">
+              <span className="text-xs md:text-sm font-semibold text-warning">
                 Attempts remaining: {Math.max(0, 4 - incorrectAttempts)}
               </span>
             </div>
           </div>
 
           {/* Grid Container with Completed Groups and Remaining Pokemon */}
-          <div className=" border border-zinc-300 rounded-lg overflow-hidden bg-zinc-50 flex flex-col">
+          <div className=" border border-border rounded-lg overflow-hidden bg-background-secondary flex flex-col">
             {/* Completed Groups Section */}
             {completedGroups && completedGroups.length > 0 && (
-              <div className="flex-shrink-0 p-2 md:p-4 border-b border-zinc-200 bg-green-50">
-                <h3 className="text-sm md:text-lg font-semibold mb-2 text-center text-green-800">
+              <div className="flex-shrink-0 p-2 md:p-4 border-b border-border bg-success-light">
+                <h3 className="text-sm md:text-lg font-semibold mb-2 text-center text-success-dark">
                   Completed Groups
                 </h3>
                 <div className="space-y-2">
                   {completedGroups.map(group => (
                     <div
                       key={group.id}
-                      className="bg-white p-2 md:p-3 rounded-lg shadow-sm border-l-4 border-green-500"
+                      className="bg-background-card p-2 md:p-3 rounded-lg shadow-sm border-l-4 border-success"
                     >
-                      <h4 className="text-xs md:text-sm font-medium mb-1 text-center text-green-700">
+                      <h4 className="text-xs md:text-sm font-medium mb-1 text-center text-success-dark">
                         {group.name}
                       </h4>
                       <div className="flex flex-wrap gap-1 md:gap-2 justify-center">
@@ -415,7 +415,7 @@ export default function PuzzlePage() {
             </button>
             <button
               onClick={() => setSelectedIdx([])}
-              className="px-2 md:px-4 py-2 md:py-3 rounded-xl border-2 border-zinc-300 bg-white text-zinc-700 font-semibold hover:bg-zinc-50 hover:border-zinc-400 active:bg-zinc-100 transition-all duration-200 shadow-sm hover:shadow-md text-xs md:text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-2 md:px-4 py-2 md:py-3 rounded-xl border-2 border-border bg-background-card text-text font-semibold hover:bg-background-secondary hover:border-border-secondary active:bg-background-tertiary transition-all duration-200 shadow-sm hover:shadow-md text-xs md:text-sm disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={isGameFinished}
             >
               Clear Selection
@@ -426,7 +426,7 @@ export default function PuzzlePage() {
                   [...prev].sort(() => Math.random() - 0.5)
                 )
               }}
-              className="px-2 md:px-4 py-2 md:py-3 rounded-xl border-2 border-zinc-300 bg-white text-zinc-700 font-semibold hover:bg-zinc-50 hover:border-zinc-400 active:bg-zinc-100 transition-all duration-200 shadow-sm hover:shadow-md text-xs md:text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-2 md:px-4 py-2 md:py-3 rounded-xl border-2 border-border bg-background-card text-text font-semibold hover:bg-background-secondary hover:border-border-secondary active:bg-background-tertiary transition-all duration-200 shadow-sm hover:shadow-md text-xs md:text-sm disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={isGameFinished}
             >
               🔀 Shuffle
@@ -443,7 +443,7 @@ export default function PuzzlePage() {
       {/* Toast Notification */}
       {showToast && (
         <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
-          <div className="bg-zinc-800 text-white px-6 py-3 rounded-lg shadow-lg border border-zinc-700 animate-bounce">
+          <div className="bg-background-modal text-inverse px-6 py-3 rounded-lg shadow-lg border border-border animate-bounce">
             <p className="text-sm font-medium">{toastMessage}</p>
           </div>
         </div>

@@ -22,14 +22,14 @@ export default function PokemonCard({
       tabIndex={0}
       className={[
         'relative w-full h-full',
-        'border-2 bg-white',
+        'border-2 bg-background-card',
         disabled
-          ? 'border-zinc-300 bg-zinc-100 opacity-60 cursor-not-allowed'
+          ? 'border-border-secondary bg-background-tertiary opacity-60 cursor-not-allowed'
           : selected
-          ? 'border-indigo-600 shadow-lg shadow-indigo-200'
-          : 'border-zinc-200 hover:border-zinc-400 hover:shadow-md',
+          ? 'border-primary shadow-lg shadow-primary-200'
+          : 'border-border hover:border-border-secondary hover:shadow-md',
         !disabled &&
-          'focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-1',
+          'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1',
         !disabled && 'cursor-pointer transition-all duration-200 ease-in-out',
         !disabled && 'hover:scale-[1.02] active:scale-[0.98]',
         shake ? 'animate-shake' : ''
@@ -45,7 +45,7 @@ export default function PokemonCard({
           e.stopPropagation()
           onPokedexLookup()
         }}
-        className="absolute top-1 right-1 z-10 h-6 w-6 flex items-center justify-center hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1 transition-all duration-150"
+        className="absolute top-1 right-1 z-10 h-6 w-6 flex items-center justify-center hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1 transition-all duration-150"
       >
         <img
           src="/src/assets/pokedex.png"
@@ -57,7 +57,7 @@ export default function PokemonCard({
 
       {/* Selection indicator - top left corner */}
       {selected && (
-        <div className="absolute top-2 left-2 z-10 h-7 w-7 rounded-full bg-green-500 border-2 border-green-400 flex items-center justify-center shadow-md">
+        <div className="absolute top-2 left-2 z-10 h-7 w-7 rounded-full bg-success border-2 border-success-light flex items-center justify-center shadow-md">
           <svg
             className="h-4 w-4 text-white"
             fill="currentColor"
@@ -81,15 +81,15 @@ export default function PokemonCard({
             className="h-full w-full object-contain max-h-full max-w-full"
           />
         ) : (
-          <div className="h-24 w-24 bg-gray-200 rounded-full flex items-center justify-center">
-            <span className="text-zinc-500 text-xs font-medium">?</span>
+          <div className="h-24 w-24 bg-background-tertiary rounded-full flex items-center justify-center">
+            <span className=" text-muted text-xs font-medium">?</span>
           </div>
         )}
       </div>
 
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-blue-400"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-primary-400"></div>
       </div>
     </div>
   )

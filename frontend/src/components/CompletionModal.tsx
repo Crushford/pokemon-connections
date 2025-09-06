@@ -25,7 +25,7 @@ export default function CompletionModal({
 
   return (
     <div className="h-dvh fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 h-full overflow-hidden flex flex-col">
+      <div className="bg-background-card rounded-2xl shadow-2xl max-w-md w-full mx-4 h-full overflow-hidden flex flex-col">
         {/* Header */}
         <div className="bg-gradient-to-r from-green-500 to-emerald-600 px-4 py-4 md:py-6 text-center flex-shrink-0">
           <div className="text-3xl md:text-5xl mb-1 md:mb-2">🎉</div>
@@ -39,7 +39,7 @@ export default function CompletionModal({
 
         {/* Stats Section - Scrollable */}
         <div className="px-4 py-3 md:py-4 overflow-y-auto flex-1 min-h-0">
-          <h3 className="text-lg font-bold text-gray-800 mb-3 text-center">
+          <h3 className="text-lg font-bold text-text mb-3 text-center">
             Your Performance
           </h3>
 
@@ -54,10 +54,10 @@ export default function CompletionModal({
                     </span>
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-800 text-sm md:text-base">
+                    <p className="font-semibold text-text text-sm md:text-base">
                       Perfect!
                     </p>
-                    <p className="text-xs md:text-sm text-gray-600">
+                    <p className="text-xs md:text-sm text-secondary">
                       You did it without any mistakes
                     </p>
                   </div>
@@ -73,10 +73,10 @@ export default function CompletionModal({
                     </span>
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-800 text-sm md:text-base">
+                    <p className="font-semibold text-text text-sm md:text-base">
                       Wrong Attempts
                     </p>
-                    <p className="text-xs md:text-sm text-gray-600">
+                    <p className="text-xs md:text-sm text-secondary">
                       Times you guessed incorrectly
                     </p>
                   </div>
@@ -92,7 +92,7 @@ export default function CompletionModal({
         </div>
 
         {/* Action Buttons */}
-        <div className="px-4 py-3 bg-gray-50 border-t border-gray-200 flex-shrink-0">
+        <div className="px-4 py-3 bg-background-secondary border-t border-border flex-shrink-0">
           <div className="flex flex-col md:flex-row gap-2">
             {!isLastPuzzle ? (
               <>
@@ -104,7 +104,7 @@ export default function CompletionModal({
                 </button>
                 <button
                   onClick={onClose}
-                  className="px-4 md:px-6 py-2 md:py-3 border-2 border-gray-300 bg-white text-gray-700 font-semibold rounded-lg hover:bg-gray-50 hover:border-gray-400 active:bg-gray-100 transition-all duration-200 text-sm md:text-base"
+                  className="px-4 md:px-6 py-2 md:py-3 border-2 border-border bg-background-card text-text font-semibold rounded-lg hover:bg-background-secondary hover:border-border-secondary active:bg-background-tertiary transition-all duration-200 text-sm md:text-base"
                 >
                   Stay Here
                 </button>
