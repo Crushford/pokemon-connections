@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { fetchPuzzles } from '../lib/api'
+import { usePlayer } from '../contexts/PlayerContext'
 import type { PokemonLite } from '../types'
 
 interface Puzzle {
@@ -22,6 +23,7 @@ export default function LevelsPage() {
   const [pokemonData, setPokemonData] = useState<PokemonLite[]>([])
   const [loading, setLoading] = useState(true)
   const navigate = useNavigate()
+  const { isLevelCompleted, isLevelFailed } = usePlayer()
 
   useEffect(() => {
     const loadData = async () => {
@@ -59,7 +61,16 @@ export default function LevelsPage() {
   }, [])
 
   const handleLevelSelect = (puzzleIndex: number) => {
-    navigate(`/levels/${puzzleIndex}`)
+    const levelId = puzzleIndex + 1
+    const isCompleted = isLevelCompleted(levelId)
+
+    if (isCompleted) {
+      // For completed levels, show the solved puzzle
+      navigate(`/levels/${puzzleIndex}/complete`)
+    } else {
+      // For new or failed levels, start the puzzle
+      navigate(`/levels/${puzzleIndex}`)
+    }
   }
 
   const getPokemonById = (id: number): PokemonLite | null => {
@@ -108,12 +119,21 @@ export default function LevelsPage() {
             {puzzlesData.puzzles.map((_, index) => {
               const pokemonId = index + 1
               const pokemon = getPokemonById(pokemonId)
+              const levelId = index + 1
+              const isCompleted = isLevelCompleted(levelId)
+              const isFailed = isLevelFailed(levelId)
 
               return (
                 <button
                   key={index}
                   onClick={() => handleLevelSelect(index)}
-                  className="group relative bg-white border-2 border-zinc-200 rounded-xl p-3 hover:border-indigo-400 hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
+                  className={`group relative rounded-xl p-3 hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 ${
+                    isCompleted
+                      ? 'bg-green-50 border-2 border-green-200 hover:border-green-300'
+                      : isFailed
+                      ? 'bg-red-50 border-2 border-red-200 hover:border-red-300'
+                      : 'bg-white border-2 border-zinc-200 hover:border-indigo-400'
+                  }`}
                 >
                   {/* Pokemon sprite */}
                   <div className="flex justify-center mb-2">
@@ -131,6 +151,39 @@ export default function LevelsPage() {
                       </div>
                     )}
                   </div>
+                  {/* Status indicators */}
+                  {isCompleted && (
+                    <div className="absolute top-2 left-2 h-6 w-6 rounded-full bg-green-500 border-2 border-green-400 flex items-center justify-center shadow-md">
+                      <svg
+                        className="h-3 w-3 text-white"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                  )}
+
+                  {isFailed && (
+                    <div className="absolute top-2 left-2 h-6 w-6 rounded-full bg-red-500 border-2 border-red-400 flex items-center justify-center shadow-md">
+                      <svg
+                        className="h-3 w-3 text-white"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                  )}
+
                   {/* Level number and Pokedex icon in bottom right */}
                   <div className="absolute bottom-2 right-2 flex items-center gap-1">
                     <img
@@ -148,7 +201,11 @@ export default function LevelsPage() {
                   {/* Hover effect overlay */}
                   <div className="absolute inset-0 bg-indigo-50 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
                     <span className="text-indigo-600 font-semibold text-sm">
-                      Play
+                      {isCompleted
+                        ? 'View Solution'
+                        : isFailed
+                        ? 'Retry'
+                        : 'Play'}
                     </span>
                   </div>
                 </button>

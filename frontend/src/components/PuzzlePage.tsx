@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import PokemonCard from './PokemonCard'
 import Pokedex from './Pokedex'
+import { usePlayer } from '../contexts/PlayerContext'
 import type { PokemonLite } from '../types'
 
 type PuzzleGroup = {
@@ -26,6 +27,7 @@ export default function PuzzlePage() {
   const { puzzleId } = useParams<{ puzzleId: string }>()
   const navigate = useNavigate()
   const currentPuzzleIndex = parseInt(puzzleId || '0', 10)
+  const { completeLevel, failLevel, updateAttempts } = usePlayer()
 
   const [puzzlesData, setPuzzlesData] = useState<PuzzlesData | null>(null)
   const [pokemonData, setPokemonData] = useState<PokemonData>([])
@@ -100,7 +102,6 @@ export default function PuzzlePage() {
   const [toastMessage, setToastMessage] = useState<string>('')
   const [shakeCards, setShakeCards] = useState<boolean>(false)
   const [isGameFinished, setIsGameFinished] = useState<boolean>(false)
-  const [showMenu, setShowMenu] = useState<boolean>(false)
 
   function toggleSelect(i: number) {
     if (isGameFinished) return // Don't allow selection when game is finished
@@ -197,11 +198,20 @@ export default function PuzzlePage() {
       const newAttempts = incorrectAttempts + 1
       setIncorrectAttempts(newAttempts)
 
+      // Track attempts in player context
+      const levelId = currentPuzzleIndex + 1
+      updateAttempts(levelId, newAttempts)
+
       // Check if we've reached the 4-attempt limit
       if (newAttempts >= 4) {
         // Game finished - reveal all remaining groups
         setIsGameFinished(true)
         revealAllGroups()
+
+        // Track failure in player context
+        const levelId = currentPuzzleIndex + 1
+        failLevel(levelId, newAttempts)
+
         displayToast('Game Over! All groups have been revealed.')
       } else {
         // Show feedback for incorrect selection
@@ -232,6 +242,14 @@ export default function PuzzlePage() {
           newCompletedGroups.length ===
             puzzlesData.puzzles[currentPuzzleIndex].groups.length
         ) {
+          // Track player progress
+          const levelId = currentPuzzleIndex + 1
+          completeLevel(levelId, {
+            incorrectAttempts,
+            totalGroups: puzzlesData.puzzles[currentPuzzleIndex].groups.length,
+            completedGroups: newCompletedGroups.length
+          })
+
           // Puzzle is complete! Navigate to completion page
           setTimeout(() => {
             navigate(`/levels/${currentPuzzleIndex}/complete`)
@@ -252,27 +270,7 @@ export default function PuzzlePage() {
     setShowPokedexModal(false)
   }
 
-  function handleNextPuzzle() {
-    if (puzzlesData && currentPuzzleIndex < puzzlesData.puzzles.length - 1) {
-      navigate(`/levels/${currentPuzzleIndex + 1}`)
-    } else {
-      // No more puzzles, show end message
-      displayToast("🎉 Congratulations! You've completed all puzzles!")
-    }
-  }
 
-  function handleMenuToggle() {
-    setShowMenu(!showMenu)
-  }
-
-  function handleGoToLevelSelection() {
-    navigate('/levels')
-  }
-
-  function handleNextLevel() {
-    handleNextPuzzle()
-    setShowMenu(false)
-  }
 
   function getTypeColor(type: string): string {
     const colors: Record<string, string> = {
@@ -312,67 +310,9 @@ export default function PuzzlePage() {
 
   return (
     <div className="h-dvh w-screen overflow-hidden flex flex-col p-4">
-      <header className="flex-shrink-0 relative">
-        {/* Menu button - top right */}
-        <button
-          onClick={handleMenuToggle}
-          className="absolute top-0 right-0 p-2 rounded-lg bg-white border border-zinc-200 hover:border-zinc-300 hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
-          aria-label="Open menu"
-        >
-          <svg
-            className="h-5 w-5 text-zinc-600"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
-
-        {/* Menu dropdown */}
-        {showMenu && (
-          <div className="absolute top-12 right-0 z-50 w-64 bg-white border border-zinc-200 rounded-lg shadow-lg">
-            <div className="p-4">
-              <div className="mb-4">
-                <h3 className="font-semibold text-zinc-800 mb-2">Level Info</h3>
-                <p className="text-sm text-zinc-600">
-                  Level: {currentPuzzleIndex + 1} of{' '}
-                  {puzzlesData?.puzzles.length || 0}
-                </p>
-                <p className="text-sm text-zinc-600">
-                  Puzzle Index: {currentPuzzleIndex}
-                </p>
-              </div>
-
-              <div className="space-y-2">
-                <button
-                  onClick={handleGoToLevelSelection}
-                  className="w-full px-3 py-2 text-left text-sm bg-indigo-50 text-indigo-700 rounded-lg hover:bg-indigo-100 transition-colors duration-200"
-                >
-                  To Level Selection
-                </button>
-
-                {puzzlesData &&
-                  currentPuzzleIndex < puzzlesData.puzzles.length - 1 && (
-                    <button
-                      onClick={handleNextLevel}
-                      className="w-full px-3 py-2 text-left text-sm bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-colors duration-200"
-                    >
-                      Next Level
-                    </button>
-                  )}
-              </div>
-            </div>
-          </div>
-        )}
-
+      <header className="flex-shrink-0">
         {/* Main header content */}
-        <div className="text-center pr-16">
+        <div className="text-center">
           <h1 className="text-2xl md:text-3xl font-bold">
             Pokémon Connections
           </h1>
