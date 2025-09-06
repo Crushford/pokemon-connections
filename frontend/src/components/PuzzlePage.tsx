@@ -270,8 +270,6 @@ export default function PuzzlePage() {
     setShowPokedexModal(false)
   }
 
-
-
   function getTypeColor(type: string): string {
     const colors: Record<string, string> = {
       normal: 'bg-gray-400',
