@@ -1,4 +1,5 @@
 import type { PokemonLite } from '../types'
+import pokedexIcon from '../assets/pokedex.png'
 
 export default function PokemonCard({
   mon,
@@ -47,12 +48,7 @@ export default function PokemonCard({
         }}
         className="absolute top-1 right-1 z-10 h-6 w-6 flex items-center justify-center hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1 transition-all duration-150"
       >
-        <img
-          src="/src/assets/pokedex.png"
-          alt="Pokedex"
-          width="16"
-          height="16"
-        />
+        <img src={pokedexIcon} alt="Pokedex" width="16" height="16" />
       </button>
 
       {/* Selection indicator - top left corner */}
