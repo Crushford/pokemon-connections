@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { fetchPuzzles } from '../lib/api'
 import { usePlayer } from '../contexts/PlayerContext'
 import type { PokemonLite } from '../types'
+import pokedexIcon from '../assets/pokedex.png'
 
 interface Puzzle {
   groups: {
@@ -189,7 +190,7 @@ export default function LevelsPage() {
                   {/* Level number and Pokedex icon in bottom right */}
                   <div className="absolute bottom-2 right-2 flex items-center gap-1">
                     <img
-                      src="/src/assets/pokedex.png"
+                      src={pokedexIcon}
                       alt="Pokedex"
                       width="12"
                       height="12"
