@@ -1,31 +1,31 @@
-import type { PokemonLite } from '../types'
+import type { PokemonLite } from "../types";
 
 function TypeBadge({ t }: { t: string }) {
   // Pokemon type colors - using custom colors from Tailwind config
   const typeColors: Record<string, string> = {
-    normal: 'bg-secondary-400 border-secondary-500 text-white',
-    fire: 'bg-pokemon-fire border-red-600 text-white',
-    water: 'bg-pokemon-water border-blue-600 text-white',
-    electric: 'bg-pokemon-electric border-yellow-500 text-gray-900',
-    grass: 'bg-pokemon-grass border-green-600 text-white',
-    ice: 'bg-pokemon-ice border-cyan-400 text-gray-900',
-    fighting: 'bg-pokemon-fighting border-red-800 text-white',
-    poison: 'bg-pokemon-poison border-purple-600 text-white',
-    ground: 'bg-pokemon-ground border-amber-700 text-white',
-    flying: 'bg-pokemon-flying border-indigo-500 text-white',
-    psychic: 'bg-pokemon-psychic border-pink-600 text-white',
-    bug: 'bg-pokemon-bug border-lime-600 text-white',
-    rock: 'bg-pokemon-rock border-amber-900 text-white',
-    ghost: 'bg-pokemon-ghost border-purple-800 text-white',
-    dragon: 'bg-pokemon-dragon border-indigo-800 text-white',
-    dark: 'bg-pokemon-dark border-gray-800 text-white',
-    steel: 'bg-pokemon-steel border-gray-600 text-white',
-    fairy: 'bg-pokemon-fairy border-pink-400 text-gray-900'
-  }
+    normal: "bg-secondary-400 border-secondary-500 text-white",
+    fire: "bg-pokemon-fire border-red-600 text-white",
+    water: "bg-pokemon-water border-blue-600 text-white",
+    electric: "bg-pokemon-electric border-yellow-500 text-gray-900",
+    grass: "bg-pokemon-grass border-green-600 text-white",
+    ice: "bg-pokemon-ice border-cyan-400 text-gray-900",
+    fighting: "bg-pokemon-fighting border-red-800 text-white",
+    poison: "bg-pokemon-poison border-purple-600 text-white",
+    ground: "bg-pokemon-ground border-amber-700 text-white",
+    flying: "bg-pokemon-flying border-indigo-500 text-white",
+    psychic: "bg-pokemon-psychic border-pink-600 text-white",
+    bug: "bg-pokemon-bug border-lime-600 text-white",
+    rock: "bg-pokemon-rock border-amber-900 text-white",
+    ghost: "bg-pokemon-ghost border-purple-800 text-white",
+    dragon: "bg-pokemon-dragon border-indigo-800 text-white",
+    dark: "bg-pokemon-dark border-gray-800 text-white",
+    steel: "bg-pokemon-steel border-gray-600 text-white",
+    fairy: "bg-pokemon-fairy border-pink-400 text-gray-900",
+  };
 
   const colors =
     typeColors[t.toLowerCase()] ||
-    'bg-secondary-400 border-secondary-500 text-white'
+    "bg-secondary-400 border-secondary-500 text-white";
 
   return (
     <span
@@ -33,44 +33,44 @@ function TypeBadge({ t }: { t: string }) {
     >
       {t}
     </span>
-  )
+  );
 }
 
 function Stat({ label, v }: { label: string; v: number }) {
   // Color code stats based on value ranges
   const getStatColor = (value: number) => {
-    if (value >= 120) return 'text-red-600'
-    if (value >= 100) return 'text-orange-600'
-    if (value >= 80) return 'text-yellow-600'
-    if (value >= 60) return 'text-green-600'
-    return 'text-blue-600'
-  }
+    if (value >= 120) return "text-red-600";
+    if (value >= 100) return "text-orange-600";
+    if (value >= 80) return "text-yellow-600";
+    if (value >= 60) return "text-green-600";
+    return "text-blue-600";
+  };
 
   return (
-    <div className="flex items-center justify-between border-b border-zinc-200 py-2.5">
-      <span className="text-sm font-semibold text-zinc-700">{label}</span>
+    <div className="flex items-center justify-between border-b border-zinc-600 py-2.5">
+      <span className="text-sm font-semibold text-zinc-300">{label}</span>
       <span className={`font-bold text-lg ${getStatColor(v)}`}>{v}</span>
     </div>
-  )
+  );
 }
 
 function Meta({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-center justify-between border-b border-zinc-200 py-2.5">
-      <span className="text-sm font-semibold text-zinc-700">{label}</span>
-      <span className="font-semibold text-zinc-900">{value}</span>
+    <div className="flex items-center justify-between border-b border-zinc-600 py-2.5">
+      <span className="text-sm font-semibold text-zinc-300">{label}</span>
+      <span className="font-semibold text-zinc-100">{value}</span>
     </div>
-  )
+  );
 }
 
 export default function Pokedex({
   selectedPokemon,
   isOpen = false,
-  onClose
+  onClose,
 }: {
-  selectedPokemon: PokemonLite | null
-  isOpen?: boolean
-  onClose?: () => void
+  selectedPokemon: PokemonLite | null;
+  isOpen?: boolean;
+  onClose?: () => void;
 }) {
   const PokedexContent = () => (
     <div className="w-80 h-[70vh] bg-red-600 rounded-3xl p-6 shadow-2xl border-4 border-red-800 relative overflow-hidden">
@@ -106,7 +106,7 @@ export default function Pokedex({
       <div className="text-center mb-6 relative z-10">
         <div className="w-20 h-20 bg-blue-500 rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg border-4 border-blue-700">
           <div className="w-14 h-14 bg-yellow-400 rounded-full flex items-center justify-center shadow-inner">
-            <div className="w-8 h-8 bg-white rounded-full shadow-inner"></div>
+            <div className="w-8 h-8 bg-gray-800 rounded-full shadow-inner"></div>
           </div>
         </div>
         <h2 className="text-3xl font-bold text-white mb-2 drop-shadow-lg">
@@ -116,7 +116,7 @@ export default function Pokedex({
       </div>
 
       {/* Screen area */}
-      <div className="bg-white rounded-2xl p-5 h-96 overflow-y-auto shadow-inner border-2 border-gray-300 relative z-10">
+      <div className="bg-gray-800 rounded-2xl p-5 h-96 overflow-y-auto shadow-inner border-2 border-gray-600 relative z-10">
         {selectedPokemon ? (
           <div className="space-y-5">
             {/* Pokemon header */}
@@ -129,21 +129,21 @@ export default function Pokedex({
                     className="h-28 w-28 object-contain drop-shadow-lg"
                   />
                 ) : (
-                  <div className="h-28 w-28 bg-gray-200 rounded-full flex items-center justify-center">
-                    <span className="text-gray-500 text-sm font-medium">
+                  <div className="h-28 w-28 bg-gray-700 rounded-full flex items-center justify-center">
+                    <span className="text-gray-300 text-sm font-medium">
                       No Image
                     </span>
                   </div>
                 )}
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 capitalize mb-2">
+              <h3 className="text-2xl font-bold text-gray-100 capitalize mb-2">
                 {selectedPokemon.name}
               </h3>
-              <div className="text-lg font-bold text-blue-600 mb-4 bg-blue-50 px-4 py-2 rounded-full inline-block">
-                #{selectedPokemon.id.toString().padStart(3, '0')}
+              <div className="text-lg font-bold text-blue-400 mb-4 bg-blue-900 px-4 py-2 rounded-full inline-block">
+                #{selectedPokemon.id.toString().padStart(3, "0")}
               </div>
               <div className="flex justify-center gap-3">
-                {selectedPokemon.types.map(t => (
+                {selectedPokemon.types.map((t) => (
                   <TypeBadge key={t} t={t} />
                 ))}
               </div>
@@ -151,10 +151,10 @@ export default function Pokedex({
 
             {/* Stats section */}
             <div className="space-y-4">
-              <h4 className="text-lg font-bold text-gray-900 border-b-2 border-green-200 pb-2 bg-green-50 px-3 py-2 rounded-lg">
+              <h4 className="text-lg font-bold text-gray-100 border-b-2 border-green-600 pb-2 bg-green-900 px-3 py-2 rounded-lg">
                 Base Stats
               </h4>
-              <div className="space-y-1 bg-gray-50 p-3 rounded-lg">
+              <div className="space-y-1 bg-gray-700 p-3 rounded-lg">
                 <Stat label="HP" v={selectedPokemon.baseStats.hp} />
                 <Stat label="Attack" v={selectedPokemon.baseStats.attack} />
                 <Stat label="Defense" v={selectedPokemon.baseStats.defense} />
@@ -166,10 +166,10 @@ export default function Pokedex({
 
             {/* Physical characteristics */}
             <div className="space-y-4">
-              <h4 className="text-lg font-bold text-gray-900 border-b-2 border-purple-200 pb-2 bg-purple-50 px-3 py-2 rounded-lg">
+              <h4 className="text-lg font-bold text-gray-100 border-b-2 border-purple-600 pb-2 bg-purple-900 px-3 py-2 rounded-lg">
                 Physical
               </h4>
-              <div className="space-y-1 bg-gray-50 p-3 rounded-lg">
+              <div className="space-y-1 bg-gray-700 p-3 rounded-lg">
                 <Meta label="Height" value={`${selectedPokemon.height}m`} />
                 <Meta label="Weight" value={`${selectedPokemon.weight}kg`} />
               </div>
@@ -197,11 +197,11 @@ export default function Pokedex({
         <div className="w-10 h-10 bg-yellow-400 rounded-full shadow-lg border-2 border-yellow-500"></div>
       </div>
     </div>
-  )
+  );
 
   // Desktop layout - always visible
   if (!onClose) {
-    return <PokedexContent />
+    return <PokedexContent />;
   }
 
   // Mobile layout - modal with slide-up animation
@@ -218,7 +218,7 @@ export default function Pokedex({
       {/* Modal */}
       <div
         className={`fixed bottom-0 left-0 right-0 z-50 modal-slide-up ${
-          isOpen ? 'open' : ''
+          isOpen ? "open" : ""
         } md:hidden`}
       >
         <div className="w-full h-[85vh] bg-red-600 rounded-t-3xl p-6 shadow-2xl border-t-4 border-red-800 relative overflow-hidden">
@@ -251,7 +251,7 @@ export default function Pokedex({
           <div className="text-center mb-6 relative z-10">
             <div className="w-16 h-16 bg-blue-500 rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg border-4 border-blue-700">
               <div className="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center shadow-inner">
-                <div className="w-6 h-6 bg-white rounded-full shadow-inner"></div>
+                <div className="w-6 h-6 bg-gray-800 rounded-full shadow-inner"></div>
               </div>
             </div>
             <h2 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">
@@ -261,7 +261,7 @@ export default function Pokedex({
           </div>
 
           {/* Screen area */}
-          <div className="bg-white rounded-2xl p-4 h-[calc(85vh-12rem)] overflow-y-auto shadow-inner border-2 border-gray-300 relative z-10">
+          <div className="bg-gray-800 rounded-2xl p-4 h-[calc(85vh-12rem)] overflow-y-auto shadow-inner border-2 border-gray-600 relative z-10">
             {selectedPokemon ? (
               <div className="space-y-4">
                 {/* Pokemon header */}
@@ -274,21 +274,21 @@ export default function Pokedex({
                         className="h-20 w-20 object-contain drop-shadow-lg"
                       />
                     ) : (
-                      <div className="h-20 w-20 bg-gray-200 rounded-full flex items-center justify-center">
-                        <span className="text-gray-500 text-xs font-medium">
+                      <div className="h-20 w-20 bg-gray-700 rounded-full flex items-center justify-center">
+                        <span className="text-gray-300 text-xs font-medium">
                           No Image
                         </span>
                       </div>
                     )}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 capitalize mb-2">
+                  <h3 className="text-xl font-bold text-gray-100 capitalize mb-2">
                     {selectedPokemon.name}
                   </h3>
-                  <div className="text-base font-bold text-blue-600 mb-3 bg-blue-50 px-3 py-1 rounded-full inline-block">
-                    #{selectedPokemon.id.toString().padStart(3, '0')}
+                  <div className="text-base font-bold text-blue-400 mb-3 bg-blue-900 px-3 py-1 rounded-full inline-block">
+                    #{selectedPokemon.id.toString().padStart(3, "0")}
                   </div>
                   <div className="flex justify-center gap-2">
-                    {selectedPokemon.types.map(t => (
+                    {selectedPokemon.types.map((t) => (
                       <TypeBadge key={t} t={t} />
                     ))}
                   </div>
@@ -296,10 +296,10 @@ export default function Pokedex({
 
                 {/* Stats section */}
                 <div className="space-y-3">
-                  <h4 className="text-base font-bold text-gray-900 border-b-2 border-green-200 pb-2 bg-green-50 px-2 py-1 rounded-lg">
+                  <h4 className="text-base font-bold text-gray-100 border-b-2 border-green-600 pb-2 bg-green-900 px-2 py-1 rounded-lg">
                     Base Stats
                   </h4>
-                  <div className="space-y-1 bg-gray-50 p-2 rounded-lg">
+                  <div className="space-y-1 bg-gray-700 p-2 rounded-lg">
                     <Stat label="HP" v={selectedPokemon.baseStats.hp} />
                     <Stat label="Attack" v={selectedPokemon.baseStats.attack} />
                     <Stat
@@ -320,10 +320,10 @@ export default function Pokedex({
 
                 {/* Physical characteristics */}
                 <div className="space-y-3">
-                  <h4 className="text-base font-bold text-gray-900 border-b-2 border-purple-200 pb-2 bg-purple-50 px-2 py-1 rounded-lg">
+                  <h4 className="text-base font-bold text-gray-100 border-b-2 border-purple-600 pb-2 bg-purple-900 px-2 py-1 rounded-lg">
                     Physical
                   </h4>
-                  <div className="space-y-1 bg-gray-50 p-2 rounded-lg">
+                  <div className="space-y-1 bg-gray-700 p-2 rounded-lg">
                     <Meta label="Height" value={`${selectedPokemon.height}m`} />
                     <Meta
                       label="Weight"
@@ -356,5 +356,5 @@ export default function Pokedex({
         </div>
       </div>
     </>
-  )
+  );
 }

@@ -1,0 +1,32 @@
+{
+  "animals": {
+    "Eagle": {
+      "wikipediaUrl": "",
+      "categories": [""]
+    },
+    "Bat": {
+      "wikipediaUrl": "",
+      "categories": [""]
+    },
+    "Hummingbird": {
+      "wikipediaUrl": "",
+      "categories": [""]
+    },
+    "Owl": {
+      "wikipediaUrl": "",
+      "categories": [""]
+    },
+    "Penguin": {
+      "wikipediaUrl": "",
+      "categories": [""]
+    },
+    "Ostrich": {
+      "wikipediaUrl": "",
+      "categories": [""]
+    },
+    "Emu": {
+      "wikipediaUrl": "",
+      "categories": [""]
+    }
+  }
+}

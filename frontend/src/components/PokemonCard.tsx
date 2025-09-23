@@ -1,5 +1,5 @@
-import type { PokemonLite } from '../types'
-import pokedexIcon from '../assets/pokedex.png'
+import type { PokemonLite } from "../types";
+import pokedexIcon from "../assets/pokedex.png";
 
 export default function PokemonCard({
   mon,
@@ -7,14 +7,14 @@ export default function PokemonCard({
   onSelect,
   onPokedexLookup,
   shake = false,
-  disabled = false
+  disabled = false,
 }: {
-  mon: PokemonLite
-  selected: boolean
-  onSelect: () => void
-  onPokedexLookup: () => void
-  shake?: boolean
-  disabled?: boolean
+  mon: PokemonLite;
+  selected: boolean;
+  onSelect: () => void;
+  onPokedexLookup: () => void;
+  shake?: boolean;
+  disabled?: boolean;
 }) {
   return (
     <div
@@ -22,19 +22,19 @@ export default function PokemonCard({
       aria-roledescription="Pokémon card"
       tabIndex={0}
       className={[
-        'relative w-full h-full',
-        'border-2 bg-background-card',
+        "relative w-full h-full",
+        "border-2 bg-background-card",
         disabled
-          ? 'border-border-secondary bg-background-tertiary opacity-60 cursor-not-allowed'
+          ? "border-border-secondary bg-background-tertiary opacity-60 cursor-not-allowed"
           : selected
-          ? 'border-primary shadow-lg shadow-primary-200'
-          : 'border-border hover:border-border-secondary hover:shadow-md',
+            ? "border-primary shadow-lg shadow-primary-200"
+            : "border-border hover:border-border-secondary hover:shadow-md",
         !disabled &&
-          'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1',
-        !disabled && 'cursor-pointer transition-all duration-200 ease-in-out',
-        !disabled && 'hover:scale-[1.02] active:scale-[0.98]',
-        shake ? 'animate-shake' : ''
-      ].join(' ')}
+          "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1",
+        !disabled && "cursor-pointer transition-all duration-200 ease-in-out",
+        !disabled && "hover:scale-[1.02] active:scale-[0.98]",
+        shake ? "animate-shake" : "",
+      ].join(" ")}
       onClick={disabled ? undefined : onSelect}
     >
       {/* Pokedex lookup icon - top right corner */}
@@ -42,9 +42,9 @@ export default function PokemonCard({
         type="button"
         aria-label="Pokedex"
         title="You can click this to learn more about this pokemon"
-        onClick={e => {
-          e.stopPropagation()
-          onPokedexLookup()
+        onClick={(e) => {
+          e.stopPropagation();
+          onPokedexLookup();
         }}
         className="absolute top-1 right-1 z-10 h-6 w-6 flex items-center justify-center hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1 transition-all duration-150"
       >
@@ -88,5 +88,5 @@ export default function PokemonCard({
         <div className="absolute top-0 left-0 w-full h-full bg-primary-400"></div>
       </div>
     </div>
-  )
+  );
 }

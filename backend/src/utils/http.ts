@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const http = axios.create({
   baseURL: 'https://pokeapi.co/api/v2',
-  timeout: 15000
+  timeout: 15000,
 });
 
 export async function get<T>(url: string, tries = 3): Promise<T> {

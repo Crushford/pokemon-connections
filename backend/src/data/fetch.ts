@@ -4,10 +4,12 @@ import { PokemonSchema, type Pokemon } from './types.js';
 
 type Stat = { base_stat: number; stat: { name: string } };
 type Poke = {
-  id: number; name: string;
+  id: number;
+  name: string;
   types: { slot: number; type: { name: string } }[];
   stats: Stat[];
-  height: number; weight: number;
+  height: number;
+  weight: number;
   forms: { name: string; url: string }[]; // we will call this
 };
 type Species = {
@@ -48,11 +50,11 @@ type Generation = {
 };
 
 function stat(stats: Stat[], key: string) {
-  return stats.find(s => s.stat.name === key)?.base_stat ?? 0;
+  return stats.find((s) => s.stat.name === key)?.base_stat ?? 0;
 }
 function genNumber(genName: string): number {
   const roman = (genName.match(/generation-(\w+)/)?.[1] ?? 'i').toLowerCase();
-  const list = ['i','ii','iii','iv','v','vi','vii','viii','ix'];
+  const list = ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix'];
   return list.indexOf(roman) + 1;
 }
 
@@ -65,11 +67,11 @@ function findEvolutionStage(chain: EvolutionChain, pokemonName: string): number 
   const base = chain.chain.species.name;
   const firstEvo = chain.chain.evolves_to[0]?.species.name;
   const secondEvo = chain.chain.evolves_to[0]?.evolves_to[0]?.species.name;
-  
+
   if (pokemonName === base) return 1;
   if (pokemonName === firstEvo) return 2;
   if (pokemonName === secondEvo) return 3;
-  
+
   // Fallback: if not found in chain, assume base stage
   return 1;
 }
@@ -102,31 +104,31 @@ async function fetchOne(id: number): Promise<Pokemon> {
 
   let spriteUrl: string | undefined;
   if (Array.isArray(p.forms) && p.forms.length > 0) {
-    const formUrls = p.forms.map(f => f.url);
+    const formUrls = p.forms.map((f) => f.url);
     spriteUrl = await fetchSpriteFromDefaultForm(formUrls);
   }
 
   const normalized = PokemonSchema.parse({
     id: p.id,
     name: p.name,
-    types: p.types.sort((a,b)=>a.slot-b.slot).map(t => t.type.name),
+    types: p.types.sort((a, b) => a.slot - b.slot).map((t) => t.type.name),
     baseStats: {
       hp: stat(p.stats, 'hp'),
       attack: stat(p.stats, 'attack'),
       defense: stat(p.stats, 'defense'),
       spAttack: stat(p.stats, 'special-attack'),
       spDefense: stat(p.stats, 'special-defense'),
-      speed: stat(p.stats, 'speed')
+      speed: stat(p.stats, 'speed'),
     },
     height: p.height / 10,
     weight: p.weight / 10,
-    eggGroups: s.egg_groups?.map(e => e.name),
+    eggGroups: s.egg_groups?.map((e) => e.name),
     evoStage,
     evoLineId,
     color: s.color?.name,
     habitat: s.habitat?.name,
     generation: genNumber(s.generation.name),
-    spriteUrl
+    spriteUrl,
   });
 
   return normalized;
@@ -135,34 +137,37 @@ async function fetchOne(id: number): Promise<Pokemon> {
 async function fetchGenerationI(): Promise<Generation> {
   console.log('Fetching Generation I data...');
   const gen = await get<Generation>('/generation/1');
-  console.log(`Found ${gen.types.length} types in Generation I:`, gen.types.map(t => t.name));
+  console.log(
+    `Found ${gen.types.length} types in Generation I:`,
+    gen.types.map((t) => t.name),
+  );
   return gen;
 }
 
 async function main() {
   // Fetch Generation I data to get available types
   const genI = await fetchGenerationI();
-  
+
   const out: Pokemon[] = [];
   for (let id = 1; id <= 151; id++) {
     const mon = await fetchOne(id);
     out.push(mon);
     if (id % 25 === 0) console.log('Fetched', id);
   }
-  
+
   // Add generation metadata
   const pokemonData = {
     generation: {
       id: genI.id,
       name: genI.name,
-      availableTypes: genI.types.map(t => t.name),
-      pokemonCount: genI.pokemon_species.length
+      availableTypes: genI.types.map((t) => t.name),
+      pokemonCount: genI.pokemon_species.length,
     },
-    pokemon: out
+    pokemon: out,
   };
-  
+
   await writeJson('data/pokemon.json', pokemonData);
-  
+
   // Copy to frontend for serving
   const { execSync } = await import('child_process');
   try {
@@ -172,7 +177,7 @@ async function main() {
   }
 }
 
-main().catch(e => {
+main().catch((e) => {
   console.error(e);
   process.exit(1);
 });

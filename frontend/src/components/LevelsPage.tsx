@@ -1,82 +1,84 @@
-import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { fetchPuzzles } from '../lib/api'
-import { usePlayer } from '../contexts/PlayerContext'
-import type { PokemonLite } from '../types'
-import pokedexIcon from '../assets/pokedex.png'
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { fetchPuzzles } from "../lib/api";
+import { usePlayer } from "../contexts/PlayerContext";
+import type { PokemonLite } from "../types";
+import pokedexIcon from "../assets/pokedex.png";
 
 interface Puzzle {
   groups: {
-    id: string
-    name: string
-    members: number[]
-    tags: string[]
-  }[]
-  pool: number[]
+    id: string;
+    name: string;
+    members: number[];
+    tags: string[];
+  }[];
+  pool: number[];
 }
 
 interface PuzzlesData {
-  puzzles: Puzzle[]
+  puzzles: Puzzle[];
 }
 
 export default function LevelsPage() {
-  const [puzzlesData, setPuzzlesData] = useState<PuzzlesData | null>(null)
-  const [pokemonData, setPokemonData] = useState<PokemonLite[]>([])
-  const [loading, setLoading] = useState(true)
-  const navigate = useNavigate()
-  const { isLevelCompleted, isLevelFailed } = usePlayer()
+  const [puzzlesData, setPuzzlesData] = useState<PuzzlesData | null>(null);
+  const [pokemonData, setPokemonData] = useState<PokemonLite[]>([]);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const basePath = "/pokemon"; // Always pokemon for levels page
+  const { isLevelCompleted, isLevelFailed } = usePlayer();
 
   useEffect(() => {
     const loadData = async () => {
       try {
         const [puzzlesData, pokemonResponse] = await Promise.all([
           fetchPuzzles(),
-          fetch('/pokemon.json').then(response => response.json())
-        ])
+          fetch("/pokemon.json").then((response) => response.json()),
+        ]);
 
         // Extract Pokemon array from the response
-        let actualPokemonData = pokemonResponse
+        let actualPokemonData = pokemonResponse;
         if (
           pokemonResponse &&
-          typeof pokemonResponse === 'object' &&
+          typeof pokemonResponse === "object" &&
           !Array.isArray(pokemonResponse)
         ) {
           if (
             pokemonResponse.pokemon &&
             Array.isArray(pokemonResponse.pokemon)
           ) {
-            actualPokemonData = pokemonResponse.pokemon
+            actualPokemonData = pokemonResponse.pokemon;
           }
         }
 
-        setPuzzlesData(puzzlesData)
-        setPokemonData(actualPokemonData)
+        setPuzzlesData(puzzlesData);
+        setPokemonData(actualPokemonData);
       } catch (error) {
-        console.error('Failed to load data:', error)
+        console.error("Failed to load data:", error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    loadData()
-  }, [])
+    loadData();
+  }, []);
 
   const handleLevelSelect = (puzzleIndex: number) => {
-    const levelId = puzzleIndex + 1
-    const isCompleted = isLevelCompleted(levelId)
+    const levelId = puzzleIndex + 1;
+    const isCompleted = isLevelCompleted(levelId);
 
     if (isCompleted) {
       // For completed levels, show the solved puzzle
-      navigate(`/levels/${puzzleIndex}/complete`)
+      navigate(`${basePath}/${puzzleIndex}/complete`);
     } else {
       // For new or failed levels, start the puzzle
-      navigate(`/levels/${puzzleIndex}`)
+      navigate(`${basePath}/${puzzleIndex}`);
     }
-  }
+  };
 
   const getPokemonById = (id: number): PokemonLite | null => {
-    return pokemonData.find(pokemon => pokemon.id === id) || null
-  }
+    return pokemonData.find((pokemon) => pokemon.id === id) || null;
+  };
 
   if (loading) {
     return (
@@ -86,7 +88,7 @@ export default function LevelsPage() {
           <p className=" text-muted">Loading levels...</p>
         </div>
       </div>
-    )
+    );
   }
 
   if (!puzzlesData) {
@@ -102,7 +104,7 @@ export default function LevelsPage() {
           </button>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -120,11 +122,11 @@ export default function LevelsPage() {
         <div className="max-w-2xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
             {puzzlesData.puzzles.map((_, index) => {
-              const pokemonId = index + 1
-              const pokemon = getPokemonById(pokemonId)
-              const levelId = index + 1
-              const isCompleted = isLevelCompleted(levelId)
-              const isFailed = isLevelFailed(levelId)
+              const pokemonId = index + 1;
+              const pokemon = getPokemonById(pokemonId);
+              const levelId = index + 1;
+              const isCompleted = isLevelCompleted(levelId);
+              const isFailed = isLevelFailed(levelId);
 
               return (
                 <button
@@ -132,10 +134,10 @@ export default function LevelsPage() {
                   onClick={() => handleLevelSelect(index)}
                   className={`group relative rounded-xl p-3 hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
                     isCompleted
-                      ? 'bg-success-light border-2 border-success hover:border-success-dark'
+                      ? "bg-success-light border-2 border-success hover:border-success-dark"
                       : isFailed
-                      ? 'bg-error-light border-2 border-error hover:border-error-dark'
-                      : 'bg-background-card border-2 border-border hover:border-primary'
+                        ? "bg-error-light border-2 border-error hover:border-error-dark"
+                        : "bg-background-card border-2 border-border hover:border-primary"
                   }`}
                 >
                   {/* Pokemon sprite */}
@@ -202,21 +204,21 @@ export default function LevelsPage() {
                   </div>
 
                   {/* Hover effect overlay */}
-                  <div className="absolute inset-0 bg-primary-50 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-primary-900 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
                     <span className="text-primary font-semibold text-sm">
                       {isCompleted
-                        ? 'View Solution'
+                        ? "View Solution"
                         : isFailed
-                        ? 'Retry'
-                        : 'Play'}
+                          ? "Retry"
+                          : "Play"}
                     </span>
                   </div>
                 </button>
-              )
+              );
             })}
           </div>
         </div>
       </main>
     </div>
-  )
+  );
 }

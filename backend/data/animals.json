@@ -1,0 +1,147 @@
+{
+  "animals": {
+    "Eagle": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Eagle",
+      "categories": [
+        "Birds of Prey",
+        "Apex Predators",
+        "Animals with Keen Eyesight",
+        "Symbolic Animals",
+        "Flying Animals"
+      ]
+    },
+    "Bat": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Bat",
+      "categories": [
+        "Flying Mammals",
+        "Nocturnal Animals",
+        "Echolocators",
+        "Pollinators",
+        "Flying Animals"
+      ]
+    },
+    "Hummingbird": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Hummingbird",
+      "categories": [
+        "Smallest Birds",
+        "Hovering Animals",
+        "Nectar Feeders",
+        "Migratory Birds",
+        "Flying Animals"
+      ]
+    },
+    "Owl": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Owl",
+      "categories": [
+        "Birds of Prey",
+        "Nocturnal Animals",
+        "Silent Hunters",
+        "Symbolic Animals",
+        "Flying Animals"
+      ]
+    },
+    "Penguin": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Penguin",
+      "categories": [
+        "Flightless Birds",
+        "Aquatic Birds",
+        "Cold-Climate Animals",
+        "Males Incubate the Young"
+      ]
+    },
+    "Ostrich": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ostrich",
+      "categories": [
+        "Flightless Birds",
+        "Largest Birds",
+        "Fast Runners",
+        "Animals That Kick"
+      ]
+    },
+    "Emu": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Emu",
+      "categories": [
+        "Flightless Birds",
+        "Large Birds",
+        "Males Incubate the Young",
+        "Australian Animals"
+      ]
+    },
+    "Cassowary": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Cassowary",
+      "categories": [
+        "Flightless Birds",
+        "Males Incubate the Young"
+      ]
+    },
+    "Turkey": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Domestic_turkey",
+      "categories": [
+        "Birds",
+        "Ground-Dwelling Birds",
+        "Game Birds",
+        "Omnivores"
+      ]
+    },
+    "Peacock": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Peafowl",
+      "categories": [
+        "Birds",
+        "Ground-Dwelling Birds",
+        "Showy Plumage",
+        "Courtship Display Animals"
+      ]
+    },
+    "Swan": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Swan",
+      "categories": [
+        "Birds",
+        "Waterfowl",
+        "Migratory Birds",
+        "Monogamous Animals"
+      ]
+    },
+    "Hornbill": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Hornbill",
+      "categories": [
+        "Helmeted Animals"
+      ]
+    },
+    "Helmeted Guineafowl": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Helmeted_Guineafowl",
+      "categories": [
+        "Helmeted Animals"
+      ]
+    },
+    "Triceratops": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Triceratops",
+      "categories": [
+        "Helmeted Animals"
+      ]
+    },
+    "Parrot": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Parrot",
+      "categories": []
+    },
+    "Goat": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Goat",
+      "categories": []
+    },
+    "Iguana": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Iguana",
+      "categories": []
+    }
+  },
+  "categories": {
+    "Flying Animals": {
+      "description": "Animals that can fly or glide"
+    },
+    "Flightless Birds": {
+      "description": "Large birds that cannot fly but are still strong runners"
+    },
+    "Helmeted Animals": {
+      "description": "Animals with prominent helmet-like crests, casques, or horns on their heads"
+    }
+  },
+  "puzzles": []
+}

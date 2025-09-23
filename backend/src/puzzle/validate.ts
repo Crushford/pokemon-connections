@@ -15,7 +15,7 @@ async function main() {
   if (data.puzzles && Array.isArray(data.puzzles)) {
     console.log(`Validating ${data.puzzles.length} puzzles...`);
     const puzzlesData = PuzzlesSchema.parse(data);
-    
+
     for (let i = 0; i < puzzlesData.puzzles.length; i++) {
       const puzzle = puzzlesData.puzzles[i];
       if (puzzle) {
@@ -34,7 +34,7 @@ async function main() {
   }
 }
 
-main().catch(e => {
+main().catch((e) => {
   console.error(e);
   process.exit(1);
 });
