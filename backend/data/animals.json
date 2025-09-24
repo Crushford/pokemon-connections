@@ -51,12 +51,7 @@
     },
     "Ostrich": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Ostrich",
-      "categories": [
-        "Flightless Birds",
-        "Largest Birds",
-        "Fast Runners",
-        "Animals That Kick"
-      ]
+      "categories": ["Flightless Birds", "Largest Birds", "Fast Runners", "Animals That Kick"]
     },
     "Emu": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Emu",
@@ -69,238 +64,135 @@
     },
     "Cassowary": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Cassowary",
-      "categories": [
-        "Flightless Birds",
-        "Males Incubate the Young"
-      ]
+      "categories": ["Flightless Birds", "Males Incubate the Young"]
     },
     "Turkey": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Domestic_turkey",
-      "categories": [
-        "Birds",
-        "Ground-Dwelling Birds",
-        "Game Birds",
-        "Omnivores"
-      ]
+      "categories": ["Birds", "Ground-Dwelling Birds", "Game Birds", "Omnivores"]
     },
     "Peacock": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Peafowl",
-      "categories": [
-        "Birds",
-        "Ground-Dwelling Birds",
-        "Showy Plumage",
-        "Courtship Display Animals"
-      ]
+      "categories": ["Birds", "Ground-Dwelling Birds", "Showy Plumage", "Courtship Display Animals"]
     },
     "Swan": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Swan",
-      "categories": [
-        "Birds",
-        "Waterfowl",
-        "Migratory Birds",
-        "Monogamous Animals"
-      ]
+      "categories": ["Birds", "Waterfowl", "Migratory Birds", "Monogamous Animals"]
     },
     "Hornbill": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Hornbill",
-      "categories": [
-        "Helmeted Animals"
-      ]
+      "categories": ["Helmeted Animals"]
     },
     "Helmeted Guineafowl": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Helmeted_Guineafowl",
-      "categories": [
-        "Helmeted Animals"
-      ]
+      "categories": ["Helmeted Animals"]
     },
     "Triceratops": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Triceratops",
-      "categories": [
-        "Helmeted Animals"
-      ]
+      "categories": ["Helmeted Animals"]
     },
     "Parrot": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Parrot",
-      "categories": [
-        "Birds",
-        "Tropical Animals",
-        "Vocal Mimics",
-        "Colorful Animals"
-      ]
+      "categories": ["Birds", "Tropical Animals", "Vocal Mimics", "Colorful Animals"]
     },
     "Goat": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Goat",
-      "categories": [
-        "Mammals",
-        "Domesticated Animals",
-        "Ruminants",
-        "Mountain Climbers"
-      ]
+      "categories": ["Mammals", "Domesticated Animals", "Ruminants", "Mountain Climbers"]
     },
     "Iguana": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Iguana",
-      "categories": [
-        "Reptiles",
-        "Lizards",
-        "Herbivores",
-        "Tropical Animals"
-      ]
+      "categories": ["Reptiles", "Lizards", "Herbivores", "Tropical Animals"]
     },
     "Crocodile": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Crocodile",
-      "categories": [
-        "Dangerous to Humans"
-      ]
+      "categories": ["Dangerous to Humans"]
     },
     "Hippo": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Hippo",
-      "categories": [
-        "Dangerous to Humans"
-      ]
+      "categories": ["Dangerous to Humans"]
     },
     "Buffalo": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Buffalo",
-      "categories": [
-        "Dangerous to Humans"
-      ]
+      "categories": ["Dangerous to Humans"]
     },
     "Kangaroo": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Kangaroo",
-      "categories": [
-        "Mammals",
-        "Marsupials",
-        "Australian Animals",
-        "Grass-Eaters"
-      ]
+      "categories": ["Mammals", "Marsupials", "Australian Animals", "Grass-Eaters"]
     },
     "Wild Boar": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Wild_boar",
-      "categories": [
-        "Mammals",
-        "Omnivores",
-        "Game Animals",
-        "Ground-Dwelling Animals"
-      ]
+      "categories": ["Mammals", "Omnivores", "Game Animals", "Ground-Dwelling Animals"]
     },
     "Shark": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Shark",
-      "categories": [
-        "Fish",
-        "Apex Predators",
-        "Marine Animals",
-        "Cartilaginous Fish"
-      ]
+      "categories": ["Fish", "Apex Predators", "Marine Animals", "Cartilaginous Fish"]
     },
     "Toucan": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Toucan",
-      "categories": [
-        "Rainforest Keystone Species"
-      ]
+      "categories": ["Rainforest Keystone Species"]
     },
     "Fruit Bat": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Fruit_Bat",
-      "categories": [
-        "Rainforest Keystone Species"
-      ]
+      "categories": ["Rainforest Keystone Species"]
     },
     "Spider Monkey": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Spider_Monkey",
-      "categories": [
-        "Rainforest Keystone Species"
-      ]
+      "categories": ["Rainforest Keystone Species"]
     },
     "Jaguar": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Jaguar",
-      "categories": [
-        "Mammals",
-        "Big Cats",
-        "Apex Predators",
-        "Rainforest Animals"
-      ]
+      "categories": ["Mammals", "Big Cats", "Apex Predators", "Rainforest Animals"]
     },
     "Tapir": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Tapir",
-      "categories": [
-        "Mammals",
-        "Herbivores",
-        "Rainforest Animals",
-        "Odd-Toed Ungulates"
-      ]
+      "categories": ["Mammals", "Herbivores", "Rainforest Animals", "Odd-Toed Ungulates"]
     },
     "Macaw": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Macaw",
-      "categories": [
-        "Birds",
-        "Parrots",
-        "Tropical Animals",
-        "Colorful Animals"
-      ]
+      "categories": ["Birds", "Parrots", "Tropical Animals", "Colorful Animals"]
     },
     "Duck": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Duck",
-      "categories": [
-        "Waterfowl"
-      ]
+      "categories": ["Waterfowl"]
     },
     "Goose": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Goose",
-      "categories": [
-        "Waterfowl"
-      ]
+      "categories": ["Waterfowl"]
     },
     "Coot": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Coot",
-      "categories": [
-        "Waterfowl"
-      ]
+      "categories": ["Waterfowl"]
     },
     "Pheasant": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Pheasant",
-      "categories": [
-        "Game Animals"
-      ]
+      "categories": ["Game Animals"]
     },
     "Rabbit": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Rabbit",
-      "categories": [
-        "Game Animals"
-      ]
+      "categories": ["Game Animals"]
     },
     "Elk": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Elk",
-      "categories": [
-        "Game Animals"
-      ]
+      "categories": ["Game Animals"]
     },
     "Quail": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Quail",
-      "categories": [
-        "Game Animals"
-      ]
+      "categories": ["Game Animals"]
     },
     "Wombat": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Wombat",
-      "categories": [
-        "Burrowing Mammals"
-      ]
+      "categories": ["Burrowing Mammals"]
     },
     "Mole": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Mole",
-      "categories": [
-        "Burrowing Mammals"
-      ]
+      "categories": ["Burrowing Mammals"]
     },
     "Meerkat": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Meerkat",
-      "categories": [
-        "Burrowing Mammals"
-      ]
+      "categories": ["Burrowing Mammals"]
     },
     "Prairie Dog": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Prairie_Dog",
-      "categories": [
-        "Burrowing Mammals"
-      ]
+      "categories": ["Burrowing Mammals"]
     },
     "Armadillo": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Armadillo",
@@ -308,15 +200,11 @@
     },
     "Swallow": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Swallow",
-      "categories": [
-        "Migratory Birds"
-      ]
+      "categories": ["Migratory Birds"]
     },
     "Stork": {
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Stork",
-      "categories": [
-        "Migratory Birds"
-      ]
+      "categories": ["Migratory Birds"]
     }
   },
   "categories": {

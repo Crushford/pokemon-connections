@@ -1,5 +1,5 @@
-import { readFile, writeFile } from 'fs/promises';
-import { join } from 'path';
+import { readFile, writeFile } from 'node:fs/promises';
+import { join } from 'node:path';
 import { type Pokemon, type PokemonData, type Group, type Puzzle } from '../data/types.js';
 import { validatePuzzle as validatePuzzleDetailed } from './validatePuzzle.js';
 
