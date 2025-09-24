@@ -50,7 +50,7 @@ export async function addAnimal(input: {
 
 // Categories API
 export async function listCategories(): Promise<{
-  categories: Record<string, { description?: string }>;
+  categories: Record<string, { description?: string; difficulty?: number }>;
 }> {
   const res = await fetch(`${BASE}/api/categories`);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -61,6 +61,7 @@ export async function addCategory(input: {
   name: string;
   description?: string;
   members?: string[];
+  difficulty?: number;
 }) {
   const res = await fetch(`${BASE}/api/categories`, {
     method: "POST",

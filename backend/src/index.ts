@@ -10,7 +10,7 @@ type Animal = {
 
 type AnimalsData = {
   animals: Record<string, Animal>;
-  categories: Record<string, { description?: string }>;
+  categories: Record<string, { description?: string; difficulty?: number }>;
   puzzles: Array<{ id: string; categories: string[]; createdAt: string }>;
 };
 
@@ -123,6 +123,13 @@ const server = createServer(async (req, res) => {
       const body = await parseJson(req);
       const name = String(body?.name ?? '').trim();
       const description = body?.description ? String(body.description) : undefined;
+      const difficultyRaw = body?.difficulty;
+      const difficulty =
+        typeof difficultyRaw === 'number'
+          ? difficultyRaw
+          : typeof difficultyRaw === 'string' && difficultyRaw.trim() !== ''
+            ? Number(difficultyRaw)
+            : undefined;
       const members: string[] = Array.isArray(body?.members)
         ? body.members.map((m: any) => String(m).trim()).filter(Boolean)
         : [];
@@ -130,24 +137,49 @@ const server = createServer(async (req, res) => {
       const data = await loadData();
       if (!data.categories[name]) data.categories[name] = {};
       if (description) data.categories[name].description = description;
+      if (
+        typeof difficulty === 'number' &&
+        Number.isFinite(difficulty) &&
+        difficulty >= 1 &&
+        difficulty <= 4
+      ) {
+        data.categories[name].difficulty = difficulty;
+      }
 
       // Auto-apply category to member animals if provided
+      let updatedAnimals: string[] = [];
+      let createdAnimals: string[] = [];
+      let alreadyHadCategory: string[] = [];
       if (members.length > 0) {
         for (const animalName of members) {
           const existing = data.animals[animalName];
           if (existing) {
             const set = new Set<string>(existing.categories ?? []);
+            const beforeSize = set.size;
             set.add(name);
+            if (set.size > beforeSize) {
+              updatedAnimals.push(animalName);
+            } else {
+              alreadyHadCategory.push(animalName);
+            }
             existing.categories = Array.from(set);
             data.animals[animalName] = existing;
           } else {
             data.animals[animalName] = { wikipediaUrl: '', categories: [name] };
+            createdAnimals.push(animalName);
           }
         }
       }
 
       await saveData(data);
-      return created(res, { ok: true, name, membersUpdated: members.length });
+      return created(res, {
+        ok: true,
+        name,
+        membersUpdated: updatedAnimals.length + createdAnimals.length,
+        updatedAnimals,
+        createdAnimals,
+        alreadyHadCategory,
+      });
     }
 
     if (req.method === 'GET' && url.pathname === '/api/puzzles') {
