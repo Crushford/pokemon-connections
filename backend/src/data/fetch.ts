@@ -13,8 +13,8 @@ type Poke = {
   forms: { name: string; url: string }[]; // we will call this
 };
 type Species = {
-  color?: { name: string };
-  habitat?: { name: string };
+  color?: { name?: string } | null;
+  habitat?: { name?: string } | null;
   egg_groups: { name: string }[];
   generation: { name: string };
   evolution_chain: { url: string };
@@ -60,7 +60,7 @@ function genNumber(genName: string): number {
 
 function extractEvolutionChainId(url: string): string {
   const match = url.match(/evolution-chain\/(\d+)\//);
-  return match ? match[1] : 'unknown';
+  return match?.[1] ?? 'unknown';
 }
 
 function findEvolutionStage(chain: EvolutionChain, pokemonName: string): number {
@@ -79,7 +79,7 @@ function findEvolutionStage(chain: EvolutionChain, pokemonName: string): number 
 async function fetchSpriteFromDefaultForm(formUrls: string[]): Promise<string | undefined> {
   // Strategy: hit forms in order; pick the first with is_default === true; fallback to first.
   for (let i = 0; i < formUrls.length; i++) {
-    const url = formUrls[i];
+    const url = formUrls[i] ?? '';
     try {
       const f = await get<PokemonForm>(url); // absolute URL works with axios
       if (f.is_default && f.sprites?.front_default) return f.sprites.front_default;
@@ -122,11 +122,11 @@ async function fetchOne(id: number): Promise<Pokemon> {
     },
     height: p.height / 10,
     weight: p.weight / 10,
-    eggGroups: s.egg_groups?.map((e) => e.name),
+    eggGroups: s.egg_groups?.map((e) => e.name) ?? [],
     evoStage,
     evoLineId,
-    color: s.color?.name,
-    habitat: s.habitat?.name,
+    color: s.color?.name ?? undefined,
+    habitat: s.habitat?.name ?? undefined,
     generation: genNumber(s.generation.name),
     spriteUrl,
   });

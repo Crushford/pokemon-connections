@@ -24,11 +24,12 @@ function getPokemonById(pokemonData: PokemonData, id: number): Pokemon | undefin
  * Extracts type from category name (e.g., "Fire Type" -> "fire")
  */
 function extractTypeFromCategoryName(categoryName: string): string {
-  const match = categoryName.match(/^(.+?)\s+Type$/i);
-  if (match) {
+  const safe = categoryName ?? '';
+  const match = safe.match(/^(.+?)\s+Type$/i);
+  if (match?.[1]) {
     return match[1].toLowerCase();
   }
-  return categoryName.toLowerCase();
+  return safe.toLowerCase();
 }
 
 /**
@@ -47,12 +48,14 @@ export function validatePuzzle(puzzle: Puzzle, pokemonData: PokemonData): Valida
 
   console.log(`\n📋 Validating puzzle with ${puzzle.groups.length} groups:`);
   puzzle.groups.forEach((group, index) => {
+    if (!group) return;
     console.log(`   ${index + 1}. ${group.name} (${group.id}) - ${group.members.length} Pokemon`);
   });
 
   // Check each group
   for (let groupIndex = 0; groupIndex < puzzle.groups.length; groupIndex++) {
     const group = puzzle.groups[groupIndex];
+    if (!group) continue;
     const groupType = extractTypeFromCategoryName(group.name);
 
     console.log(`\n🎯 Validating Group ${groupIndex + 1}: ${group.name}`);
@@ -94,6 +97,7 @@ export function validatePuzzle(puzzle: Puzzle, pokemonData: PokemonData): Valida
         if (otherGroupIndex === groupIndex) continue;
 
         const otherGroup = puzzle.groups[otherGroupIndex];
+        if (!otherGroup) continue;
         const otherGroupType = extractTypeFromCategoryName(otherGroup.name);
 
         // Check if this Pokemon has a type that matches the other group

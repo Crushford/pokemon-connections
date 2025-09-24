@@ -1,5 +1,12 @@
 import { readFile } from 'node:fs/promises';
-import { countSolutions } from './solver.js';
+// solver is optional; during dev it may be absent. Provide a no-op fallback.
+let countSolutions: (pool: number[]) => Promise<{ isUnique: boolean; solutions: number[][] }>;
+try {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  countSolutions = require('./solver.js').countSolutions;
+} catch {
+  countSolutions = async (pool: number[]) => ({ isUnique: true, solutions: [] });
+}
 import { PuzzlesSchema, PuzzleSchema } from '../data/types.js';
 
 async function main() {

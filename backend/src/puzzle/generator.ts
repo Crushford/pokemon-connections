@@ -259,7 +259,10 @@ function generateGroupFromCategory(category: Category, pokemonData: PokemonData)
     name: category.name,
     members: selectedPokemon,
     tags: [category.categoryType],
-  };
+    // Provide defaults required by Group type
+    dimension: 'type',
+    rule: { kind: 'typeEquals', value: category.type },
+  } as Group;
 }
 
 /**
@@ -318,6 +321,10 @@ async function generateSinglePuzzle(
     // Randomly select a category from non-conflicting ones
     const randomIndex = Math.floor(Math.random() * nonConflictingCategories.length);
     const selectedCategory = nonConflictingCategories[randomIndex];
+    if (!selectedCategory) {
+      console.log(`❌ Failed to select category for group ${i + 1}`);
+      return null;
+    }
 
     console.log(`🎯 Generating group ${i + 1} from category: ${selectedCategory.name}`);
 
@@ -353,7 +360,7 @@ async function generateSinglePuzzle(
 }
 
 async function main() {
-  const targetPuzzleCount = parseInt(process.argv[2]) || 1;
+  const targetPuzzleCount = Number.parseInt(process.argv[2] ?? '') || 1;
   console.log(`🎯 Target: Generate ${targetPuzzleCount} valid puzzle(s)`);
 
   console.log('Loading Pokemon and categories data...');

@@ -92,7 +92,8 @@ function createTypeCategories(typeInfo: TypeInfo[]): Category[] {
       .map((p) => {
         // Extract ID from URL like "https://pokeapi.co/api/v2/pokemon/1/"
         const match = p.pokemon.url.match(/\/pokemon\/(\d+)\//);
-        return match ? parseInt(match[1]) : null;
+        const idStr = match?.[1];
+        return idStr ? parseInt(idStr, 10) : null;
       })
       .filter((id): id is number => id !== null && id <= 151); // Only Gen 1 Pokemon
 
