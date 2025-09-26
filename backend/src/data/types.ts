@@ -10,7 +10,7 @@ export const PokemonSchema = z.object({
     defense: z.number(),
     spAttack: z.number(),
     spDefense: z.number(),
-    speed: z.number()
+    speed: z.number(),
   }),
   height: z.number(), // meters
   weight: z.number(), // kg
@@ -21,7 +21,7 @@ export const PokemonSchema = z.object({
   habitat: z.string().optional(),
   generation: z.number().int(),
   /** NEW: default form sprite */
-  spriteUrl: z.string().url().optional()
+  spriteUrl: z.string().url().optional(),
 });
 
 export type Pokemon = z.infer<typeof PokemonSchema>;
@@ -31,22 +31,22 @@ export const GroupSchema = z.object({
   name: z.string(),
   members: z.array(z.number()).length(4), // store Pokémon by numeric id (1..151)
   tags: z.array(z.string()).default([]),
-  dimension: z.enum(['type','stat','evo','habitat','color','egg','mechanic']).default('type'),
+  dimension: z.enum(['type', 'stat', 'evo', 'habitat', 'color', 'egg', 'mechanic']).default('type'),
   rule: z.object({
     kind: z.enum(['typeEquals']), // extend later as needed
-    value: z.string()
-  })
+    value: z.string(),
+  }),
 });
 export type Group = z.infer<typeof GroupSchema>;
 
 export const PuzzleSchema = z.object({
   groups: z.array(GroupSchema).length(4),
-  pool: z.array(z.number()).length(16) // union of all member ids
+  pool: z.array(z.number()).length(16), // union of all member ids
 });
 export type Puzzle = z.infer<typeof PuzzleSchema>;
 
 export const PuzzlesSchema = z.object({
-  puzzles: z.array(PuzzleSchema)
+  puzzles: z.array(PuzzleSchema),
 });
 export type Puzzles = z.infer<typeof PuzzlesSchema>;
 
@@ -54,12 +54,12 @@ export const GenerationMetadataSchema = z.object({
   id: z.number().int().min(1),
   name: z.string(),
   availableTypes: z.array(z.string()),
-  pokemonCount: z.number().int().min(1)
+  pokemonCount: z.number().int().min(1),
 });
 export type GenerationMetadata = z.infer<typeof GenerationMetadataSchema>;
 
 export const PokemonDataSchema = z.object({
   generation: GenerationMetadataSchema,
-  pokemon: z.array(PokemonSchema)
+  pokemon: z.array(PokemonSchema),
 });
 export type PokemonData = z.infer<typeof PokemonDataSchema>;

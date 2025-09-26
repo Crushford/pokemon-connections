@@ -25,10 +25,7 @@
     {
       "id": 1,
       "name": "bulbasaur",
-      "types": [
-        "grass",
-        "poison"
-      ],
+      "types": ["grass", "poison"],
       "baseStats": {
         "hp": 45,
         "attack": 49,
@@ -39,10 +36,7 @@
       },
       "height": 0.7,
       "weight": 6.9,
-      "eggGroups": [
-        "monster",
-        "plant"
-      ],
+      "eggGroups": ["monster", "plant"],
       "evoStage": 1,
       "evoLineId": "1",
       "color": "green",
@@ -53,10 +47,7 @@
     {
       "id": 2,
       "name": "ivysaur",
-      "types": [
-        "grass",
-        "poison"
-      ],
+      "types": ["grass", "poison"],
       "baseStats": {
         "hp": 60,
         "attack": 62,
@@ -67,10 +58,7 @@
       },
       "height": 1,
       "weight": 13,
-      "eggGroups": [
-        "monster",
-        "plant"
-      ],
+      "eggGroups": ["monster", "plant"],
       "evoStage": 2,
       "evoLineId": "1",
       "color": "green",
@@ -81,10 +69,7 @@
     {
       "id": 3,
       "name": "venusaur",
-      "types": [
-        "grass",
-        "poison"
-      ],
+      "types": ["grass", "poison"],
       "baseStats": {
         "hp": 80,
         "attack": 82,
@@ -95,10 +80,7 @@
       },
       "height": 2,
       "weight": 100,
-      "eggGroups": [
-        "monster",
-        "plant"
-      ],
+      "eggGroups": ["monster", "plant"],
       "evoStage": 3,
       "evoLineId": "1",
       "color": "green",
@@ -109,9 +91,7 @@
     {
       "id": 4,
       "name": "charmander",
-      "types": [
-        "fire"
-      ],
+      "types": ["fire"],
       "baseStats": {
         "hp": 39,
         "attack": 52,
@@ -122,10 +102,7 @@
       },
       "height": 0.6,
       "weight": 8.5,
-      "eggGroups": [
-        "monster",
-        "dragon"
-      ],
+      "eggGroups": ["monster", "dragon"],
       "evoStage": 1,
       "evoLineId": "2",
       "color": "red",
@@ -136,9 +113,7 @@
     {
       "id": 5,
       "name": "charmeleon",
-      "types": [
-        "fire"
-      ],
+      "types": ["fire"],
       "baseStats": {
         "hp": 58,
         "attack": 64,
@@ -149,10 +124,7 @@
       },
       "height": 1.1,
       "weight": 19,
-      "eggGroups": [
-        "monster",
-        "dragon"
-      ],
+      "eggGroups": ["monster", "dragon"],
       "evoStage": 2,
       "evoLineId": "2",
       "color": "red",
@@ -163,10 +135,7 @@
     {
       "id": 6,
       "name": "charizard",
-      "types": [
-        "fire",
-        "flying"
-      ],
+      "types": ["fire", "flying"],
       "baseStats": {
         "hp": 78,
         "attack": 84,
@@ -177,10 +146,7 @@
       },
       "height": 1.7,
       "weight": 90.5,
-      "eggGroups": [
-        "monster",
-        "dragon"
-      ],
+      "eggGroups": ["monster", "dragon"],
       "evoStage": 3,
       "evoLineId": "2",
       "color": "red",
@@ -191,9 +157,7 @@
     {
       "id": 7,
       "name": "squirtle",
-      "types": [
-        "water"
-      ],
+      "types": ["water"],
       "baseStats": {
         "hp": 44,
         "attack": 48,
@@ -204,10 +168,7 @@
       },
       "height": 0.5,
       "weight": 9,
-      "eggGroups": [
-        "monster",
-        "water1"
-      ],
+      "eggGroups": ["monster", "water1"],
       "evoStage": 1,
       "evoLineId": "3",
       "color": "blue",
@@ -218,9 +179,7 @@
     {
       "id": 8,
       "name": "wartortle",
-      "types": [
-        "water"
-      ],
+      "types": ["water"],
       "baseStats": {
         "hp": 59,
         "attack": 63,
@@ -231,10 +190,7 @@
       },
       "height": 1,
       "weight": 22.5,
-      "eggGroups": [
-        "monster",
-        "water1"
-      ],
+      "eggGroups": ["monster", "water1"],
       "evoStage": 2,
       "evoLineId": "3",
       "color": "blue",
@@ -245,9 +201,7 @@
     {
       "id": 9,
       "name": "blastoise",
-      "types": [
-        "water"
-      ],
+      "types": ["water"],
       "baseStats": {
         "hp": 79,
         "attack": 83,
@@ -258,10 +212,7 @@
       },
       "height": 1.6,
       "weight": 85.5,
-      "eggGroups": [
-        "monster",
-        "water1"
-      ],
+      "eggGroups": ["monster", "water1"],
       "evoStage": 3,
       "evoLineId": "3",
       "color": "blue",
@@ -272,9 +223,7 @@
     {
       "id": 10,
       "name": "caterpie",
-      "types": [
-        "bug"
-      ],
+      "types": ["bug"],
       "baseStats": {
         "hp": 45,
         "attack": 30,
@@ -285,9 +234,7 @@
       },
       "height": 0.3,
       "weight": 2.9,
-      "eggGroups": [
-        "bug"
-      ],
+      "eggGroups": ["bug"],
       "evoStage": 1,
       "evoLineId": "4",
       "color": "green",
@@ -298,9 +245,7 @@
     {
       "id": 11,
       "name": "metapod",
-      "types": [
-        "bug"
-      ],
+      "types": ["bug"],
       "baseStats": {
         "hp": 50,
         "attack": 20,
@@ -311,9 +256,7 @@
       },
       "height": 0.7,
       "weight": 9.9,
-      "eggGroups": [
-        "bug"
-      ],
+      "eggGroups": ["bug"],
       "evoStage": 2,
       "evoLineId": "4",
       "color": "green",
@@ -324,10 +267,7 @@
     {
       "id": 12,
       "name": "butterfree",
-      "types": [
-        "bug",
-        "flying"
-      ],
+      "types": ["bug", "flying"],
       "baseStats": {
         "hp": 60,
         "attack": 45,
@@ -338,9 +278,7 @@
       },
       "height": 1.1,
       "weight": 32,
-      "eggGroups": [
-        "bug"
-      ],
+      "eggGroups": ["bug"],
       "evoStage": 3,
       "evoLineId": "4",
       "color": "white",
@@ -351,10 +289,7 @@
     {
       "id": 13,
       "name": "weedle",
-      "types": [
-        "bug",
-        "poison"
-      ],
+      "types": ["bug", "poison"],
       "baseStats": {
         "hp": 40,
         "attack": 35,
@@ -365,9 +300,7 @@
       },
       "height": 0.3,
       "weight": 3.2,
-      "eggGroups": [
-        "bug"
-      ],
+      "eggGroups": ["bug"],
       "evoStage": 1,
       "evoLineId": "5",
       "color": "brown",
@@ -378,10 +311,7 @@
     {
       "id": 14,
       "name": "kakuna",
-      "types": [
-        "bug",
-        "poison"
-      ],
+      "types": ["bug", "poison"],
       "baseStats": {
         "hp": 45,
         "attack": 25,
@@ -392,9 +322,7 @@
       },
       "height": 0.6,
       "weight": 10,
-      "eggGroups": [
-        "bug"
-      ],
+      "eggGroups": ["bug"],
       "evoStage": 2,
       "evoLineId": "5",
       "color": "yellow",
@@ -405,10 +333,7 @@
     {
       "id": 15,
       "name": "beedrill",
-      "types": [
-        "bug",
-        "poison"
-      ],
+      "types": ["bug", "poison"],
       "baseStats": {
         "hp": 65,
         "attack": 90,
@@ -419,9 +344,7 @@
       },
       "height": 1,
       "weight": 29.5,
-      "eggGroups": [
-        "bug"
-      ],
+      "eggGroups": ["bug"],
       "evoStage": 3,
       "evoLineId": "5",
       "color": "yellow",
@@ -432,10 +355,7 @@
     {
       "id": 16,
       "name": "pidgey",
-      "types": [
-        "normal",
-        "flying"
-      ],
+      "types": ["normal", "flying"],
       "baseStats": {
         "hp": 40,
         "attack": 45,
@@ -446,9 +366,7 @@
       },
       "height": 0.3,
       "weight": 1.8,
-      "eggGroups": [
-        "flying"
-      ],
+      "eggGroups": ["flying"],
       "evoStage": 1,
       "evoLineId": "6",
       "color": "brown",
@@ -459,10 +377,7 @@
     {
       "id": 17,
       "name": "pidgeotto",
-      "types": [
-        "normal",
-        "flying"
-      ],
+      "types": ["normal", "flying"],
       "baseStats": {
         "hp": 63,
         "attack": 60,
@@ -473,9 +388,7 @@
       },
       "height": 1.1,
       "weight": 30,
-      "eggGroups": [
-        "flying"
-      ],
+      "eggGroups": ["flying"],
       "evoStage": 2,
       "evoLineId": "6",
       "color": "brown",
@@ -486,10 +399,7 @@
     {
       "id": 18,
       "name": "pidgeot",
-      "types": [
-        "normal",
-        "flying"
-      ],
+      "types": ["normal", "flying"],
       "baseStats": {
         "hp": 83,
         "attack": 80,
@@ -500,9 +410,7 @@
       },
       "height": 1.5,
       "weight": 39.5,
-      "eggGroups": [
-        "flying"
-      ],
+      "eggGroups": ["flying"],
       "evoStage": 3,
       "evoLineId": "6",
       "color": "brown",
@@ -513,9 +421,7 @@
     {
       "id": 19,
       "name": "rattata",
-      "types": [
-        "normal"
-      ],
+      "types": ["normal"],
       "baseStats": {
         "hp": 30,
         "attack": 56,
@@ -526,9 +432,7 @@
       },
       "height": 0.3,
       "weight": 3.5,
-      "eggGroups": [
-        "ground"
-      ],
+      "eggGroups": ["ground"],
       "evoStage": 1,
       "evoLineId": "7",
       "color": "purple",
@@ -539,9 +443,7 @@
     {
       "id": 20,
       "name": "raticate",
-      "types": [
-        "normal"
-      ],
+      "types": ["normal"],
       "baseStats": {
         "hp": 55,
         "attack": 81,
@@ -552,9 +454,7 @@
       },
       "height": 0.7,
       "weight": 18.5,
-      "eggGroups": [
-        "ground"
-      ],
+      "eggGroups": ["ground"],
       "evoStage": 2,
       "evoLineId": "7",
       "color": "brown",
@@ -565,10 +465,7 @@
     {
       "id": 21,
       "name": "spearow",
-      "types": [
-        "normal",
-        "flying"
-      ],
+      "types": ["normal", "flying"],
       "baseStats": {
         "hp": 40,
         "attack": 60,
@@ -579,9 +476,7 @@
       },
       "height": 0.3,
       "weight": 2,
-      "eggGroups": [
-        "flying"
-      ],
+      "eggGroups": ["flying"],
       "evoStage": 1,
       "evoLineId": "8",
       "color": "brown",
@@ -592,10 +487,7 @@
     {
       "id": 22,
       "name": "fearow",
-      "types": [
-        "normal",
-        "flying"
-      ],
+      "types": ["normal", "flying"],
       "baseStats": {
         "hp": 65,
         "attack": 90,
@@ -606,9 +498,7 @@
       },
       "height": 1.2,
       "weight": 38,
-      "eggGroups": [
-        "flying"
-      ],
+      "eggGroups": ["flying"],
       "evoStage": 2,
       "evoLineId": "8",
       "color": "brown",
@@ -619,9 +509,7 @@
     {
       "id": 23,
       "name": "ekans",
-      "types": [
-        "poison"
-      ],
+      "types": ["poison"],
       "baseStats": {
         "hp": 35,
         "attack": 60,
@@ -632,10 +520,7 @@
       },
       "height": 2,
       "weight": 6.9,
-      "eggGroups": [
-        "ground",
-        "dragon"
-      ],
+      "eggGroups": ["ground", "dragon"],
       "evoStage": 1,
       "evoLineId": "9",
       "color": "purple",
@@ -646,9 +531,7 @@
     {
       "id": 24,
       "name": "arbok",
-      "types": [
-        "poison"
-      ],
+      "types": ["poison"],
       "baseStats": {
         "hp": 60,
         "attack": 95,
@@ -659,10 +542,7 @@
       },
       "height": 3.5,
       "weight": 65,
-      "eggGroups": [
-        "ground",
-        "dragon"
-      ],
+      "eggGroups": ["ground", "dragon"],
       "evoStage": 2,
       "evoLineId": "9",
       "color": "purple",
@@ -673,9 +553,7 @@
     {
       "id": 25,
       "name": "pikachu",
-      "types": [
-        "electric"
-      ],
+      "types": ["electric"],
       "baseStats": {
         "hp": 35,
         "attack": 55,
@@ -686,10 +564,7 @@
       },
       "height": 0.4,
       "weight": 6,
-      "eggGroups": [
-        "ground",
-        "fairy"
-      ],
+      "eggGroups": ["ground", "fairy"],
       "evoStage": 2,
       "evoLineId": "10",
       "color": "yellow",
@@ -700,9 +575,7 @@
     {
       "id": 26,
       "name": "raichu",
-      "types": [
-        "electric"
-      ],
+      "types": ["electric"],
       "baseStats": {
         "hp": 60,
         "attack": 90,
@@ -713,10 +586,7 @@
       },
       "height": 0.8,
       "weight": 30,
-      "eggGroups": [
-        "ground",
-        "fairy"
-      ],
+      "eggGroups": ["ground", "fairy"],
       "evoStage": 3,
       "evoLineId": "10",
       "color": "yellow",
@@ -727,9 +597,7 @@
     {
       "id": 27,
       "name": "sandshrew",
-      "types": [
-        "ground"
-      ],
+      "types": ["ground"],
       "baseStats": {
         "hp": 50,
         "attack": 75,
@@ -740,9 +608,7 @@
       },
       "height": 0.6,
       "weight": 12,
-      "eggGroups": [
-        "ground"
-      ],
+      "eggGroups": ["ground"],
       "evoStage": 1,
       "evoLineId": "11",
       "color": "yellow",
@@ -753,9 +619,7 @@
     {
       "id": 28,
       "name": "sandslash",
-      "types": [
-        "ground"
-      ],
+      "types": ["ground"],
       "baseStats": {
         "hp": 75,
         "attack": 100,
@@ -766,9 +630,7 @@
       },
       "height": 1,
       "weight": 29.5,
-      "eggGroups": [
-        "ground"
-      ],
+      "eggGroups": ["ground"],
       "evoStage": 2,
       "evoLineId": "11",
       "color": "yellow",
@@ -779,9 +641,7 @@
     {
       "id": 29,
       "name": "nidoran-f",
-      "types": [
-        "poison"
-      ],
+      "types": ["poison"],
       "baseStats": {
         "hp": 55,
         "attack": 47,
@@ -792,10 +652,7 @@
       },
       "height": 0.4,
       "weight": 7,
-      "eggGroups": [
-        "monster",
-        "ground"
-      ],
+      "eggGroups": ["monster", "ground"],
       "evoStage": 1,
       "evoLineId": "12",
       "color": "blue",
@@ -806,9 +663,7 @@
     {
       "id": 30,
       "name": "nidorina",
-      "types": [
-        "poison"
-      ],
+      "types": ["poison"],
       "baseStats": {
         "hp": 70,
         "attack": 62,
@@ -819,9 +674,7 @@
       },
       "height": 0.8,
       "weight": 20,
-      "eggGroups": [
-        "no-eggs"
-      ],
+      "eggGroups": ["no-eggs"],
       "evoStage": 2,
       "evoLineId": "12",
       "color": "blue",
@@ -832,10 +685,7 @@
     {
       "id": 31,
       "name": "nidoqueen",
-      "types": [
-        "poison",
-        "ground"
-      ],
+      "types": ["poison", "ground"],
       "baseStats": {
         "hp": 90,
         "attack": 92,
@@ -846,9 +696,7 @@
       },
       "height": 1.3,
       "weight": 60,
-      "eggGroups": [
-        "no-eggs"
-      ],
+      "eggGroups": ["no-eggs"],
       "evoStage": 3,
       "evoLineId": "12",
       "color": "blue",
@@ -859,9 +707,7 @@
     {
       "id": 32,
       "name": "nidoran-m",
-      "types": [
-        "poison"
-      ],
+      "types": ["poison"],
       "baseStats": {
         "hp": 46,
         "attack": 57,
@@ -872,10 +718,7 @@
       },
       "height": 0.5,
       "weight": 9,
-      "eggGroups": [
-        "monster",
-        "ground"
-      ],
+      "eggGroups": ["monster", "ground"],
       "evoStage": 1,
       "evoLineId": "13",
       "color": "purple",
@@ -886,9 +729,7 @@
     {
       "id": 33,
       "name": "nidorino",
-      "types": [
-        "poison"
-      ],
+      "types": ["poison"],
       "baseStats": {
         "hp": 61,
         "attack": 72,
@@ -899,10 +740,7 @@
       },
       "height": 0.9,
       "weight": 19.5,
-      "eggGroups": [
-        "monster",
-        "ground"
-      ],
+      "eggGroups": ["monster", "ground"],
       "evoStage": 2,
       "evoLineId": "13",
       "color": "purple",
@@ -913,10 +751,7 @@
     {
       "id": 34,
       "name": "nidoking",
-      "types": [
-        "poison",
-        "ground"
-      ],
+      "types": ["poison", "ground"],
       "baseStats": {
         "hp": 81,
         "attack": 102,
@@ -927,10 +762,7 @@
       },
       "height": 1.4,
       "weight": 62,
-      "eggGroups": [
-        "monster",
-        "ground"
-      ],
+      "eggGroups": ["monster", "ground"],
       "evoStage": 3,
       "evoLineId": "13",
       "color": "purple",
@@ -941,9 +773,7 @@
     {
       "id": 35,
       "name": "clefairy",
-      "types": [
-        "fairy"
-      ],
+      "types": ["fairy"],
       "baseStats": {
         "hp": 70,
         "attack": 45,
@@ -954,9 +784,7 @@
       },
       "height": 0.6,
       "weight": 7.5,
-      "eggGroups": [
-        "fairy"
-      ],
+      "eggGroups": ["fairy"],
       "evoStage": 2,
       "evoLineId": "14",
       "color": "pink",
@@ -967,9 +795,7 @@
     {
       "id": 36,
       "name": "clefable",
-      "types": [
-        "fairy"
-      ],
+      "types": ["fairy"],
       "baseStats": {
         "hp": 95,
         "attack": 70,
@@ -980,9 +806,7 @@
       },
       "height": 1.3,
       "weight": 40,
-      "eggGroups": [
-        "fairy"
-      ],
+      "eggGroups": ["fairy"],
       "evoStage": 3,
       "evoLineId": "14",
       "color": "pink",
@@ -993,9 +817,7 @@
     {
       "id": 37,
       "name": "vulpix",
-      "types": [
-        "fire"
-      ],
+      "types": ["fire"],
       "baseStats": {
         "hp": 38,
         "attack": 41,
@@ -1006,9 +828,7 @@
       },
       "height": 0.6,
       "weight": 9.9,
-      "eggGroups": [
-        "ground"
-      ],
+      "eggGroups": ["ground"],
       "evoStage": 1,
       "evoLineId": "15",
       "color": "brown",
@@ -1019,9 +839,7 @@
     {
       "id": 38,
       "name": "ninetales",
-      "types": [
-        "fire"
-      ],
+      "types": ["fire"],
       "baseStats": {
         "hp": 73,
         "attack": 76,
@@ -1032,9 +850,7 @@
       },
       "height": 1.1,
       "weight": 19.9,
-      "eggGroups": [
-        "ground"
-      ],
+      "eggGroups": ["ground"],
       "evoStage": 2,
       "evoLineId": "15",
       "color": "yellow",
@@ -1045,10 +861,7 @@
     {
       "id": 39,
       "name": "jigglypuff",
-      "types": [
-        "normal",
-        "fairy"
-      ],
+      "types": ["normal", "fairy"],
       "baseStats": {
         "hp": 115,
         "attack": 45,
@@ -1059,9 +872,7 @@
       },
       "height": 0.5,
       "weight": 5.5,
-      "eggGroups": [
-        "fairy"
-      ],
+      "eggGroups": ["fairy"],
       "evoStage": 2,
       "evoLineId": "16",
       "color": "pink",
@@ -1072,10 +883,7 @@
     {
       "id": 40,
       "name": "wigglytuff",
-      "types": [
-        "normal",
-        "fairy"
-      ],
+      "types": ["normal", "fairy"],
       "baseStats": {
         "hp": 140,
         "attack": 70,
@@ -1086,9 +894,7 @@
       },
       "height": 1,
       "weight": 12,
-      "eggGroups": [
-        "fairy"
-      ],
+      "eggGroups": ["fairy"],
       "evoStage": 3,
       "evoLineId": "16",
       "color": "pink",
@@ -1099,10 +905,7 @@
     {
       "id": 41,
       "name": "zubat",
-      "types": [
-        "poison",
-        "flying"
-      ],
+      "types": ["poison", "flying"],
       "baseStats": {
         "hp": 40,
         "attack": 45,
@@ -1113,9 +916,7 @@
       },
       "height": 0.8,
       "weight": 7.5,
-      "eggGroups": [
-        "flying"
-      ],
+      "eggGroups": ["flying"],
       "evoStage": 1,
       "evoLineId": "17",
       "color": "purple",
@@ -1126,10 +927,7 @@
     {
       "id": 42,
       "name": "golbat",
-      "types": [
-        "poison",
-        "flying"
-      ],
+      "types": ["poison", "flying"],
       "baseStats": {
         "hp": 75,
         "attack": 80,
@@ -1140,9 +938,7 @@
       },
       "height": 1.6,
       "weight": 55,
-      "eggGroups": [
-        "flying"
-      ],
+      "eggGroups": ["flying"],
       "evoStage": 2,
       "evoLineId": "17",
       "color": "purple",
@@ -1153,10 +949,7 @@
     {
       "id": 43,
       "name": "oddish",
-      "types": [
-        "grass",
-        "poison"
-      ],
+      "types": ["grass", "poison"],
       "baseStats": {
         "hp": 45,
         "attack": 50,
@@ -1167,9 +960,7 @@
       },
       "height": 0.5,
       "weight": 5.4,
-      "eggGroups": [
-        "plant"
-      ],
+      "eggGroups": ["plant"],
       "evoStage": 1,
       "evoLineId": "18",
       "color": "blue",
@@ -1180,10 +971,7 @@
     {
       "id": 44,
       "name": "gloom",
-      "types": [
-        "grass",
-        "poison"
-      ],
+      "types": ["grass", "poison"],
       "baseStats": {
         "hp": 60,
         "attack": 65,
@@ -1194,9 +982,7 @@
       },
       "height": 0.8,
       "weight": 8.6,
-      "eggGroups": [
-        "plant"
-      ],
+      "eggGroups": ["plant"],
       "evoStage": 2,
       "evoLineId": "18",
       "color": "blue",
@@ -1207,10 +993,7 @@
     {
       "id": 45,
       "name": "vileplume",
-      "types": [
-        "grass",
-        "poison"
-      ],
+      "types": ["grass", "poison"],
       "baseStats": {
         "hp": 75,
         "attack": 80,
@@ -1221,9 +1004,7 @@
       },
       "height": 1.2,
       "weight": 18.6,
-      "eggGroups": [
-        "plant"
-      ],
+      "eggGroups": ["plant"],
       "evoStage": 3,
       "evoLineId": "18",
       "color": "red",
@@ -1234,10 +1015,7 @@
     {
       "id": 46,
       "name": "paras",
-      "types": [
-        "bug",
-        "grass"
-      ],
+      "types": ["bug", "grass"],
       "baseStats": {
         "hp": 35,
         "attack": 70,
@@ -1248,10 +1026,7 @@
       },
       "height": 0.3,
       "weight": 5.4,
-      "eggGroups": [
-        "bug",
-        "plant"
-      ],
+      "eggGroups": ["bug", "plant"],
       "evoStage": 1,
       "evoLineId": "19",
       "color": "red",
@@ -1262,10 +1037,7 @@
     {
       "id": 47,
       "name": "parasect",
-      "types": [
-        "bug",
-        "grass"
-      ],
+      "types": ["bug", "grass"],
       "baseStats": {
         "hp": 60,
         "attack": 95,
@@ -1276,10 +1048,7 @@
       },
       "height": 1,
       "weight": 29.5,
-      "eggGroups": [
-        "bug",
-        "plant"
-      ],
+      "eggGroups": ["bug", "plant"],
       "evoStage": 2,
       "evoLineId": "19",
       "color": "red",
@@ -1290,10 +1059,7 @@
     {
       "id": 48,
       "name": "venonat",
-      "types": [
-        "bug",
-        "poison"
-      ],
+      "types": ["bug", "poison"],
       "baseStats": {
         "hp": 60,
         "attack": 55,
@@ -1304,9 +1070,7 @@
       },
       "height": 1,
       "weight": 30,
-      "eggGroups": [
-        "bug"
-      ],
+      "eggGroups": ["bug"],
       "evoStage": 1,
       "evoLineId": "20",
       "color": "purple",
@@ -1317,10 +1081,7 @@
     {
       "id": 49,
       "name": "venomoth",
-      "types": [
-        "bug",
-        "poison"
-      ],
+      "types": ["bug", "poison"],
       "baseStats": {
         "hp": 70,
         "attack": 65,
@@ -1331,9 +1092,7 @@
       },
       "height": 1.5,
       "weight": 12.5,
-      "eggGroups": [
-        "bug"
-      ],
+      "eggGroups": ["bug"],
       "evoStage": 2,
       "evoLineId": "20",
       "color": "purple",
@@ -1344,9 +1103,7 @@
     {
       "id": 50,
       "name": "diglett",
-      "types": [
-        "ground"
-      ],
+      "types": ["ground"],
       "baseStats": {
         "hp": 10,
         "attack": 55,
@@ -1357,9 +1114,7 @@
       },
       "height": 0.2,
       "weight": 0.8,
-      "eggGroups": [
-        "ground"
-      ],
+      "eggGroups": ["ground"],
       "evoStage": 1,
       "evoLineId": "21",
       "color": "brown",
@@ -1370,9 +1125,7 @@
     {
       "id": 51,
       "name": "dugtrio",
-      "types": [
-        "ground"
-      ],
+      "types": ["ground"],
       "baseStats": {
         "hp": 35,
         "attack": 100,
@@ -1383,9 +1136,7 @@
       },
       "height": 0.7,
       "weight": 33.3,
-      "eggGroups": [
-        "ground"
-      ],
+      "eggGroups": ["ground"],
       "evoStage": 2,
       "evoLineId": "21",
       "color": "brown",
@@ -1396,9 +1147,7 @@
     {
       "id": 52,
       "name": "meowth",
-      "types": [
-        "normal"
-      ],
+      "types": ["normal"],
       "baseStats": {
         "hp": 40,
         "attack": 45,
@@ -1409,9 +1158,7 @@
       },
       "height": 0.4,
       "weight": 4.2,
-      "eggGroups": [
-        "ground"
-      ],
+      "eggGroups": ["ground"],
       "evoStage": 1,
       "evoLineId": "22",
       "color": "yellow",
@@ -1422,9 +1169,7 @@
     {
       "id": 53,
       "name": "persian",
-      "types": [
-        "normal"
-      ],
+      "types": ["normal"],
       "baseStats": {
         "hp": 65,
         "attack": 70,
@@ -1435,9 +1180,7 @@
       },
       "height": 1,
       "weight": 32,
-      "eggGroups": [
-        "ground"
-      ],
+      "eggGroups": ["ground"],
       "evoStage": 2,
       "evoLineId": "22",
       "color": "yellow",
@@ -1448,9 +1191,7 @@
     {
       "id": 54,
       "name": "psyduck",
-      "types": [
-        "water"
-      ],
+      "types": ["water"],
       "baseStats": {
         "hp": 50,
         "attack": 52,
@@ -1461,10 +1202,7 @@
       },
       "height": 0.8,
       "weight": 19.6,
-      "eggGroups": [
-        "water1",
-        "ground"
-      ],
+      "eggGroups": ["water1", "ground"],
       "evoStage": 1,
       "evoLineId": "23",
       "color": "yellow",
@@ -1475,9 +1213,7 @@
     {
       "id": 55,
       "name": "golduck",
-      "types": [
-        "water"
-      ],
+      "types": ["water"],
       "baseStats": {
         "hp": 80,
         "attack": 82,
@@ -1488,10 +1224,7 @@
       },
       "height": 1.7,
       "weight": 76.6,
-      "eggGroups": [
-        "water1",
-        "ground"
-      ],
+      "eggGroups": ["water1", "ground"],
       "evoStage": 2,
       "evoLineId": "23",
       "color": "blue",
@@ -1502,9 +1235,7 @@
     {
       "id": 56,
       "name": "mankey",
-      "types": [
-        "fighting"
-      ],
+      "types": ["fighting"],
       "baseStats": {
         "hp": 40,
         "attack": 80,
@@ -1515,9 +1246,7 @@
       },
       "height": 0.5,
       "weight": 28,
-      "eggGroups": [
-        "ground"
-      ],
+      "eggGroups": ["ground"],
       "evoStage": 1,
       "evoLineId": "24",
       "color": "brown",
@@ -1528,9 +1257,7 @@
     {
       "id": 57,
       "name": "primeape",
-      "types": [
-        "fighting"
-      ],
+      "types": ["fighting"],
       "baseStats": {
         "hp": 65,
         "attack": 105,
@@ -1541,9 +1268,7 @@
       },
       "height": 1,
       "weight": 32,
-      "eggGroups": [
-        "ground"
-      ],
+      "eggGroups": ["ground"],
       "evoStage": 2,
       "evoLineId": "24",
       "color": "brown",
@@ -1554,9 +1279,7 @@
     {
       "id": 58,
       "name": "growlithe",
-      "types": [
-        "fire"
-      ],
+      "types": ["fire"],
       "baseStats": {
         "hp": 55,
         "attack": 70,
@@ -1567,9 +1290,7 @@
       },
       "height": 0.7,
       "weight": 19,
-      "eggGroups": [
-        "ground"
-      ],
+      "eggGroups": ["ground"],
       "evoStage": 1,
       "evoLineId": "25",
       "color": "brown",
@@ -1580,9 +1301,7 @@
     {
       "id": 59,
       "name": "arcanine",
-      "types": [
-        "fire"
-      ],
+      "types": ["fire"],
       "baseStats": {
         "hp": 90,
         "attack": 110,
@@ -1593,9 +1312,7 @@
       },
       "height": 1.9,
       "weight": 155,
-      "eggGroups": [
-        "ground"
-      ],
+      "eggGroups": ["ground"],
       "evoStage": 2,
       "evoLineId": "25",
       "color": "brown",
@@ -1606,9 +1323,7 @@
     {
       "id": 60,
       "name": "poliwag",
-      "types": [
-        "water"
-      ],
+      "types": ["water"],
       "baseStats": {
         "hp": 40,
         "attack": 50,
@@ -1619,9 +1334,7 @@
       },
       "height": 0.6,
       "weight": 12.4,
-      "eggGroups": [
-        "water1"
-      ],
+      "eggGroups": ["water1"],
       "evoStage": 1,
       "evoLineId": "26",
       "color": "blue",
@@ -1632,9 +1345,7 @@
     {
       "id": 61,
       "name": "poliwhirl",
-      "types": [
-        "water"
-      ],
+      "types": ["water"],
       "baseStats": {
         "hp": 65,
         "attack": 65,
@@ -1645,9 +1356,7 @@
       },
       "height": 1,
       "weight": 20,
-      "eggGroups": [
-        "water1"
-      ],
+      "eggGroups": ["water1"],
       "evoStage": 2,
       "evoLineId": "26",
       "color": "blue",
@@ -1658,10 +1367,7 @@
     {
       "id": 62,
       "name": "poliwrath",
-      "types": [
-        "water",
-        "fighting"
-      ],
+      "types": ["water", "fighting"],
       "baseStats": {
         "hp": 90,
         "attack": 95,
@@ -1672,9 +1378,7 @@
       },
       "height": 1.3,
       "weight": 54,
-      "eggGroups": [
-        "water1"
-      ],
+      "eggGroups": ["water1"],
       "evoStage": 3,
       "evoLineId": "26",
       "color": "blue",
@@ -1685,9 +1389,7 @@
     {
       "id": 63,
       "name": "abra",
-      "types": [
-        "psychic"
-      ],
+      "types": ["psychic"],
       "baseStats": {
         "hp": 25,
         "attack": 20,
@@ -1698,9 +1400,7 @@
       },
       "height": 0.9,
       "weight": 19.5,
-      "eggGroups": [
-        "humanshape"
-      ],
+      "eggGroups": ["humanshape"],
       "evoStage": 1,
       "evoLineId": "27",
       "color": "brown",
@@ -1711,9 +1411,7 @@
     {
       "id": 64,
       "name": "kadabra",
-      "types": [
-        "psychic"
-      ],
+      "types": ["psychic"],
       "baseStats": {
         "hp": 40,
         "attack": 35,
@@ -1724,9 +1422,7 @@
       },
       "height": 1.3,
       "weight": 56.5,
-      "eggGroups": [
-        "humanshape"
-      ],
+      "eggGroups": ["humanshape"],
       "evoStage": 2,
       "evoLineId": "27",
       "color": "brown",
@@ -1737,9 +1433,7 @@
     {
       "id": 65,
       "name": "alakazam",
-      "types": [
-        "psychic"
-      ],
+      "types": ["psychic"],
       "baseStats": {
         "hp": 55,
         "attack": 50,
@@ -1750,9 +1444,7 @@
       },
       "height": 1.5,
       "weight": 48,
-      "eggGroups": [
-        "humanshape"
-      ],
+      "eggGroups": ["humanshape"],
       "evoStage": 3,
       "evoLineId": "27",
       "color": "brown",
@@ -1763,9 +1455,7 @@
     {
       "id": 66,
       "name": "machop",
-      "types": [
-        "fighting"
-      ],
+      "types": ["fighting"],
       "baseStats": {
         "hp": 70,
         "attack": 80,
@@ -1776,9 +1466,7 @@
       },
       "height": 0.8,
       "weight": 19.5,
-      "eggGroups": [
-        "humanshape"
-      ],
+      "eggGroups": ["humanshape"],
       "evoStage": 1,
       "evoLineId": "28",
       "color": "gray",
@@ -1789,9 +1477,7 @@
     {
       "id": 67,
       "name": "machoke",
-      "types": [
-        "fighting"
-      ],
+      "types": ["fighting"],
       "baseStats": {
         "hp": 80,
         "attack": 100,
@@ -1802,9 +1488,7 @@
       },
       "height": 1.5,
       "weight": 70.5,
-      "eggGroups": [
-        "humanshape"
-      ],
+      "eggGroups": ["humanshape"],
       "evoStage": 2,
       "evoLineId": "28",
       "color": "gray",
@@ -1815,9 +1499,7 @@
     {
       "id": 68,
       "name": "machamp",
-      "types": [
-        "fighting"
-      ],
+      "types": ["fighting"],
       "baseStats": {
         "hp": 90,
         "attack": 130,
@@ -1828,9 +1510,7 @@
       },
       "height": 1.6,
       "weight": 130,
-      "eggGroups": [
-        "humanshape"
-      ],
+      "eggGroups": ["humanshape"],
       "evoStage": 3,
       "evoLineId": "28",
       "color": "gray",
@@ -1841,10 +1521,7 @@
     {
       "id": 69,
       "name": "bellsprout",
-      "types": [
-        "grass",
-        "poison"
-      ],
+      "types": ["grass", "poison"],
       "baseStats": {
         "hp": 50,
         "attack": 75,
@@ -1855,9 +1532,7 @@
       },
       "height": 0.7,
       "weight": 4,
-      "eggGroups": [
-        "plant"
-      ],
+      "eggGroups": ["plant"],
       "evoStage": 1,
       "evoLineId": "29",
       "color": "green",
@@ -1868,10 +1543,7 @@
     {
       "id": 70,
       "name": "weepinbell",
-      "types": [
-        "grass",
-        "poison"
-      ],
+      "types": ["grass", "poison"],
       "baseStats": {
         "hp": 65,
         "attack": 90,
@@ -1882,9 +1554,7 @@
       },
       "height": 1,
       "weight": 6.4,
-      "eggGroups": [
-        "plant"
-      ],
+      "eggGroups": ["plant"],
       "evoStage": 2,
       "evoLineId": "29",
       "color": "green",
@@ -1895,10 +1565,7 @@
     {
       "id": 71,
       "name": "victreebel",
-      "types": [
-        "grass",
-        "poison"
-      ],
+      "types": ["grass", "poison"],
       "baseStats": {
         "hp": 80,
         "attack": 105,
@@ -1909,9 +1576,7 @@
       },
       "height": 1.7,
       "weight": 15.5,
-      "eggGroups": [
-        "plant"
-      ],
+      "eggGroups": ["plant"],
       "evoStage": 3,
       "evoLineId": "29",
       "color": "green",
@@ -1922,10 +1587,7 @@
     {
       "id": 72,
       "name": "tentacool",
-      "types": [
-        "water",
-        "poison"
-      ],
+      "types": ["water", "poison"],
       "baseStats": {
         "hp": 40,
         "attack": 40,
@@ -1936,9 +1598,7 @@
       },
       "height": 0.9,
       "weight": 45.5,
-      "eggGroups": [
-        "water3"
-      ],
+      "eggGroups": ["water3"],
       "evoStage": 1,
       "evoLineId": "30",
       "color": "blue",
@@ -1949,10 +1609,7 @@
     {
       "id": 73,
       "name": "tentacruel",
-      "types": [
-        "water",
-        "poison"
-      ],
+      "types": ["water", "poison"],
       "baseStats": {
         "hp": 80,
         "attack": 70,
@@ -1963,9 +1620,7 @@
       },
       "height": 1.6,
       "weight": 55,
-      "eggGroups": [
-        "water3"
-      ],
+      "eggGroups": ["water3"],
       "evoStage": 2,
       "evoLineId": "30",
       "color": "blue",
@@ -1976,10 +1631,7 @@
     {
       "id": 74,
       "name": "geodude",
-      "types": [
-        "rock",
-        "ground"
-      ],
+      "types": ["rock", "ground"],
       "baseStats": {
         "hp": 40,
         "attack": 80,
@@ -1990,9 +1642,7 @@
       },
       "height": 0.4,
       "weight": 20,
-      "eggGroups": [
-        "mineral"
-      ],
+      "eggGroups": ["mineral"],
       "evoStage": 1,
       "evoLineId": "31",
       "color": "brown",
@@ -2003,10 +1653,7 @@
     {
       "id": 75,
       "name": "graveler",
-      "types": [
-        "rock",
-        "ground"
-      ],
+      "types": ["rock", "ground"],
       "baseStats": {
         "hp": 55,
         "attack": 95,
@@ -2017,9 +1664,7 @@
       },
       "height": 1,
       "weight": 105,
-      "eggGroups": [
-        "mineral"
-      ],
+      "eggGroups": ["mineral"],
       "evoStage": 2,
       "evoLineId": "31",
       "color": "brown",
@@ -2030,10 +1675,7 @@
     {
       "id": 76,
       "name": "golem",
-      "types": [
-        "rock",
-        "ground"
-      ],
+      "types": ["rock", "ground"],
       "baseStats": {
         "hp": 80,
         "attack": 120,
@@ -2044,9 +1686,7 @@
       },
       "height": 1.4,
       "weight": 300,
-      "eggGroups": [
-        "mineral"
-      ],
+      "eggGroups": ["mineral"],
       "evoStage": 3,
       "evoLineId": "31",
       "color": "brown",
@@ -2057,9 +1697,7 @@
     {
       "id": 77,
       "name": "ponyta",
-      "types": [
-        "fire"
-      ],
+      "types": ["fire"],
       "baseStats": {
         "hp": 50,
         "attack": 85,
@@ -2070,9 +1708,7 @@
       },
       "height": 1,
       "weight": 30,
-      "eggGroups": [
-        "ground"
-      ],
+      "eggGroups": ["ground"],
       "evoStage": 1,
       "evoLineId": "32",
       "color": "yellow",
@@ -2083,9 +1719,7 @@
     {
       "id": 78,
       "name": "rapidash",
-      "types": [
-        "fire"
-      ],
+      "types": ["fire"],
       "baseStats": {
         "hp": 65,
         "attack": 100,
@@ -2096,9 +1730,7 @@
       },
       "height": 1.7,
       "weight": 95,
-      "eggGroups": [
-        "ground"
-      ],
+      "eggGroups": ["ground"],
       "evoStage": 2,
       "evoLineId": "32",
       "color": "yellow",
@@ -2109,10 +1741,7 @@
     {
       "id": 79,
       "name": "slowpoke",
-      "types": [
-        "water",
-        "psychic"
-      ],
+      "types": ["water", "psychic"],
       "baseStats": {
         "hp": 90,
         "attack": 65,
@@ -2123,10 +1752,7 @@
       },
       "height": 1.2,
       "weight": 36,
-      "eggGroups": [
-        "monster",
-        "water1"
-      ],
+      "eggGroups": ["monster", "water1"],
       "evoStage": 1,
       "evoLineId": "33",
       "color": "pink",
@@ -2137,10 +1763,7 @@
     {
       "id": 80,
       "name": "slowbro",
-      "types": [
-        "water",
-        "psychic"
-      ],
+      "types": ["water", "psychic"],
       "baseStats": {
         "hp": 95,
         "attack": 75,
@@ -2151,10 +1774,7 @@
       },
       "height": 1.6,
       "weight": 78.5,
-      "eggGroups": [
-        "monster",
-        "water1"
-      ],
+      "eggGroups": ["monster", "water1"],
       "evoStage": 2,
       "evoLineId": "33",
       "color": "pink",
@@ -2165,10 +1785,7 @@
     {
       "id": 81,
       "name": "magnemite",
-      "types": [
-        "electric",
-        "steel"
-      ],
+      "types": ["electric", "steel"],
       "baseStats": {
         "hp": 25,
         "attack": 35,
@@ -2179,9 +1796,7 @@
       },
       "height": 0.3,
       "weight": 6,
-      "eggGroups": [
-        "mineral"
-      ],
+      "eggGroups": ["mineral"],
       "evoStage": 1,
       "evoLineId": "34",
       "color": "gray",
@@ -2192,10 +1807,7 @@
     {
       "id": 82,
       "name": "magneton",
-      "types": [
-        "electric",
-        "steel"
-      ],
+      "types": ["electric", "steel"],
       "baseStats": {
         "hp": 50,
         "attack": 60,
@@ -2206,9 +1818,7 @@
       },
       "height": 1,
       "weight": 60,
-      "eggGroups": [
-        "mineral"
-      ],
+      "eggGroups": ["mineral"],
       "evoStage": 2,
       "evoLineId": "34",
       "color": "gray",
@@ -2219,10 +1829,7 @@
     {
       "id": 83,
       "name": "farfetchd",
-      "types": [
-        "normal",
-        "flying"
-      ],
+      "types": ["normal", "flying"],
       "baseStats": {
         "hp": 52,
         "attack": 90,
@@ -2233,10 +1840,7 @@
       },
       "height": 0.8,
       "weight": 15,
-      "eggGroups": [
-        "flying",
-        "ground"
-      ],
+      "eggGroups": ["flying", "ground"],
       "evoStage": 1,
       "evoLineId": "35",
       "color": "brown",
@@ -2247,10 +1851,7 @@
     {
       "id": 84,
       "name": "doduo",
-      "types": [
-        "normal",
-        "flying"
-      ],
+      "types": ["normal", "flying"],
       "baseStats": {
         "hp": 35,
         "attack": 85,
@@ -2261,9 +1862,7 @@
       },
       "height": 1.4,
       "weight": 39.2,
-      "eggGroups": [
-        "flying"
-      ],
+      "eggGroups": ["flying"],
       "evoStage": 1,
       "evoLineId": "36",
       "color": "brown",
@@ -2274,10 +1873,7 @@
     {
       "id": 85,
       "name": "dodrio",
-      "types": [
-        "normal",
-        "flying"
-      ],
+      "types": ["normal", "flying"],
       "baseStats": {
         "hp": 60,
         "attack": 110,
@@ -2288,9 +1884,7 @@
       },
       "height": 1.8,
       "weight": 85.2,
-      "eggGroups": [
-        "flying"
-      ],
+      "eggGroups": ["flying"],
       "evoStage": 2,
       "evoLineId": "36",
       "color": "brown",
@@ -2301,9 +1895,7 @@
     {
       "id": 86,
       "name": "seel",
-      "types": [
-        "water"
-      ],
+      "types": ["water"],
       "baseStats": {
         "hp": 65,
         "attack": 45,
@@ -2314,10 +1906,7 @@
       },
       "height": 1.1,
       "weight": 90,
-      "eggGroups": [
-        "water1",
-        "ground"
-      ],
+      "eggGroups": ["water1", "ground"],
       "evoStage": 1,
       "evoLineId": "37",
       "color": "white",
@@ -2328,10 +1917,7 @@
     {
       "id": 87,
       "name": "dewgong",
-      "types": [
-        "water",
-        "ice"
-      ],
+      "types": ["water", "ice"],
       "baseStats": {
         "hp": 90,
         "attack": 70,
@@ -2342,10 +1928,7 @@
       },
       "height": 1.7,
       "weight": 120,
-      "eggGroups": [
-        "water1",
-        "ground"
-      ],
+      "eggGroups": ["water1", "ground"],
       "evoStage": 2,
       "evoLineId": "37",
       "color": "white",
@@ -2356,9 +1939,7 @@
     {
       "id": 88,
       "name": "grimer",
-      "types": [
-        "poison"
-      ],
+      "types": ["poison"],
       "baseStats": {
         "hp": 80,
         "attack": 80,
@@ -2369,9 +1950,7 @@
       },
       "height": 0.9,
       "weight": 30,
-      "eggGroups": [
-        "indeterminate"
-      ],
+      "eggGroups": ["indeterminate"],
       "evoStage": 1,
       "evoLineId": "38",
       "color": "purple",
@@ -2382,9 +1961,7 @@
     {
       "id": 89,
       "name": "muk",
-      "types": [
-        "poison"
-      ],
+      "types": ["poison"],
       "baseStats": {
         "hp": 105,
         "attack": 105,
@@ -2395,9 +1972,7 @@
       },
       "height": 1.2,
       "weight": 30,
-      "eggGroups": [
-        "indeterminate"
-      ],
+      "eggGroups": ["indeterminate"],
       "evoStage": 2,
       "evoLineId": "38",
       "color": "purple",
@@ -2408,9 +1983,7 @@
     {
       "id": 90,
       "name": "shellder",
-      "types": [
-        "water"
-      ],
+      "types": ["water"],
       "baseStats": {
         "hp": 30,
         "attack": 65,
@@ -2421,9 +1994,7 @@
       },
       "height": 0.3,
       "weight": 4,
-      "eggGroups": [
-        "water3"
-      ],
+      "eggGroups": ["water3"],
       "evoStage": 1,
       "evoLineId": "39",
       "color": "purple",
@@ -2434,10 +2005,7 @@
     {
       "id": 91,
       "name": "cloyster",
-      "types": [
-        "water",
-        "ice"
-      ],
+      "types": ["water", "ice"],
       "baseStats": {
         "hp": 50,
         "attack": 95,
@@ -2448,9 +2016,7 @@
       },
       "height": 1.5,
       "weight": 132.5,
-      "eggGroups": [
-        "water3"
-      ],
+      "eggGroups": ["water3"],
       "evoStage": 2,
       "evoLineId": "39",
       "color": "purple",
@@ -2461,10 +2027,7 @@
     {
       "id": 92,
       "name": "gastly",
-      "types": [
-        "ghost",
-        "poison"
-      ],
+      "types": ["ghost", "poison"],
       "baseStats": {
         "hp": 30,
         "attack": 35,
@@ -2475,9 +2038,7 @@
       },
       "height": 1.3,
       "weight": 0.1,
-      "eggGroups": [
-        "indeterminate"
-      ],
+      "eggGroups": ["indeterminate"],
       "evoStage": 1,
       "evoLineId": "40",
       "color": "purple",
@@ -2488,10 +2049,7 @@
     {
       "id": 93,
       "name": "haunter",
-      "types": [
-        "ghost",
-        "poison"
-      ],
+      "types": ["ghost", "poison"],
       "baseStats": {
         "hp": 45,
         "attack": 50,
@@ -2502,9 +2060,7 @@
       },
       "height": 1.6,
       "weight": 0.1,
-      "eggGroups": [
-        "indeterminate"
-      ],
+      "eggGroups": ["indeterminate"],
       "evoStage": 2,
       "evoLineId": "40",
       "color": "purple",
@@ -2515,10 +2071,7 @@
     {
       "id": 94,
       "name": "gengar",
-      "types": [
-        "ghost",
-        "poison"
-      ],
+      "types": ["ghost", "poison"],
       "baseStats": {
         "hp": 60,
         "attack": 65,
@@ -2529,9 +2082,7 @@
       },
       "height": 1.5,
       "weight": 40.5,
-      "eggGroups": [
-        "indeterminate"
-      ],
+      "eggGroups": ["indeterminate"],
       "evoStage": 3,
       "evoLineId": "40",
       "color": "purple",
@@ -2542,10 +2093,7 @@
     {
       "id": 95,
       "name": "onix",
-      "types": [
-        "rock",
-        "ground"
-      ],
+      "types": ["rock", "ground"],
       "baseStats": {
         "hp": 35,
         "attack": 45,
@@ -2556,9 +2104,7 @@
       },
       "height": 8.8,
       "weight": 210,
-      "eggGroups": [
-        "mineral"
-      ],
+      "eggGroups": ["mineral"],
       "evoStage": 1,
       "evoLineId": "41",
       "color": "gray",
@@ -2569,9 +2115,7 @@
     {
       "id": 96,
       "name": "drowzee",
-      "types": [
-        "psychic"
-      ],
+      "types": ["psychic"],
       "baseStats": {
         "hp": 60,
         "attack": 48,
@@ -2582,9 +2126,7 @@
       },
       "height": 1,
       "weight": 32.4,
-      "eggGroups": [
-        "humanshape"
-      ],
+      "eggGroups": ["humanshape"],
       "evoStage": 1,
       "evoLineId": "42",
       "color": "yellow",
@@ -2595,9 +2137,7 @@
     {
       "id": 97,
       "name": "hypno",
-      "types": [
-        "psychic"
-      ],
+      "types": ["psychic"],
       "baseStats": {
         "hp": 85,
         "attack": 73,
@@ -2608,9 +2148,7 @@
       },
       "height": 1.6,
       "weight": 75.6,
-      "eggGroups": [
-        "humanshape"
-      ],
+      "eggGroups": ["humanshape"],
       "evoStage": 2,
       "evoLineId": "42",
       "color": "yellow",
@@ -2621,9 +2159,7 @@
     {
       "id": 98,
       "name": "krabby",
-      "types": [
-        "water"
-      ],
+      "types": ["water"],
       "baseStats": {
         "hp": 30,
         "attack": 105,
@@ -2634,9 +2170,7 @@
       },
       "height": 0.4,
       "weight": 6.5,
-      "eggGroups": [
-        "water3"
-      ],
+      "eggGroups": ["water3"],
       "evoStage": 1,
       "evoLineId": "43",
       "color": "red",
@@ -2647,9 +2181,7 @@
     {
       "id": 99,
       "name": "kingler",
-      "types": [
-        "water"
-      ],
+      "types": ["water"],
       "baseStats": {
         "hp": 55,
         "attack": 130,
@@ -2660,9 +2192,7 @@
       },
       "height": 1.3,
       "weight": 60,
-      "eggGroups": [
-        "water3"
-      ],
+      "eggGroups": ["water3"],
       "evoStage": 2,
       "evoLineId": "43",
       "color": "red",
@@ -2673,9 +2203,7 @@
     {
       "id": 100,
       "name": "voltorb",
-      "types": [
-        "electric"
-      ],
+      "types": ["electric"],
       "baseStats": {
         "hp": 40,
         "attack": 30,
@@ -2686,9 +2214,7 @@
       },
       "height": 0.5,
       "weight": 10.4,
-      "eggGroups": [
-        "mineral"
-      ],
+      "eggGroups": ["mineral"],
       "evoStage": 1,
       "evoLineId": "44",
       "color": "red",
@@ -2699,9 +2225,7 @@
     {
       "id": 101,
       "name": "electrode",
-      "types": [
-        "electric"
-      ],
+      "types": ["electric"],
       "baseStats": {
         "hp": 60,
         "attack": 50,
@@ -2712,9 +2236,7 @@
       },
       "height": 1.2,
       "weight": 66.6,
-      "eggGroups": [
-        "mineral"
-      ],
+      "eggGroups": ["mineral"],
       "evoStage": 2,
       "evoLineId": "44",
       "color": "red",
@@ -2725,10 +2247,7 @@
     {
       "id": 102,
       "name": "exeggcute",
-      "types": [
-        "grass",
-        "psychic"
-      ],
+      "types": ["grass", "psychic"],
       "baseStats": {
         "hp": 60,
         "attack": 40,
@@ -2739,9 +2258,7 @@
       },
       "height": 0.4,
       "weight": 2.5,
-      "eggGroups": [
-        "plant"
-      ],
+      "eggGroups": ["plant"],
       "evoStage": 1,
       "evoLineId": "45",
       "color": "pink",
@@ -2752,10 +2269,7 @@
     {
       "id": 103,
       "name": "exeggutor",
-      "types": [
-        "grass",
-        "psychic"
-      ],
+      "types": ["grass", "psychic"],
       "baseStats": {
         "hp": 95,
         "attack": 95,
@@ -2766,9 +2280,7 @@
       },
       "height": 2,
       "weight": 120,
-      "eggGroups": [
-        "plant"
-      ],
+      "eggGroups": ["plant"],
       "evoStage": 2,
       "evoLineId": "45",
       "color": "yellow",
@@ -2779,9 +2291,7 @@
     {
       "id": 104,
       "name": "cubone",
-      "types": [
-        "ground"
-      ],
+      "types": ["ground"],
       "baseStats": {
         "hp": 50,
         "attack": 50,
@@ -2792,9 +2302,7 @@
       },
       "height": 0.4,
       "weight": 6.5,
-      "eggGroups": [
-        "monster"
-      ],
+      "eggGroups": ["monster"],
       "evoStage": 1,
       "evoLineId": "46",
       "color": "brown",
@@ -2805,9 +2313,7 @@
     {
       "id": 105,
       "name": "marowak",
-      "types": [
-        "ground"
-      ],
+      "types": ["ground"],
       "baseStats": {
         "hp": 60,
         "attack": 80,
@@ -2818,9 +2324,7 @@
       },
       "height": 1,
       "weight": 45,
-      "eggGroups": [
-        "monster"
-      ],
+      "eggGroups": ["monster"],
       "evoStage": 2,
       "evoLineId": "46",
       "color": "brown",
@@ -2831,9 +2335,7 @@
     {
       "id": 106,
       "name": "hitmonlee",
-      "types": [
-        "fighting"
-      ],
+      "types": ["fighting"],
       "baseStats": {
         "hp": 50,
         "attack": 120,
@@ -2844,9 +2346,7 @@
       },
       "height": 1.5,
       "weight": 49.8,
-      "eggGroups": [
-        "humanshape"
-      ],
+      "eggGroups": ["humanshape"],
       "evoStage": 2,
       "evoLineId": "47",
       "color": "brown",
@@ -2857,9 +2357,7 @@
     {
       "id": 107,
       "name": "hitmonchan",
-      "types": [
-        "fighting"
-      ],
+      "types": ["fighting"],
       "baseStats": {
         "hp": 50,
         "attack": 105,
@@ -2870,9 +2368,7 @@
       },
       "height": 1.4,
       "weight": 50.2,
-      "eggGroups": [
-        "humanshape"
-      ],
+      "eggGroups": ["humanshape"],
       "evoStage": 1,
       "evoLineId": "47",
       "color": "brown",
@@ -2883,9 +2379,7 @@
     {
       "id": 108,
       "name": "lickitung",
-      "types": [
-        "normal"
-      ],
+      "types": ["normal"],
       "baseStats": {
         "hp": 90,
         "attack": 55,
@@ -2896,9 +2390,7 @@
       },
       "height": 1.2,
       "weight": 65.5,
-      "eggGroups": [
-        "monster"
-      ],
+      "eggGroups": ["monster"],
       "evoStage": 1,
       "evoLineId": "48",
       "color": "pink",
@@ -2909,9 +2401,7 @@
     {
       "id": 109,
       "name": "koffing",
-      "types": [
-        "poison"
-      ],
+      "types": ["poison"],
       "baseStats": {
         "hp": 40,
         "attack": 65,
@@ -2922,9 +2412,7 @@
       },
       "height": 0.6,
       "weight": 1,
-      "eggGroups": [
-        "indeterminate"
-      ],
+      "eggGroups": ["indeterminate"],
       "evoStage": 1,
       "evoLineId": "49",
       "color": "purple",
@@ -2935,9 +2423,7 @@
     {
       "id": 110,
       "name": "weezing",
-      "types": [
-        "poison"
-      ],
+      "types": ["poison"],
       "baseStats": {
         "hp": 65,
         "attack": 90,
@@ -2948,9 +2434,7 @@
       },
       "height": 1.2,
       "weight": 9.5,
-      "eggGroups": [
-        "indeterminate"
-      ],
+      "eggGroups": ["indeterminate"],
       "evoStage": 2,
       "evoLineId": "49",
       "color": "purple",
@@ -2961,10 +2445,7 @@
     {
       "id": 111,
       "name": "rhyhorn",
-      "types": [
-        "ground",
-        "rock"
-      ],
+      "types": ["ground", "rock"],
       "baseStats": {
         "hp": 80,
         "attack": 85,
@@ -2975,10 +2456,7 @@
       },
       "height": 1,
       "weight": 115,
-      "eggGroups": [
-        "monster",
-        "ground"
-      ],
+      "eggGroups": ["monster", "ground"],
       "evoStage": 1,
       "evoLineId": "50",
       "color": "gray",
@@ -2989,10 +2467,7 @@
     {
       "id": 112,
       "name": "rhydon",
-      "types": [
-        "ground",
-        "rock"
-      ],
+      "types": ["ground", "rock"],
       "baseStats": {
         "hp": 105,
         "attack": 130,
@@ -3003,10 +2478,7 @@
       },
       "height": 1.9,
       "weight": 120,
-      "eggGroups": [
-        "monster",
-        "ground"
-      ],
+      "eggGroups": ["monster", "ground"],
       "evoStage": 2,
       "evoLineId": "50",
       "color": "gray",
@@ -3017,9 +2489,7 @@
     {
       "id": 113,
       "name": "chansey",
-      "types": [
-        "normal"
-      ],
+      "types": ["normal"],
       "baseStats": {
         "hp": 250,
         "attack": 5,
@@ -3030,9 +2500,7 @@
       },
       "height": 1.1,
       "weight": 34.6,
-      "eggGroups": [
-        "fairy"
-      ],
+      "eggGroups": ["fairy"],
       "evoStage": 2,
       "evoLineId": "51",
       "color": "pink",
@@ -3043,9 +2511,7 @@
     {
       "id": 114,
       "name": "tangela",
-      "types": [
-        "grass"
-      ],
+      "types": ["grass"],
       "baseStats": {
         "hp": 65,
         "attack": 55,
@@ -3056,9 +2522,7 @@
       },
       "height": 1,
       "weight": 35,
-      "eggGroups": [
-        "plant"
-      ],
+      "eggGroups": ["plant"],
       "evoStage": 1,
       "evoLineId": "52",
       "color": "blue",
@@ -3069,9 +2533,7 @@
     {
       "id": 115,
       "name": "kangaskhan",
-      "types": [
-        "normal"
-      ],
+      "types": ["normal"],
       "baseStats": {
         "hp": 105,
         "attack": 95,
@@ -3082,9 +2544,7 @@
       },
       "height": 2.2,
       "weight": 80,
-      "eggGroups": [
-        "monster"
-      ],
+      "eggGroups": ["monster"],
       "evoStage": 1,
       "evoLineId": "53",
       "color": "brown",
@@ -3095,9 +2555,7 @@
     {
       "id": 116,
       "name": "horsea",
-      "types": [
-        "water"
-      ],
+      "types": ["water"],
       "baseStats": {
         "hp": 30,
         "attack": 40,
@@ -3108,10 +2566,7 @@
       },
       "height": 0.4,
       "weight": 8,
-      "eggGroups": [
-        "water1",
-        "dragon"
-      ],
+      "eggGroups": ["water1", "dragon"],
       "evoStage": 1,
       "evoLineId": "54",
       "color": "blue",
@@ -3122,9 +2577,7 @@
     {
       "id": 117,
       "name": "seadra",
-      "types": [
-        "water"
-      ],
+      "types": ["water"],
       "baseStats": {
         "hp": 55,
         "attack": 65,
@@ -3135,10 +2588,7 @@
       },
       "height": 1.2,
       "weight": 25,
-      "eggGroups": [
-        "water1",
-        "dragon"
-      ],
+      "eggGroups": ["water1", "dragon"],
       "evoStage": 2,
       "evoLineId": "54",
       "color": "blue",
@@ -3149,9 +2599,7 @@
     {
       "id": 118,
       "name": "goldeen",
-      "types": [
-        "water"
-      ],
+      "types": ["water"],
       "baseStats": {
         "hp": 45,
         "attack": 67,
@@ -3162,9 +2610,7 @@
       },
       "height": 0.6,
       "weight": 15,
-      "eggGroups": [
-        "water2"
-      ],
+      "eggGroups": ["water2"],
       "evoStage": 1,
       "evoLineId": "55",
       "color": "red",
@@ -3175,9 +2621,7 @@
     {
       "id": 119,
       "name": "seaking",
-      "types": [
-        "water"
-      ],
+      "types": ["water"],
       "baseStats": {
         "hp": 80,
         "attack": 92,
@@ -3188,9 +2632,7 @@
       },
       "height": 1.3,
       "weight": 39,
-      "eggGroups": [
-        "water2"
-      ],
+      "eggGroups": ["water2"],
       "evoStage": 2,
       "evoLineId": "55",
       "color": "red",
@@ -3201,9 +2643,7 @@
     {
       "id": 120,
       "name": "staryu",
-      "types": [
-        "water"
-      ],
+      "types": ["water"],
       "baseStats": {
         "hp": 30,
         "attack": 45,
@@ -3214,9 +2654,7 @@
       },
       "height": 0.8,
       "weight": 34.5,
-      "eggGroups": [
-        "water3"
-      ],
+      "eggGroups": ["water3"],
       "evoStage": 1,
       "evoLineId": "56",
       "color": "brown",
@@ -3227,10 +2665,7 @@
     {
       "id": 121,
       "name": "starmie",
-      "types": [
-        "water",
-        "psychic"
-      ],
+      "types": ["water", "psychic"],
       "baseStats": {
         "hp": 60,
         "attack": 75,
@@ -3241,9 +2676,7 @@
       },
       "height": 1.1,
       "weight": 80,
-      "eggGroups": [
-        "water3"
-      ],
+      "eggGroups": ["water3"],
       "evoStage": 2,
       "evoLineId": "56",
       "color": "purple",
@@ -3254,10 +2687,7 @@
     {
       "id": 122,
       "name": "mr-mime",
-      "types": [
-        "psychic",
-        "fairy"
-      ],
+      "types": ["psychic", "fairy"],
       "baseStats": {
         "hp": 40,
         "attack": 45,
@@ -3268,9 +2698,7 @@
       },
       "height": 1.3,
       "weight": 54.5,
-      "eggGroups": [
-        "humanshape"
-      ],
+      "eggGroups": ["humanshape"],
       "evoStage": 2,
       "evoLineId": "57",
       "color": "pink",
@@ -3281,10 +2709,7 @@
     {
       "id": 123,
       "name": "scyther",
-      "types": [
-        "bug",
-        "flying"
-      ],
+      "types": ["bug", "flying"],
       "baseStats": {
         "hp": 70,
         "attack": 110,
@@ -3295,9 +2720,7 @@
       },
       "height": 1.5,
       "weight": 56,
-      "eggGroups": [
-        "bug"
-      ],
+      "eggGroups": ["bug"],
       "evoStage": 1,
       "evoLineId": "58",
       "color": "green",
@@ -3308,10 +2731,7 @@
     {
       "id": 124,
       "name": "jynx",
-      "types": [
-        "ice",
-        "psychic"
-      ],
+      "types": ["ice", "psychic"],
       "baseStats": {
         "hp": 65,
         "attack": 50,
@@ -3322,9 +2742,7 @@
       },
       "height": 1.4,
       "weight": 40.6,
-      "eggGroups": [
-        "humanshape"
-      ],
+      "eggGroups": ["humanshape"],
       "evoStage": 2,
       "evoLineId": "59",
       "color": "red",
@@ -3335,9 +2753,7 @@
     {
       "id": 125,
       "name": "electabuzz",
-      "types": [
-        "electric"
-      ],
+      "types": ["electric"],
       "baseStats": {
         "hp": 65,
         "attack": 83,
@@ -3348,9 +2764,7 @@
       },
       "height": 1.1,
       "weight": 30,
-      "eggGroups": [
-        "humanshape"
-      ],
+      "eggGroups": ["humanshape"],
       "evoStage": 2,
       "evoLineId": "60",
       "color": "yellow",
@@ -3361,9 +2775,7 @@
     {
       "id": 126,
       "name": "magmar",
-      "types": [
-        "fire"
-      ],
+      "types": ["fire"],
       "baseStats": {
         "hp": 65,
         "attack": 95,
@@ -3374,9 +2786,7 @@
       },
       "height": 1.3,
       "weight": 44.5,
-      "eggGroups": [
-        "humanshape"
-      ],
+      "eggGroups": ["humanshape"],
       "evoStage": 2,
       "evoLineId": "61",
       "color": "red",
@@ -3387,9 +2797,7 @@
     {
       "id": 127,
       "name": "pinsir",
-      "types": [
-        "bug"
-      ],
+      "types": ["bug"],
       "baseStats": {
         "hp": 65,
         "attack": 125,
@@ -3400,9 +2808,7 @@
       },
       "height": 1.5,
       "weight": 55,
-      "eggGroups": [
-        "bug"
-      ],
+      "eggGroups": ["bug"],
       "evoStage": 1,
       "evoLineId": "62",
       "color": "brown",
@@ -3413,9 +2819,7 @@
     {
       "id": 128,
       "name": "tauros",
-      "types": [
-        "normal"
-      ],
+      "types": ["normal"],
       "baseStats": {
         "hp": 75,
         "attack": 100,
@@ -3426,9 +2830,7 @@
       },
       "height": 1.4,
       "weight": 88.4,
-      "eggGroups": [
-        "ground"
-      ],
+      "eggGroups": ["ground"],
       "evoStage": 1,
       "evoLineId": "63",
       "color": "brown",
@@ -3439,9 +2841,7 @@
     {
       "id": 129,
       "name": "magikarp",
-      "types": [
-        "water"
-      ],
+      "types": ["water"],
       "baseStats": {
         "hp": 20,
         "attack": 10,
@@ -3452,10 +2852,7 @@
       },
       "height": 0.9,
       "weight": 10,
-      "eggGroups": [
-        "water2",
-        "dragon"
-      ],
+      "eggGroups": ["water2", "dragon"],
       "evoStage": 1,
       "evoLineId": "64",
       "color": "red",
@@ -3466,10 +2863,7 @@
     {
       "id": 130,
       "name": "gyarados",
-      "types": [
-        "water",
-        "flying"
-      ],
+      "types": ["water", "flying"],
       "baseStats": {
         "hp": 95,
         "attack": 125,
@@ -3480,10 +2874,7 @@
       },
       "height": 6.5,
       "weight": 235,
-      "eggGroups": [
-        "water2",
-        "dragon"
-      ],
+      "eggGroups": ["water2", "dragon"],
       "evoStage": 2,
       "evoLineId": "64",
       "color": "blue",
@@ -3494,10 +2885,7 @@
     {
       "id": 131,
       "name": "lapras",
-      "types": [
-        "water",
-        "ice"
-      ],
+      "types": ["water", "ice"],
       "baseStats": {
         "hp": 130,
         "attack": 85,
@@ -3508,10 +2896,7 @@
       },
       "height": 2.5,
       "weight": 220,
-      "eggGroups": [
-        "monster",
-        "water1"
-      ],
+      "eggGroups": ["monster", "water1"],
       "evoStage": 1,
       "evoLineId": "65",
       "color": "blue",
@@ -3522,9 +2907,7 @@
     {
       "id": 132,
       "name": "ditto",
-      "types": [
-        "normal"
-      ],
+      "types": ["normal"],
       "baseStats": {
         "hp": 48,
         "attack": 48,
@@ -3535,9 +2918,7 @@
       },
       "height": 0.3,
       "weight": 4,
-      "eggGroups": [
-        "ditto"
-      ],
+      "eggGroups": ["ditto"],
       "evoStage": 1,
       "evoLineId": "66",
       "color": "purple",
@@ -3548,9 +2929,7 @@
     {
       "id": 133,
       "name": "eevee",
-      "types": [
-        "normal"
-      ],
+      "types": ["normal"],
       "baseStats": {
         "hp": 55,
         "attack": 55,
@@ -3561,9 +2940,7 @@
       },
       "height": 0.3,
       "weight": 6.5,
-      "eggGroups": [
-        "ground"
-      ],
+      "eggGroups": ["ground"],
       "evoStage": 1,
       "evoLineId": "67",
       "color": "brown",
@@ -3574,9 +2951,7 @@
     {
       "id": 134,
       "name": "vaporeon",
-      "types": [
-        "water"
-      ],
+      "types": ["water"],
       "baseStats": {
         "hp": 130,
         "attack": 65,
@@ -3587,9 +2962,7 @@
       },
       "height": 1,
       "weight": 29,
-      "eggGroups": [
-        "ground"
-      ],
+      "eggGroups": ["ground"],
       "evoStage": 2,
       "evoLineId": "67",
       "color": "blue",
@@ -3600,9 +2973,7 @@
     {
       "id": 135,
       "name": "jolteon",
-      "types": [
-        "electric"
-      ],
+      "types": ["electric"],
       "baseStats": {
         "hp": 65,
         "attack": 65,
@@ -3613,9 +2984,7 @@
       },
       "height": 0.8,
       "weight": 24.5,
-      "eggGroups": [
-        "ground"
-      ],
+      "eggGroups": ["ground"],
       "evoStage": 1,
       "evoLineId": "67",
       "color": "yellow",
@@ -3626,9 +2995,7 @@
     {
       "id": 136,
       "name": "flareon",
-      "types": [
-        "fire"
-      ],
+      "types": ["fire"],
       "baseStats": {
         "hp": 65,
         "attack": 130,
@@ -3639,9 +3006,7 @@
       },
       "height": 0.9,
       "weight": 25,
-      "eggGroups": [
-        "ground"
-      ],
+      "eggGroups": ["ground"],
       "evoStage": 1,
       "evoLineId": "67",
       "color": "red",
@@ -3652,9 +3017,7 @@
     {
       "id": 137,
       "name": "porygon",
-      "types": [
-        "normal"
-      ],
+      "types": ["normal"],
       "baseStats": {
         "hp": 65,
         "attack": 60,
@@ -3665,9 +3028,7 @@
       },
       "height": 0.8,
       "weight": 36.5,
-      "eggGroups": [
-        "mineral"
-      ],
+      "eggGroups": ["mineral"],
       "evoStage": 1,
       "evoLineId": "68",
       "color": "pink",
@@ -3678,10 +3039,7 @@
     {
       "id": 138,
       "name": "omanyte",
-      "types": [
-        "rock",
-        "water"
-      ],
+      "types": ["rock", "water"],
       "baseStats": {
         "hp": 35,
         "attack": 40,
@@ -3692,10 +3050,7 @@
       },
       "height": 0.4,
       "weight": 7.5,
-      "eggGroups": [
-        "water1",
-        "water3"
-      ],
+      "eggGroups": ["water1", "water3"],
       "evoStage": 1,
       "evoLineId": "69",
       "color": "blue",
@@ -3706,10 +3061,7 @@
     {
       "id": 139,
       "name": "omastar",
-      "types": [
-        "rock",
-        "water"
-      ],
+      "types": ["rock", "water"],
       "baseStats": {
         "hp": 70,
         "attack": 60,
@@ -3720,10 +3072,7 @@
       },
       "height": 1,
       "weight": 35,
-      "eggGroups": [
-        "water1",
-        "water3"
-      ],
+      "eggGroups": ["water1", "water3"],
       "evoStage": 2,
       "evoLineId": "69",
       "color": "blue",
@@ -3734,10 +3083,7 @@
     {
       "id": 140,
       "name": "kabuto",
-      "types": [
-        "rock",
-        "water"
-      ],
+      "types": ["rock", "water"],
       "baseStats": {
         "hp": 30,
         "attack": 80,
@@ -3748,10 +3094,7 @@
       },
       "height": 0.5,
       "weight": 11.5,
-      "eggGroups": [
-        "water1",
-        "water3"
-      ],
+      "eggGroups": ["water1", "water3"],
       "evoStage": 1,
       "evoLineId": "70",
       "color": "brown",
@@ -3762,10 +3105,7 @@
     {
       "id": 141,
       "name": "kabutops",
-      "types": [
-        "rock",
-        "water"
-      ],
+      "types": ["rock", "water"],
       "baseStats": {
         "hp": 60,
         "attack": 115,
@@ -3776,10 +3116,7 @@
       },
       "height": 1.3,
       "weight": 40.5,
-      "eggGroups": [
-        "water1",
-        "water3"
-      ],
+      "eggGroups": ["water1", "water3"],
       "evoStage": 2,
       "evoLineId": "70",
       "color": "brown",
@@ -3790,10 +3127,7 @@
     {
       "id": 142,
       "name": "aerodactyl",
-      "types": [
-        "rock",
-        "flying"
-      ],
+      "types": ["rock", "flying"],
       "baseStats": {
         "hp": 80,
         "attack": 105,
@@ -3804,9 +3138,7 @@
       },
       "height": 1.8,
       "weight": 59,
-      "eggGroups": [
-        "flying"
-      ],
+      "eggGroups": ["flying"],
       "evoStage": 1,
       "evoLineId": "71",
       "color": "purple",
@@ -3817,9 +3149,7 @@
     {
       "id": 143,
       "name": "snorlax",
-      "types": [
-        "normal"
-      ],
+      "types": ["normal"],
       "baseStats": {
         "hp": 160,
         "attack": 110,
@@ -3830,9 +3160,7 @@
       },
       "height": 2.1,
       "weight": 460,
-      "eggGroups": [
-        "monster"
-      ],
+      "eggGroups": ["monster"],
       "evoStage": 2,
       "evoLineId": "72",
       "color": "black",
@@ -3843,10 +3171,7 @@
     {
       "id": 144,
       "name": "articuno",
-      "types": [
-        "ice",
-        "flying"
-      ],
+      "types": ["ice", "flying"],
       "baseStats": {
         "hp": 90,
         "attack": 85,
@@ -3857,9 +3182,7 @@
       },
       "height": 1.7,
       "weight": 55.4,
-      "eggGroups": [
-        "no-eggs"
-      ],
+      "eggGroups": ["no-eggs"],
       "evoStage": 1,
       "evoLineId": "73",
       "color": "blue",
@@ -3870,10 +3193,7 @@
     {
       "id": 145,
       "name": "zapdos",
-      "types": [
-        "electric",
-        "flying"
-      ],
+      "types": ["electric", "flying"],
       "baseStats": {
         "hp": 90,
         "attack": 90,
@@ -3884,9 +3204,7 @@
       },
       "height": 1.6,
       "weight": 52.6,
-      "eggGroups": [
-        "no-eggs"
-      ],
+      "eggGroups": ["no-eggs"],
       "evoStage": 1,
       "evoLineId": "74",
       "color": "yellow",
@@ -3897,10 +3215,7 @@
     {
       "id": 146,
       "name": "moltres",
-      "types": [
-        "fire",
-        "flying"
-      ],
+      "types": ["fire", "flying"],
       "baseStats": {
         "hp": 90,
         "attack": 100,
@@ -3911,9 +3226,7 @@
       },
       "height": 2,
       "weight": 60,
-      "eggGroups": [
-        "no-eggs"
-      ],
+      "eggGroups": ["no-eggs"],
       "evoStage": 1,
       "evoLineId": "75",
       "color": "yellow",
@@ -3924,9 +3237,7 @@
     {
       "id": 147,
       "name": "dratini",
-      "types": [
-        "dragon"
-      ],
+      "types": ["dragon"],
       "baseStats": {
         "hp": 41,
         "attack": 64,
@@ -3937,10 +3248,7 @@
       },
       "height": 1.8,
       "weight": 3.3,
-      "eggGroups": [
-        "water1",
-        "dragon"
-      ],
+      "eggGroups": ["water1", "dragon"],
       "evoStage": 1,
       "evoLineId": "76",
       "color": "blue",
@@ -3951,9 +3259,7 @@
     {
       "id": 148,
       "name": "dragonair",
-      "types": [
-        "dragon"
-      ],
+      "types": ["dragon"],
       "baseStats": {
         "hp": 61,
         "attack": 84,
@@ -3964,10 +3270,7 @@
       },
       "height": 4,
       "weight": 16.5,
-      "eggGroups": [
-        "water1",
-        "dragon"
-      ],
+      "eggGroups": ["water1", "dragon"],
       "evoStage": 2,
       "evoLineId": "76",
       "color": "blue",
@@ -3978,10 +3281,7 @@
     {
       "id": 149,
       "name": "dragonite",
-      "types": [
-        "dragon",
-        "flying"
-      ],
+      "types": ["dragon", "flying"],
       "baseStats": {
         "hp": 91,
         "attack": 134,
@@ -3992,10 +3292,7 @@
       },
       "height": 2.2,
       "weight": 210,
-      "eggGroups": [
-        "water1",
-        "dragon"
-      ],
+      "eggGroups": ["water1", "dragon"],
       "evoStage": 3,
       "evoLineId": "76",
       "color": "brown",
@@ -4006,9 +3303,7 @@
     {
       "id": 150,
       "name": "mewtwo",
-      "types": [
-        "psychic"
-      ],
+      "types": ["psychic"],
       "baseStats": {
         "hp": 106,
         "attack": 110,
@@ -4019,9 +3314,7 @@
       },
       "height": 2,
       "weight": 122,
-      "eggGroups": [
-        "no-eggs"
-      ],
+      "eggGroups": ["no-eggs"],
       "evoStage": 1,
       "evoLineId": "77",
       "color": "purple",
@@ -4032,9 +3325,7 @@
     {
       "id": 151,
       "name": "mew",
-      "types": [
-        "psychic"
-      ],
+      "types": ["psychic"],
       "baseStats": {
         "hp": 100,
         "attack": 100,
@@ -4045,9 +3336,7 @@
       },
       "height": 0.4,
       "weight": 4,
-      "eggGroups": [
-        "no-eggs"
-      ],
+      "eggGroups": ["no-eggs"],
       "evoStage": 1,
       "evoLineId": "78",
       "color": "pink",

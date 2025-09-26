@@ -20,6 +20,7 @@ pokemon-connections/
 ## Quick Start
 
 ### Backend Setup
+
 ```bash
 cd backend
 yarn install
@@ -29,6 +30,7 @@ yarn generate   # Create a puzzle
 ```
 
 ### Frontend Setup
+
 ```bash
 cd frontend
 yarn install
@@ -44,12 +46,14 @@ yarn dev        # Start development server
 ## Commands
 
 ### Backend
+
 - `yarn etl` - Fetch Pokémon data from PokeAPI
 - `yarn groups` - Build group combinations
 - `yarn generate` - Create a new puzzle
 - `yarn validate <file>` - Validate a puzzle solution
 
 ### Frontend
+
 - `yarn dev` - Start development server
 - `yarn build` - Build for production
 - `yarn preview` - Preview production build

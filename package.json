@@ -1,0 +1,15 @@
+{
+  "name": "pokemon-connections-monorepo",
+  "private": true,
+  "packageManager": "yarn@4.9.1",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "format": "prettier -w ."
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
+}

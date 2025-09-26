@@ -1,62 +1,62 @@
-import { useState } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
-import { usePlayer } from '../contexts/PlayerContext'
-import { useTheme } from '../contexts/ThemeContext'
+import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { usePlayer } from "../contexts/PlayerContext";
+import { useTheme } from "../contexts/ThemeContext";
 
 export default function MenuButton() {
-  const [showMenu, setShowMenu] = useState<boolean>(false)
-  const navigate = useNavigate()
-  const location = useLocation()
-  const { resetProgress } = usePlayer()
-  const { isDarkMode, toggleTheme } = useTheme()
+  const [showMenu, setShowMenu] = useState<boolean>(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { resetProgress } = usePlayer();
+  const { isDarkMode, toggleTheme } = useTheme();
 
   // Check if we're on a puzzle page
   const isPuzzlePage =
-    location.pathname.includes('/levels/') &&
-    !location.pathname.includes('/complete')
+    location.pathname.includes("/levels/") &&
+    !location.pathname.includes("/complete");
 
   // Extract puzzle index from URL if on puzzle page
   const puzzleIndex = isPuzzlePage
-    ? parseInt(location.pathname.split('/levels/')[1] || '0', 10)
-    : 0
+    ? parseInt(location.pathname.split("/levels/")[1] || "0", 10)
+    : 0;
 
   function handleMenuToggle() {
-    setShowMenu(!showMenu)
+    setShowMenu(!showMenu);
   }
 
   function handleGoToLevelSelection() {
-    navigate('/levels')
-    setShowMenu(false)
+    navigate("/levels");
+    setShowMenu(false);
   }
 
   function handleNextLevel() {
-    navigate(`/levels/${puzzleIndex + 1}`)
-    setShowMenu(false)
+    navigate(`/levels/${puzzleIndex + 1}`);
+    setShowMenu(false);
   }
 
   function handleResetProgress() {
     if (
       window.confirm(
-        'Are you sure you want to reset all your progress? This will clear all completed and failed levels.'
+        "Are you sure you want to reset all your progress? This will clear all completed and failed levels.",
       )
     ) {
-      resetProgress()
-      setShowMenu(false)
+      resetProgress();
+      setShowMenu(false);
       // Navigate to levels page to show the reset state
-      navigate('/levels')
+      navigate("/levels");
     }
   }
 
   function handleThemeToggle() {
-    toggleTheme()
+    toggleTheme();
   }
 
   // Close menu when clicking outside
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
-      setShowMenu(false)
+      setShowMenu(false);
     }
-  }
+  };
 
   return (
     <>
@@ -101,8 +101,8 @@ export default function MenuButton() {
                   onClick={handleThemeToggle}
                   className={`w-full px-3 py-2 text-left text-sm rounded-lg transition-colors duration-200 flex items-center gap-2 ${
                     isDarkMode
-                      ? 'bg-background-tertiary  text hover:bg-background-secondary'
-                      : 'bg-background-tertiary  text hover:bg-background-secondary'
+                      ? "bg-background-tertiary  text hover:bg-background-secondary"
+                      : "bg-background-tertiary  text hover:bg-background-secondary"
                   }`}
                 >
                   {isDarkMode ? (
@@ -119,10 +119,10 @@ export default function MenuButton() {
                 </button>
 
                 {/* Show level selection button if not already on levels page */}
-                {!location.pathname.includes('/levels') && (
+                {!location.pathname.includes("/levels") && (
                   <button
                     onClick={handleGoToLevelSelection}
-                    className="w-full px-3 py-2 text-left text-sm bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 transition-colors duration-200"
+                    className="w-full px-3 py-2 text-left text-sm bg-primary-900 text-primary-300 rounded-lg hover:bg-primary-800 transition-colors duration-200"
                   >
                     Level Selection
                   </button>
@@ -133,7 +133,7 @@ export default function MenuButton() {
                   <>
                     <button
                       onClick={handleGoToLevelSelection}
-                      className="w-full px-3 py-2 text-left text-sm bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 transition-colors duration-200"
+                      className="w-full px-3 py-2 text-left text-sm bg-primary-900 text-primary-300 rounded-lg hover:bg-primary-800 transition-colors duration-200"
                     >
                       To Level Selection
                     </button>
@@ -160,5 +160,5 @@ export default function MenuButton() {
         </div>
       )}
     </>
-  )
+  );
 }

@@ -1,0 +1,70 @@
+Please fill out the following JSON with accurate information for each animal. For each animal:
+
+1. **wikipediaUrl**: Provide the correct Wikipedia URL (e.g., "https://en.wikipedia.org/wiki/Animal_Name")
+2. **categories**: Provide relevant categories that describe the animal (e.g., ["Flying Animals", "Birds of Prey"] for an eagle)
+
+Categories should be descriptive and could include things like:
+- Flying Animals
+- Marine Life
+- Nocturnal
+- Herbivores
+- Carnivores
+- Birds of Prey
+- Mammals
+- Reptiles
+- Amphibians
+- Endangered Species
+- Domestic Animals
+- Wild Animals
+- etc.
+
+Here's the JSON to fill out:
+
+{
+  "animals": {
+    "Eagle": {
+      "wikipediaUrl": "",
+      "categories": [
+        ""
+      ]
+    },
+    "Bat": {
+      "wikipediaUrl": "",
+      "categories": [
+        ""
+      ]
+    },
+    "Hummingbird": {
+      "wikipediaUrl": "",
+      "categories": [
+        ""
+      ]
+    },
+    "Owl": {
+      "wikipediaUrl": "",
+      "categories": [
+        ""
+      ]
+    },
+    "Penguin": {
+      "wikipediaUrl": "",
+      "categories": [
+        ""
+      ]
+    },
+    "Ostrich": {
+      "wikipediaUrl": "",
+      "categories": [
+        ""
+      ]
+    },
+    "Emu": {
+      "wikipediaUrl": "",
+      "categories": [
+        ""
+      ]
+    }
+  }
+}
+
+Please return the complete JSON with all fields filled out accurately.

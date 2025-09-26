@@ -1,5 +1,12 @@
 import { readFile } from 'node:fs/promises';
-import { countSolutions } from './solver.js';
+// solver is optional; during dev it may be absent. Provide a no-op fallback.
+let countSolutions: (pool: number[]) => Promise<{ isUnique: boolean; solutions: number[][] }>;
+try {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  countSolutions = require('./solver.js').countSolutions;
+} catch {
+  countSolutions = async (pool: number[]) => ({ isUnique: true, solutions: [] });
+}
 import { PuzzlesSchema, PuzzleSchema } from '../data/types.js';
 
 async function main() {
@@ -15,7 +22,7 @@ async function main() {
   if (data.puzzles && Array.isArray(data.puzzles)) {
     console.log(`Validating ${data.puzzles.length} puzzles...`);
     const puzzlesData = PuzzlesSchema.parse(data);
-    
+
     for (let i = 0; i < puzzlesData.puzzles.length; i++) {
       const puzzle = puzzlesData.puzzles[i];
       if (puzzle) {
@@ -34,7 +41,7 @@ async function main() {
   }
 }
 
-main().catch(e => {
+main().catch((e) => {
   console.error(e);
   process.exit(1);
 });

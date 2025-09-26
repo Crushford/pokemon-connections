@@ -1,17 +1,17 @@
 interface CompletionModalProps {
-  isOpen: boolean
-  onClose: () => void
-  onNextPuzzle: () => void
-  onGoToLevels: () => void
+  isOpen: boolean;
+  onClose: () => void;
+  onNextPuzzle: () => void;
+  onGoToLevels: () => void;
   stats: {
-    incorrectAttempts: number
-    totalGroups: number
-    completedGroups: number
-    timeSpent?: number
-    pokedexUsage?: number
-  }
-  currentPuzzleIndex: number
-  totalPuzzles: number
+    incorrectAttempts: number;
+    totalGroups: number;
+    completedGroups: number;
+    timeSpent?: number;
+    pokedexUsage?: number;
+  };
+  currentPuzzleIndex: number;
+  totalPuzzles: number;
 }
 
 export default function CompletionModal({
@@ -21,11 +21,11 @@ export default function CompletionModal({
   onGoToLevels,
   stats,
   currentPuzzleIndex,
-  totalPuzzles
+  totalPuzzles,
 }: CompletionModalProps) {
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
-  const isLastPuzzle = currentPuzzleIndex >= totalPuzzles - 1
+  const isLastPuzzle = currentPuzzleIndex >= totalPuzzles - 1;
 
   return (
     <div className="h-dvh fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
@@ -193,5 +193,5 @@ export default function CompletionModal({
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,0 +1,240 @@
+{
+  "animals": {
+    "Eagle": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Eagle",
+      "categories": [
+        "Birds of Prey",
+        "Apex Predators",
+        "Animals with Keen Eyesight",
+        "Symbolic Animals",
+        "Flying Animals"
+      ]
+    },
+    "Bat": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Bat",
+      "categories": [
+        "Flying Mammals",
+        "Nocturnal Animals",
+        "Echolocators",
+        "Pollinators",
+        "Flying Animals"
+      ]
+    },
+    "Hummingbird": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Hummingbird",
+      "categories": [
+        "Smallest Birds",
+        "Hovering Animals",
+        "Nectar Feeders",
+        "Migratory Birds",
+        "Flying Animals"
+      ]
+    },
+    "Owl": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Owl",
+      "categories": [
+        "Birds of Prey",
+        "Nocturnal Animals",
+        "Silent Hunters",
+        "Symbolic Animals",
+        "Flying Animals"
+      ]
+    },
+    "Penguin": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Penguin",
+      "categories": [
+        "Flightless Birds",
+        "Aquatic Birds",
+        "Cold-Climate Animals",
+        "Males Incubate the Young"
+      ]
+    },
+    "Ostrich": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ostrich",
+      "categories": ["Flightless Birds", "Largest Birds", "Fast Runners", "Animals That Kick"]
+    },
+    "Emu": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Emu",
+      "categories": [
+        "Flightless Birds",
+        "Large Birds",
+        "Males Incubate the Young",
+        "Australian Animals"
+      ]
+    },
+    "Cassowary": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Cassowary",
+      "categories": ["Flightless Birds", "Males Incubate the Young"]
+    },
+    "Turkey": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Domestic_turkey",
+      "categories": ["Birds", "Ground-Dwelling Birds", "Game Birds", "Omnivores"]
+    },
+    "Peacock": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Peafowl",
+      "categories": ["Birds", "Ground-Dwelling Birds", "Showy Plumage", "Courtship Display Animals"]
+    },
+    "Swan": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Swan",
+      "categories": ["Birds", "Waterfowl", "Migratory Birds", "Monogamous Animals"]
+    },
+    "Hornbill": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Hornbill",
+      "categories": ["Helmeted Animals"]
+    },
+    "Helmeted Guineafowl": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Helmeted_Guineafowl",
+      "categories": ["Helmeted Animals"]
+    },
+    "Triceratops": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Triceratops",
+      "categories": ["Helmeted Animals"]
+    },
+    "Parrot": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Parrot",
+      "categories": ["Birds", "Tropical Animals", "Vocal Mimics", "Colorful Animals"]
+    },
+    "Goat": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Goat",
+      "categories": ["Mammals", "Domesticated Animals", "Ruminants", "Mountain Climbers"]
+    },
+    "Iguana": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Iguana",
+      "categories": ["Reptiles", "Lizards", "Herbivores", "Tropical Animals"]
+    },
+    "Crocodile": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Crocodile",
+      "categories": ["Dangerous to Humans"]
+    },
+    "Hippo": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Hippo",
+      "categories": ["Dangerous to Humans"]
+    },
+    "Buffalo": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Buffalo",
+      "categories": ["Dangerous to Humans"]
+    },
+    "Kangaroo": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Kangaroo",
+      "categories": ["Mammals", "Marsupials", "Australian Animals", "Grass-Eaters"]
+    },
+    "Wild Boar": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Wild_boar",
+      "categories": ["Mammals", "Omnivores", "Game Animals", "Ground-Dwelling Animals"]
+    },
+    "Shark": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Shark",
+      "categories": ["Fish", "Apex Predators", "Marine Animals", "Cartilaginous Fish"]
+    },
+    "Toucan": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Toucan",
+      "categories": ["Rainforest Keystone Species"]
+    },
+    "Fruit Bat": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Fruit_Bat",
+      "categories": ["Rainforest Keystone Species"]
+    },
+    "Spider Monkey": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Spider_Monkey",
+      "categories": ["Rainforest Keystone Species"]
+    },
+    "Jaguar": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Jaguar",
+      "categories": ["Mammals", "Big Cats", "Apex Predators", "Rainforest Animals"]
+    },
+    "Tapir": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Tapir",
+      "categories": ["Mammals", "Herbivores", "Rainforest Animals", "Odd-Toed Ungulates"]
+    },
+    "Macaw": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Macaw",
+      "categories": ["Birds", "Parrots", "Tropical Animals", "Colorful Animals"]
+    },
+    "Duck": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Duck",
+      "categories": ["Waterfowl"]
+    },
+    "Goose": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Goose",
+      "categories": ["Waterfowl"]
+    },
+    "Coot": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Coot",
+      "categories": ["Waterfowl"]
+    },
+    "Pheasant": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Pheasant",
+      "categories": ["Game Animals"]
+    },
+    "Rabbit": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Rabbit",
+      "categories": ["Game Animals"]
+    },
+    "Elk": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Elk",
+      "categories": ["Game Animals"]
+    },
+    "Quail": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Quail",
+      "categories": ["Game Animals"]
+    },
+    "Wombat": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Wombat",
+      "categories": ["Burrowing Mammals"]
+    },
+    "Mole": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Mole",
+      "categories": ["Burrowing Mammals"]
+    },
+    "Meerkat": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Meerkat",
+      "categories": ["Burrowing Mammals"]
+    },
+    "Prairie Dog": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Prairie_Dog",
+      "categories": ["Burrowing Mammals"]
+    },
+    "Armadillo": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Armadillo",
+      "categories": []
+    },
+    "Swallow": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Swallow",
+      "categories": ["Migratory Birds"]
+    },
+    "Stork": {
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Stork",
+      "categories": ["Migratory Birds"]
+    }
+  },
+  "categories": {
+    "Flying Animals": {
+      "description": "Animals that can fly or glide"
+    },
+    "Flightless Birds": {
+      "description": "Large birds that cannot fly but are still strong runners"
+    },
+    "Helmeted Animals": {
+      "description": "Animals with prominent helmet-like crests, casques, or horns on their heads"
+    },
+    "Dangerous to Humans": {
+      "description": "Animals known to occasionally kill or seriously injure humans"
+    },
+    "Rainforest Keystone Species": {
+      "description": "Animals critical to rainforest ecosystems by spreading seeds or maintaining habitat"
+    },
+    "Waterfowl": {
+      "description": "Birds that live on or around freshwater habitats"
+    },
+    "Game Animals": {
+      "description": "Animals traditionally hunted for food or sport"
+    },
+    "Burrowing Mammals": {
+      "description": "Mammals that dig underground burrows for shelter or food"
+    },
+    "Migratory Birds": {
+      "description": "Well-known bird species famous for seasonal migrations"
+    }
+  },
+  "puzzles": []
+}
